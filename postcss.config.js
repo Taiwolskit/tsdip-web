@@ -1,6 +1,9 @@
 module.exports = {
   plugins: {
-    // Illustrational
-    'postcss-css-variables': {}
+    autoprefixer: {},
+    colorguard: {},
+    doiuse: {},
+    'postcss-preset-env': {},
+    'rucksack-css': {}
   }
 };
