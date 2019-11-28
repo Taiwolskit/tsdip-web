@@ -13,12 +13,6 @@ const App = ({ title }) => (
     {/*
     <Main /> ---> Carosul, EventBlock
     <Footer /> */}
-    <button type='button' className='btn btn-primary'>
-      Primary
-    </button>
-    <button type='button' class='btn btn-info'>
-      Info
-    </button>
     <div>Main page</div>
   </div>
 );

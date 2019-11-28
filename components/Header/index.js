@@ -1,8 +1,9 @@
-import React from 'react';
-import './styles.scss'
+import Navbar from './Navbar';
 
-const Header = () => {
-    return <header id='header'>Header Component</header>;
-};;
+const Header = () => (
+  <header id='header'>
+    <Navbar />
+  </header>
+);
 
 export default Header;
