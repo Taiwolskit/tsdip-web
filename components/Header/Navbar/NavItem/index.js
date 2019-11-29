@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-const NavItem = ({ active, link, name }) => (
+const NavItem = ({ active = '', link, name }) => (
   <Link href={link}>
     <li className={`nav-item ${active}`}>
       <a
