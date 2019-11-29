@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import NavItem from './NavItem';
+import './styles.scss';
 
 const linkList = [
   {
@@ -8,7 +9,6 @@ const linkList = [
     name: '街舞工作室介紹'
   },
   {
-    active: 'active',
     link: '/events',
     name: '活動介紹'
   },
@@ -21,7 +21,7 @@ const linkList = [
     name: '舞者介紹'
   },
   {
-    link: '/dancers',
+    link: '/areas',
     name: '我想練舞'
   }
 ];
@@ -37,7 +37,7 @@ const loginLink = [
   }
 ];
 
-const Navbar = ({ isLoggedIn = true }) => (
+const Navbar = ({ isLoggedIn = false }) => (
   <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
     <a className='navbar-brand mb-0 h1' href='/'>
       Taiwan Street Dance
