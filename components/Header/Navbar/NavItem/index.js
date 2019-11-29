@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
-const NavItem = ({ active = '', link, name }) => (
+const NavItem = ({ active = '', description = '', link, name }) => (
   <Link href={link}>
-    <li className={`nav-item ${active}`}>
+    <li className={`nav-item ${active}`}
+      data-toggle='tooltip'
+      data-placement="top"
+      title={description}>
       <a
         className='nav-link'
         href={link}
@@ -19,6 +22,7 @@ const NavItem = ({ active = '', link, name }) => (
 
 NavItem.propTypes = {
   active: PropTypes.string,
+  description: PropTypes.string,
   link: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 };
