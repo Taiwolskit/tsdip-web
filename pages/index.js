@@ -13,7 +13,7 @@ const App = ({ title }) => (
     {/*
     <Main /> ---> Carosul, EventBlock
     <Footer /> */}
-    <div>Main page</div>
+    <main>Main page</main>
   </div>
 );
 
