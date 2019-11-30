@@ -22,8 +22,8 @@
     "koa": "^2.11.0",
     "koa-logger": "^3.2.1",
     "koa-router": "^7.4.0",
-    "next": "^9.1.4",
     "luxon": "^1.21.3",
+    "next": "^9.1.4",
     "node-sass": "^4.13.0",
     "normalize.css": "^8.0.1",
     "postcss-preset-env": "^6.7.0",
@@ -37,7 +37,7 @@
     "eslint": "^6.7.1",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react": "^7.17.0",
     "jest": "^25.0.0"
   },
   "peerDependencies": {
