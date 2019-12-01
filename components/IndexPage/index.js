@@ -98,7 +98,7 @@ const cardList = [
 ];
 
 const IndexPage = () => (
-  <main>
+  <main id="index-page">
     <div id='hot-event'>
       <Carousel items={carouselList} />
     </div>
