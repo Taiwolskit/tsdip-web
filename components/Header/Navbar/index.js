@@ -106,7 +106,7 @@ const Navbar = ({ isLoggedIn = false }) => {
               </div>
             </li>
           ) : (
-            <NavItem key='登入' click={toggleLogin} name='登入' link='#' />
+            <NavItem key='登入' click={toggleLogin} name='登入' link='/login' />
           )}
         </ul>
       </div>

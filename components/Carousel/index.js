@@ -12,9 +12,7 @@ const Carousel = ({ items }) => (
               className='active'></li>
           );
         } else {
-          return (
-            <li data-target='#carousel' data-slide-to={index}></li>
-          );
+          return <li data-target='#carousel' data-slide-to={index}></li>;
         }
       })}
     </ol>
@@ -29,7 +27,7 @@ const Carousel = ({ items }) => (
         return (
           <div className={className}>
             <img className='d-block w-100' src={imageUrl} alt={caption} />
-            <div class='carousel-caption d-none d-md-block'>
+            <div className='carousel-caption d-none d-md-block'>
               <h5>{caption}</h5>
               <p>{description}</p>
             </div>

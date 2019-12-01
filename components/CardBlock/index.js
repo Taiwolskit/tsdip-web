@@ -15,8 +15,8 @@ const CardBlock = ({ items }) => (
                 Registration Now
               </a>
             </div>
-            <div class='card-footer'>
-              <small class='text-muted'>{endDate}</small>
+            <div className='card-footer'>
+              <small className='text-muted'>{endDate}</small>
             </div>
           </div>
         </div>
@@ -30,9 +30,9 @@ CardBlock.propTypes = {
     PropTypes.shape({
       caption: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
+      endDate: PropTypes.number,
       imageUrl: PropTypes.string.isRequired,
-      registrationLink: PropTypes.string.isRequired,
-      endDate: PropTypes.number
+      registrationLink: PropTypes.string.isRequired
     })
   ).isRequired
 };

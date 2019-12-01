@@ -1,10 +1,18 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationArrow, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faLinkedin, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {
+  faEnvelope,
+  faLocationArrow,
+  faPhone
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faTwitter
+} from '@fortawesome/free-brands-svg-icons';
 import NavItem from '../Header/Navbar/NavItem';
 import './style.scss';
-
 
 const linkList = [
   {
@@ -46,7 +54,7 @@ const loginLink = [
 ];
 
 const Footer = ({ isLoggedIn = true }) => (
-  <footer className='footer'>
+  <footer id='footer'>
     <div className='container bottom_border'>
       <div className='row'>
         <div className=' col-sm-4 col-md col-12 col'>
