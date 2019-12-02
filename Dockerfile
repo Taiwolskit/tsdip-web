@@ -1,8 +1,9 @@
 FROM node:alpine AS builder
 WORKDIR /usr/app
+RUN apk add --no-cache python make g++
 COPY package.json yarn.lock ./
 RUN yarn install --production
-COPY . ./
+COPY . .
 RUN yarn build
 
 FROM node:alpine
