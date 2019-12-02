@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 const Carousel = ({ items }) => (
   <div id='carousel' className='carousel slide' data-ride='carousel'>
     <ol className='carousel-indicators'>
-      {items.map((item, index) => {
+      {items.map(({ caption }, index) => {
         if (index < 1) {
           return (
             <li
               data-target='#carousel'
               data-slide-to='0'
-              className='active'></li>
+              className='active'
+              key={caption}></li>
           );
         } else {
-          return <li data-target='#carousel' data-slide-to={index}></li>;
+          return <li data-target='#carousel' data-slide-to={index} key={caption} ></li>;
         }
       })}
     </ol>
@@ -25,7 +26,7 @@ const Carousel = ({ items }) => (
         }
 
         return (
-          <div className={className}>
+          <div className={className} key={caption}>
             <img className='d-block w-100' src={imageUrl} alt={caption} />
             <div className='carousel-caption d-none d-md-block'>
               <h5>{caption}</h5>

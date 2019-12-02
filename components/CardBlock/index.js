@@ -28,11 +28,11 @@ const CardBlock = ({ items }) => (
 CardBlock.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      caption: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       endDate: PropTypes.number,
       imageUrl: PropTypes.string.isRequired,
-      registrationLink: PropTypes.string.isRequired
+      registrationLink: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
     })
   ).isRequired
 };
