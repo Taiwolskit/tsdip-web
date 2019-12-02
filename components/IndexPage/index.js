@@ -24,7 +24,7 @@ const carouselList = [
 
 const cardList = [
   {
-    title: 'Card title',
+    title: 'Card title 1 ',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -33,7 +33,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 2',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -42,7 +42,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 3',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -51,7 +51,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 4',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -60,7 +60,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 5',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -69,7 +69,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 6',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -78,7 +78,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 7',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
@@ -87,7 +87,7 @@ const cardList = [
     endDate: 123
   },
   {
-    title: 'Card title',
+    title: 'Card title 8',
     description:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     imageUrl:
