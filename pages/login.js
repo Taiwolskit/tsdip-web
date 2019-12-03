@@ -12,12 +12,12 @@ const App = ({ title }) => (
         async
         defer
         crossOrigin='anonymous'
-        src='https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v5.0&appId=2352826731682105&autoLogAppEvents=1'
+        src={`https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=${process.env.FB_API_VERSION}&appId=${process.env.FB_APP_ID}&autoLogAppEvents=1`}
       />
       <script async defer src='https://apis.google.com/js/platform.js' />
       <meta
         name='google-signin-client_id'
-        content='YOUR_CLIENT_ID.apps.googleusercontent.com'></meta>
+        content={`${process.env.GOOGLE_CLIENT_ID}.apps.googleusercontent.com`}></meta>
     </Head>
     <Header />
     <LoginPage />

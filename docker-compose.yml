@@ -5,6 +5,7 @@ services:
     build: .
     image: tsdip-web
     container_name: tsdip-web
+    env_file: .env
     ports:
       - "3000:3000"
     volumes:

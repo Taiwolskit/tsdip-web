@@ -1,3 +1,6 @@
+require('dotenv').config();
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 });
@@ -10,6 +13,16 @@ module.exports = withBundleAnalyzer(
     withCSS(
       withSass({
         webpack(config, options) {
+          config.plugins = config.plugins || [];
+
+          config.plugins = [
+            ...config.plugins,
+
+            new Dotenv({
+              path: path.join(__dirname, '.env'),
+              systemvars: true
+            })
+          ];
           return config;
         },
         sassLoaderOptions: {
