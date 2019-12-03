@@ -1,4 +1,3 @@
-import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
@@ -22,7 +21,7 @@ App.defaultProps = {
 };
 
 App.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string.isRequired
 };
 
 export default App;
