@@ -5,7 +5,7 @@ const CardBlock = ({ items }) => (
   <div id='card-block' className='row'>
     {items.map(
       ({ title, description, imageUrl, registrationLink, endDate }) => (
-        <div className='card-item col-xs-12 col-sm-6 col-md-4 col-lg-3'>
+        <div className='card-item col-xs-12 col-sm-6 col-md-4 col-lg-3' key={title}>
           <div className='card'>
             <img className='card-img-top' src={imageUrl} alt={title} />
             <div className='card-body'>
