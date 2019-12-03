@@ -6,6 +6,6 @@ services:
     image: tsdip-web
     container_name: tsdip-web
     ports:
-      - "3000"
+      - "3000:3000"
     volumes:
       - ./:/usr/app
