@@ -5,10 +5,7 @@ import {
   faLocationArrow,
   faPhone
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faInstagram,
-} from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Carousel from '../Carousel';
 import './styles.scss';
 
@@ -36,54 +33,126 @@ const carouselList = [
 const SingleStudioPage = ({ name }) => {
   return (
     <main id='single-studio-page' className='container-fluid'>
+      <nav className='single-studio-breadcrumb-nav' aria-label='breadcrumb'>
+        <ol className='single-studio-breadcrumb breadcrumb'>
+          <li className='single-studio-breadcrumb breadcrumb-item'>
+            <a href='/studios'>街舞工作室</a>
+          </li>
+          <li
+            className='single-studio-breadcrumb breadcrumb-item active'
+            aria-current='page'>
+            {name}
+          </li>
+        </ol>
+      </nav>
       <h1 className='display-1 row justify-content-center'>{name}</h1>
-      <section className='row justify-content-center studio-info'>
-        <picture class='col-sm-12 col-md-6 studio-info-picture'>
+      <section className='row justify-content-center single-studio-intro'>
+        <picture className='col-sm-12 col-md-6 single-studio-intro-picture'>
           <Carousel items={carouselList} />
         </picture>
-        <div class='col-sm-12 col-md-6 studio-info-contact'>
-          <h2 className='text-center'>聯絡方式</h2>
-          <table className='table table-striped table-hover'>
-            <tbody>
-              <tr>
-                <th scope='row'>
-                  <FontAwesomeIcon icon={faLocationArrow} />
-                </th>
-                <td>台北市</td>
-              </tr>
-              <tr>
-                <th scope='row'>
-                  <FontAwesomeIcon icon={faEnvelope} />
-                </th>
-                <td>mm@google.com</td>
-              </tr>
-              <tr>
-                <th scope='row'>
-                  <FontAwesomeIcon icon={faPhone} />
-                </th>
-                <td>886021454</td>
-              </tr>
-              <tr>
-                <th scope='row'>
-                  <FontAwesomeIcon icon={faFacebook} />
-                </th>
-                <td>886021454</td>
-              </tr>
-              <tr>
-                <th scope='row'>
-                  <FontAwesomeIcon icon={faInstagram} />
-                </th>
-                <td>886021454</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className='col-sm-12 col-md-6 single-studio-intro-description'>
+          <h2 className='text-center'>簡介</h2>
+          <p className='single-studio-intro-description-text'>merrymonarc</p>
         </div>
       </section>
-      <section className='row justify-content-center curriculum'>
-        <h2>{name} 課表</h2>
-      </section>
-      <section className='row justify-content-center studio-plan'>
-        <h2>{name} 付費方案</h2>
+      <section className='single-studio-detail'>
+        <nav className='single-studio-detail-nav nav-fill'>
+          <div className='nav nav-tabs' id='nav-tab' role='tablist'>
+            <a
+              className='nav-item nav-link active'
+              id='nav-contact-tab'
+              data-toggle='tab'
+              href='#nav-contact'
+              role='tab'
+              aria-controls='nav-contact'
+              aria-selected='true'>
+              聯絡方式
+            </a>
+            <a
+              className='nav-item nav-link'
+              id='nav-curriculum-tab'
+              data-toggle='tab'
+              href='#nav-curriculum'
+              role='tab'
+              aria-controls='nav-curriculum'
+              aria-selected='false'>
+              工作室課表
+            </a>
+            <a
+              className='nav-item nav-link'
+              id='nav-plan-tab'
+              data-toggle='tab'
+              href='#nav-plan'
+              role='tab'
+              aria-controls='nav-plan'
+              aria-selected='false'>
+              收費方式
+            </a>
+          </div>
+        </nav>
+        <div
+          className='single-studio-detail-content tab-content'
+          id='nav-tabContent'>
+          <div
+            className='tab-pane fade show active'
+            id='nav-contact'
+            role='tabpanel'
+            aria-labelledby='nav-contact-tab'>
+            <table className='table table-striped table-hover'>
+              <tbody>
+                <tr>
+                  <th scope='row'>
+                    <FontAwesomeIcon icon={faLocationArrow} />
+                    <p>地址</p>
+                  </th>
+                  <td>台北市</td>
+                </tr>
+                <tr>
+                  <th scope='row'>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                    <p>信箱</p>
+                  </th>
+                  <td>mm@google.com</td>
+                </tr>
+                <tr>
+                  <th scope='row'>
+                    <FontAwesomeIcon icon={faPhone} />
+                    <p>電話</p>
+                  </th>
+                  <td>886021454</td>
+                </tr>
+                <tr>
+                  <th scope='row'>
+                    <FontAwesomeIcon icon={faFacebook} />
+                    <p>粉絲專頁</p>
+                  </th>
+                  <td>886021454</td>
+                </tr>
+                <tr>
+                  <th scope='row'>
+                    <FontAwesomeIcon icon={faInstagram} />
+                    <p>Instagram</p>
+                  </th>
+                  <td>886021454</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div
+            className='tab-pane fade'
+            id='nav-curriculum'
+            role='tabpanel'
+            aria-labelledby='nav-curriculum-tab'>
+            ...
+          </div>
+          <div
+            className='tab-pane fade'
+            id='nav-plan'
+            role='tabpanel'
+            aria-labelledby='nav-plan-tab'>
+            ...
+          </div>
+        </div>
       </section>
     </main>
   );
