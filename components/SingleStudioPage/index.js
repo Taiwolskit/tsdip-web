@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Carousel from '../Carousel';
+import New from '../New';
 const Calendar = dynamic(() => import('../Calendar'), {
   ssr: false
 });
@@ -183,7 +184,9 @@ const SingleStudioPage = ({ name }) => {
             className='tab-pane fade'
             id='nav-plan'
             role='tabpanel'
-            aria-labelledby='nav-plan-tab'></div>
+            aria-labelledby='nav-plan-tab'>
+            <New />
+          </div>
         </div>
       </section>
     </main>
