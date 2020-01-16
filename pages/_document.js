@@ -1,6 +1,5 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import 'normalize.css';
 
 export default class MyDocument extends Document {
   render() {

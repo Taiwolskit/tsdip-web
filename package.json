@@ -22,12 +22,11 @@
     "@fullcalendar/list": "^4.3.0",
     "@fullcalendar/react": "^4.3.0",
     "@fullcalendar/timegrid": "^4.3.0",
-    "@next/bundle-analyzer": "^9.1.6",
-    "@zeit/next-css": "^1.0.1",
+    "@next/bundle-analyzer": "^9.2.0",
     "@zeit/next-sass": "^1.0.1",
     "@zeit/next-source-maps": "^0.0.3",
-    "autoprefixer": "^9.7.3",
-    "axios": "^0.19.0",
+    "autoprefixer": "^9.7.4",
+    "axios": "^0.19.1",
     "colorguard": "^1.2.1",
     "doiuse": "^4.2.0",
     "dotenv": "^8.2.0",
@@ -37,7 +36,7 @@
     "koa-router": "^7.4.0",
     "luxon": "^1.21.3",
     "moment": "^2.24.0",
-    "next": "^9.1.6",
+    "next": "^9.2.0",
     "node-sass": "^4.13.0",
     "normalize.css": "^8.0.1",
     "postcss-preset-env": "^6.7.0",
@@ -56,7 +55,7 @@
     "jest": "^25.0.0"
   },
   "peerDependencies": {
-    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "webpack": "^4.41.5"
   }
