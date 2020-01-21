@@ -15,14 +15,16 @@ module.exports = withBundleAnalyzer(
         webpack(config, options) {
           config.plugins = config.plugins || [];
 
-          config.plugins = [
-            ...config.plugins,
-
-            new Dotenv({
-              path: path.join(__dirname, '.env'),
-              systemvars: true
-            })
-          ];
+          if (process.env.NODE_ENV !== 'production') {
+            config.plugins = [
+              ...config.plugins,
+    
+              new Dotenv({
+                path: path.join(__dirname, '.env'),
+                systemvars: true
+              })
+            ];
+          }
           return config;
         },
         sassLoaderOptions: {
