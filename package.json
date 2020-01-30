@@ -35,7 +35,7 @@
     "dotenv-webpack": "^1.7.0",
     "koa": "^2.11.0",
     "koa-logger": "^3.2.1",
-    "luxon": "^1.21.3",
+    "luxon": "^1.22.0",
     "moment": "^2.24.0",
     "next": "^9.2.1",
     "node-sass": "^4.13.1",
