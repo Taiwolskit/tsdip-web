@@ -936,38 +936,38 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@fortawesome/fontawesome-common-types@^0.2.26":
-  version "0.2.26"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.26.tgz#6e0b13a752676036f8196f8a1500d53a27b4adc1"
-  integrity sha512-CcM/fIFwZlRdiWG/25xE/wHbtyUuCtqoCTrr6BsWw7hH072fR++n4L56KPydAr3ANgMJMjT8v83ZFIsDc7kE+A==
+"@fortawesome/fontawesome-common-types@^0.2.27":
+  version "0.2.27"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.27.tgz#19706345859fc46adf3684ed01d11b40903b87e9"
+  integrity sha512-97GaByGaXDGMkzcJX7VmR/jRJd8h1mfhtA7RsxDBN61GnWE/PPCZhOdwG/8OZYktiRUF0CvFOr+VgRkJrt6TWg==
 
-"@fortawesome/fontawesome-svg-core@^1.2.26":
-  version "1.2.26"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.26.tgz#671569271d6b532cdea5e3deb8ff16f8b7ac251d"
-  integrity sha512-3Dfd/v2IztP1TxKOxZiB5+4kaOZK9mNy0KU1vVK7nFlPWz3gzxrCWB+AloQhQUoJ8HhGqbzjliK89Vl7PExGbw==
+"@fortawesome/fontawesome-svg-core@^1.2.27":
+  version "1.2.27"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.27.tgz#e4db8e3be81a40988213507c3e3d0c158a6641a3"
+  integrity sha512-sOD3DKynocnHYpuw2sLPnTunDj7rLk91LYhi2axUYwuGe9cPCw7Bsu9EWtVdNJP+IYgTCZIbyARKXuy5K/nv+Q==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.26"
+    "@fortawesome/fontawesome-common-types" "^0.2.27"
 
-"@fortawesome/free-brands-svg-icons@^5.12.0":
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.12.0.tgz#b0c78627f811ac030ee0ac88df376567cf74119d"
-  integrity sha512-50uCFzVUki3wfmFmrMNLFhOt8dP6YZ53zwR4dK9FR7Lwq1IVHXnSBb8MtGLe3urLJ2sA+CSu7Pc7s3i6/zLxmA==
+"@fortawesome/free-brands-svg-icons@^5.12.1":
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-brands-svg-icons/-/free-brands-svg-icons-5.12.1.tgz#67977addd15e21e57aa1ed71cd2ddecdfaa88647"
+  integrity sha512-IYUYcgGsQuwiIHjRGfeSTCIQKUSZMb6FsV6mDj78K0D+YzGJkM4cvEBBUMHtnla5D2HCxncMI/9JX5YIk2GHeQ==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.26"
+    "@fortawesome/fontawesome-common-types" "^0.2.27"
 
-"@fortawesome/free-regular-svg-icons@^5.12.0":
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.12.0.tgz#9b7ed5dbd7581aab47960802cc116fdc8b6c8b7d"
-  integrity sha512-FAvpmylTs0PosHwHrWPQX6/7ODc9M11kCE6AOAujFufDYzqTj2cPHT4yJO7zTEkKdAbbusJzbWpnOboMuyjeQA==
+"@fortawesome/free-regular-svg-icons@^5.12.1":
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-regular-svg-icons/-/free-regular-svg-icons-5.12.1.tgz#4b378d93655acc5e432d5ed7ee127768dd351a99"
+  integrity sha512-bGda18seHXb+24K6DPUFzqn4kG7B+JViP/BscMcNUXvT00M86xNhdgP2TXSdflQXn53QWqymKjx/8rhaDOJyhA==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.26"
+    "@fortawesome/fontawesome-common-types" "^0.2.27"
 
-"@fortawesome/free-solid-svg-icons@^5.12.0":
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.12.0.tgz#8decac5844e60453cc0c7c51437d1461df053a35"
-  integrity sha512-CnpsWs6GhTs9ekNB3d8rcO5HYqRkXbYKf2YNiAlTWbj5eVlPqsd/XH1F9If8jkcR1aegryAbln/qYeKVZzpM0g==
+"@fortawesome/free-solid-svg-icons@^5.12.1":
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/free-solid-svg-icons/-/free-solid-svg-icons-5.12.1.tgz#76b6f958a3471821ff146f8f955e6d7cfe87147c"
+  integrity sha512-k3MwRFFUhyL4cuCJSaHDA0YNYMELDXX0h8JKtWYxO5XD3Dn+maXOMrVAAiNGooUyM2v/wz/TOaM0jxYVKeXX7g==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.26"
+    "@fortawesome/fontawesome-common-types" "^0.2.27"
 
 "@fortawesome/react-fontawesome@^0.1.8":
   version "0.1.8"
@@ -976,40 +976,40 @@
   dependencies:
     prop-types "^15.5.10"
 
-"@fullcalendar/bootstrap@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/bootstrap/-/bootstrap-4.3.0.tgz#c989968f92c4ec26a0ff7dfc35b186aa38978ba1"
-  integrity sha512-Ue0Bm2m765jY2LKRsD7ZyoeYNJeeyXxyzSeMdYY4AHFZTevTlcxv1T7ZYPRDBhseewLwiFHP8e0Okfdiji+BCg==
+"@fullcalendar/bootstrap@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/bootstrap/-/bootstrap-4.4.0.tgz#4d77d19b4e2d3aaf518f1ade187d8e4db341d2a1"
+  integrity sha512-2YYM2tPhTwNtYFBcIm4Cf/72pJ3qzRRmzGZx13mJeVYjbSOe1rn/tquff/mMDPPtfCZ4+XqXOLCzAeW7eWHGgw==
 
-"@fullcalendar/core@^4.3.1", "@fullcalendar/core@~4.3.0":
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.3.1.tgz#a061c6d2e998d4155439dbc8aefdfe01cdf648d8"
-  integrity sha512-Eh+p/wpMkWGu26f8NpfQK9ecQMoZxX/aopv+0+4/CH+Ip0paP6iEc40JYgTz7RFl0bFqV1dvwyGyUZ4+9ZeySA==
+"@fullcalendar/core@^4.4.0", "@fullcalendar/core@~4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-4.4.0.tgz#79dbc0cca836ce628a07e739a456da11ff141373"
+  integrity sha512-PC4mmXHJHAlXmUEmZVnePyA8yYCOBdxBNq8yjJqedEtT1X0x36yTFz/Y0Ux6bniICZDqYtk0xoxe6jaxi++e0g==
 
-"@fullcalendar/daygrid@^4.3.0", "@fullcalendar/daygrid@~4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-4.3.0.tgz#1b4ab9fdc238dba77921cb7c5bd2d813c834e905"
-  integrity sha512-OrGaRIGbELESOXOCXtoQVY4cOxnxmN7OrjDGbMoVITdoXWuIZ6sFNO84WcBQoRaIbkmqVM0SAU2MENwy+eEwqQ==
+"@fullcalendar/daygrid@^4.4.0", "@fullcalendar/daygrid@~4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/daygrid/-/daygrid-4.4.0.tgz#25fcae7226b62688b4e086a611582e72253b5229"
+  integrity sha512-pDfvL0XZxKHTZ4VFOmwaYe3LmuABEIZsEopeqQ8y5O6BDen9KCbJqgHeCI8FpASSBd6bNlUx7il7EHdSoHhgIw==
 
-"@fullcalendar/list@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/list/-/list-4.3.0.tgz#b2523e54db0fd4cd44f7e93d72353d649c529dd7"
-  integrity sha512-Al+XaKynC4RsJpXyWOWJgrVQXFOSC+fg8DI4HGAt/mrrwazZ1L0pTQwCLeU8auZp53VFazCiNxV+jkAbuDdbDQ==
+"@fullcalendar/list@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/list/-/list-4.4.0.tgz#8edab49d06903b7de0ca68eefc1d44d0a58860a9"
+  integrity sha512-uUDSPS71czNTK5Z3x3HzeE3KIvqkCfvhY+mGFdaAL6+7VpCwEIfB6s3GIJOjzu9TONmczMk4jdq0b1WUFLY5PQ==
 
-"@fullcalendar/react@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-4.3.0.tgz#db00bb0486daacdf139923e71d909cd1a572c23a"
-  integrity sha512-nNSrStb0YLYPeHySrWlQrRrP7CX922tkAKJWkTtdCnIljYnRjdU0B75XMmt1VH1EpVPY1JPCkMBsWPZF2mcfag==
+"@fullcalendar/react@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/react/-/react-4.4.0.tgz#243fda9e3d053a51e7eab9263a03847ca6eb5514"
+  integrity sha512-7PExd430is8/KoUkddfSKnvozOw18UzqOW10PmLLxs3l+wki3Z/sh7nxC6df13VC/l9GljhsLZwU0hEF7dm2Kg==
   dependencies:
-    "@fullcalendar/core" "~4.3.0"
+    "@fullcalendar/core" "~4.4.0"
     fast-deep-equal "^2.0.1"
 
-"@fullcalendar/timegrid@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-4.3.0.tgz#bf003499319e5e66135bb7b8d8ed274b1a62ca91"
-  integrity sha512-9JCSZbzw2Hi+X893l5X9ViZaWjxh+sDy59o6nKx0gYKwSfs/vKpmk73GBQfKyUv8orkjpnTdPFfeLDZqlzBP4Q==
+"@fullcalendar/timegrid@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/timegrid/-/timegrid-4.4.0.tgz#c5837cfd676afff0d95535ac4cc054ed65965976"
+  integrity sha512-QwJ9oM87/ZTbXaE8PMIVp20GPtVCFmroaeR1GydJ6BKYtbxG/nsaSv7RhqvDa2jLjHaTWC2NjHo9hRfjQjtCZA==
   dependencies:
-    "@fullcalendar/daygrid" "~4.3.0"
+    "@fullcalendar/daygrid" "~4.4.0"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.0.0"
@@ -1185,10 +1185,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@koa/router@^8.0.6":
-  version "8.0.6"
-  resolved "https://registry.yarnpkg.com/@koa/router/-/router-8.0.6.tgz#bd3f76e7f61450b47691ed944ce8e052b861139d"
-  integrity sha512-b4BDdDks0hvLYlr20REnWpo1FmV9SVh4/GS3yvK6VQ8/zPOIYcA9x2kSJpRbLMx40nRuIV1GXkYsRT8u42jh4g==
+"@koa/router@^8.0.8":
+  version "8.0.8"
+  resolved "https://registry.yarnpkg.com/@koa/router/-/router-8.0.8.tgz#95f32d11373d03d89dcb63fabe9ac6f471095236"
+  integrity sha512-FnT93N4NUehnXr+juupDmG2yfi0JnWdCmNEuIXpCG4TtG+9xvtrLambBH3RclycopVUOEYAim2lydiNBI7IRVg==
   dependencies:
     debug "^4.1.1"
     http-errors "^1.7.3"
@@ -8260,10 +8260,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-big-calendar@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.23.0.tgz#cc780481548fcefabb04cea05dd1a08456702a67"
-  integrity sha512-f/v1J/oqvEJqXcT5clJ5wzFIWKRNUeMCvLLzH6PYszcR15mUgqQb31HH+2Ev+YZHVW3YSStcZn2HWEhmvFr9ew==
+react-big-calendar@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.24.0.tgz#aca0bcdecdc359ec06e874d2391707e5b2181e29"
+  integrity sha512-GvIQSt8xs2Qfm073H/NInt9HLAtgwCRJX1CPRrABnqMjIyjQKB4snJPjG1IMH3XGz/YYb/r+RDl9fMO7wurzlg==
   dependencies:
     "@babel/runtime" "^7.1.5"
     clsx "^1.0.4"
@@ -8276,7 +8276,6 @@ react-big-calendar@^0.23.0:
     prop-types "^15.6.2"
     react-overlays "^2.0.0-0"
     uncontrollable "^7.0.0"
-    warning "^4.0.2"
 
 react-dom@^16.12.0:
   version "16.12.0"
@@ -10150,7 +10149,7 @@ walker@^1.0.7, walker@~1.0.5:
   dependencies:
     makeerror "1.0.x"
 
-warning@^4.0.2, warning@^4.0.3:
+warning@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
