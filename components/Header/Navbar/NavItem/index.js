@@ -6,7 +6,7 @@ const NavItem = ({ active = '', description = '', click, link, name }) => (
     <li
       className={`nav-item ${active}`}
       data-toggle='tooltip'
-      data-placement='top'
+      data-placement='bottom'
       title={description}>
       {click ? (
         <a
