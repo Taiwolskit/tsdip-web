@@ -1,11 +1,10 @@
 {
   "name": "tsdip-web",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "dev": "node index.js",
+    "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node index.js"
+    "start": "next start"
   },
   "repository": "git@github.com:Taiwolskit/tsdip-web.git",
   "author": "Edwin Jarvis <fenglan.crazydance@gmail.com>",
@@ -15,49 +14,28 @@
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-regular-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
-    "@fortawesome/react-fontawesome": "^0.1.8",
-    "@fullcalendar/bootstrap": "^4.4.0",
-    "@fullcalendar/core": "^4.4.0",
-    "@fullcalendar/daygrid": "^4.4.0",
-    "@fullcalendar/list": "^4.4.0",
-    "@fullcalendar/react": "^4.4.0",
-    "@fullcalendar/timegrid": "^4.4.0",
-    "@koa/router": "^8.0.8",
-    "@next/bundle-analyzer": "^9.2.2",
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
-    "@zeit/next-source-maps": "^0.0.3",
-    "autoprefixer": "^9.7.4",
-    "axios": "^0.19.2",
-    "colorguard": "^1.2.1",
-    "doiuse": "^4.2.0",
-    "dotenv": "^8.2.0",
-    "dotenv-webpack": "^1.7.0",
-    "koa": "^2.11.0",
-    "koa-logger": "^3.2.1",
-    "luxon": "^1.22.0",
-    "moment": "^2.24.0",
-    "next": "^9.2.2",
-    "node-sass": "^4.13.1",
-    "normalize.css": "^8.0.1",
-    "postcss-preset-env": "^6.7.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "next": "^9.3.0",
+    "next-redux-wrapper": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
-    "react-big-calendar": "^0.24.0",
     "react-dom": "^16.13.0",
-    "rucksack-css": "^1.0.2"
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.26.2"
   },
   "devDependencies": {
     "enzyme": "^3.11.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react": "^7.19.0",
     "jest": "^25.1.0"
   },
   "peerDependencies": {
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react-hooks": "^2.5.0",
-    "webpack": "^4.41.6"
+    "webpack": "^4.42.0"
   }
 }
