@@ -2,4 +2,8 @@
 
 ## Required
 
+- Bootstrap
+- Node.js
+- Next.js
+
 ## Environment Variable
