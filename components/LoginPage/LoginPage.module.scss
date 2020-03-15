@@ -1,0 +1,10 @@
+.login-page {
+  margin: 0;
+  min-height: calc(100vh - 468px);
+
+  .login-page-title {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
