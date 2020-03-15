@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import IndexPage from '../components/IndexPage';
 
 const App = ({ title }) => (
   <div className='main'>
@@ -8,6 +9,7 @@ const App = ({ title }) => (
       <title>{title}</title>
     </Head>
     <Header />
+    <IndexPage />
   </div>
 );
 
