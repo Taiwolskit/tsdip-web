@@ -1,12 +1,17 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faAlignLeft,
+  faAlignJustify
+} from '@fortawesome/free-solid-svg-icons';
 import styles from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
   return (
-    <div className='wrapper'>
+    <main id='dashboard-page'>
       <nav id='sidebar'>
         <div className='sidebar-header'>
-          <h3>Bootstrap Sidebar</h3>
-          <strong>BS</strong>
+          <h3>Dashboard</h3>
+          <strong>DB</strong>
         </div>
 
         <ul className='list-unstyled components'>
@@ -16,7 +21,6 @@ const DashboardPage = () => {
               data-toggle='collapse'
               aria-expanded='false'
               className='dropdown-toggle'>
-              <i className='fas fa-home'></i>
               Home
             </a>
             <ul className='collapse list-unstyled' id='homeSubmenu'>
@@ -32,16 +36,11 @@ const DashboardPage = () => {
             </ul>
           </li>
           <li>
-            <a href='#'>
-              <i className='fas fa-briefcase'></i>
-              About
-            </a>
             <a
               href='#pageSubmenu'
               data-toggle='collapse'
               aria-expanded='false'
               className='dropdown-toggle'>
-              <i className='fas fa-copy'></i>
               Pages
             </a>
             <ul className='collapse list-unstyled' id='pageSubmenu'>
@@ -58,37 +57,17 @@ const DashboardPage = () => {
           </li>
           <li>
             <a href='#'>
-              <i className='fas fa-image'></i>
               Portfolio
             </a>
           </li>
           <li>
             <a href='#'>
-              <i className='fas fa-question'></i>
               FAQ
             </a>
           </li>
           <li>
             <a href='#'>
-              <i className='fas fa-paper-plane'></i>
               Contact
-            </a>
-          </li>
-        </ul>
-
-        <ul className='list-unstyled CTAs'>
-          <li>
-            <a
-              href='https://bootstrapious.com/tutorial/files/sidebar.zip'
-              className='download'>
-              Download source
-            </a>
-          </li>
-          <li>
-            <a
-              href='https://bootstrapious.com/p/bootstrap-sidebar'
-              className='article'>
-              Back to article
             </a>
           </li>
         </ul>
@@ -96,38 +75,14 @@ const DashboardPage = () => {
 
       <div id='content'>
         <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <div className='container-fluid'>
-            <button type='button' id='sidebarCollapse' className='btn btn-info'>
-              <i className='fas fa-align-left'></i>
-              <span>Toggle Sidebar</span>
-            </button>
-          </div>
+          <button type='button' id='sidebarCollapse' className='btn btn-info'>
+            <FontAwesomeIcon icon={faAlignLeft} />
+            <span>Toggle Sidebar</span>
+          </button>
         </nav>
       </div>
-    </div>
+    </main>
   );
 };
 
 export default DashboardPage;
-
-// <button
-//   class='navbar-toggler'
-//   type='button'
-//   data-toggle='collapse'
-//   data-target='#navbarToggleExternalContent'
-//   aria-controls='navbarToggleExternalContent'
-//   aria-expanded='false'
-//   aria-label='Toggle navigation'>
-//   <span class='navbar-toggler-icon'></span>
-// </button>;
-
-// <button
-//   className='navbar-toggler'
-//   type='button'
-//   data-toggle='collapse'
-//   data-target='#navbarToggler'
-//   aria-controls='navbarToggler'
-//   aria-expanded='false'
-//   aria-label='Toggle navigation'>
-//   <span className='navbar-toggler-icon'></span>
-// </button>;
