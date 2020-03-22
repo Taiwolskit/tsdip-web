@@ -7,8 +7,8 @@ import styles from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
   return (
-    <main id='dashboard-page'>
-      <nav id='sidebar'>
+    <main id='dashboard-pagex'>
+      <nav id='sidebarx'>
         <div className='sidebar-header'>
           <h3>Dashboard</h3>
           <strong>DB</strong>
