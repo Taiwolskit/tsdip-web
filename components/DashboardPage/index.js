@@ -1,88 +1,24 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faAlignLeft,
-  faAlignJustify
-} from '@fortawesome/free-solid-svg-icons';
+import SidebarItem from './SidebarItem';
 import styles from './DashboardPage.module.scss';
 
-const DashboardPage = () => {
-  return (
-    <main id='dashboard-pagex'>
-      <nav id='sidebarx'>
-        <div className='sidebar-header'>
-          <h3>Dashboard</h3>
-          <strong>DB</strong>
-        </div>
 
-        <ul className='list-unstyled components'>
-          <li className='active'>
-            <a
-              href='#homeSubmenu'
-              data-toggle='collapse'
-              aria-expanded='false'
-              className='dropdown-toggle'>
-              Home
-            </a>
-            <ul className='collapse list-unstyled' id='homeSubmenu'>
-              <li>
-                <a href='#'>Home 1</a>
-              </li>
-              <li>
-                <a href='#'>Home 2</a>
-              </li>
-              <li>
-                <a href='#'>Home 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a
-              href='#pageSubmenu'
-              data-toggle='collapse'
-              aria-expanded='false'
-              className='dropdown-toggle'>
-              Pages
-            </a>
-            <ul className='collapse list-unstyled' id='pageSubmenu'>
-              <li>
-                <a href='#'>Page 1</a>
-              </li>
-              <li>
-                <a href='#'>Page 2</a>
-              </li>
-              <li>
-                <a href='#'>Page 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href='#'>
-              Portfolio
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              FAQ
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <div id='content'>
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-          <button type='button' id='sidebarCollapse' className='btn btn-info'>
-            <FontAwesomeIcon icon={faAlignLeft} />
-            <span>Toggle Sidebar</span>
-          </button>
-        </nav>
+const DashboardPage = () => (
+  <main id='dashboard-page' className={styles['dashboard-page']}>
+    <div id='sidebar' className={styles['dashboard-page-sidebar']}>
+      <div
+        id='dashboard-page-sidebar-header'
+        className={styles['dashboard-page-sidebar-header']}>
+        <h3>Dashboard</h3>
+        <h3 className={styles['dashboard-page-sidebar-header-short']}>DB</h3>
       </div>
-    </main>
-  );
-};
+
+      <ul className='list-unstyled list-group dashboard-page-sidebar-items'>
+        <SidebarItem caption='Profile' url='/profile' />
+        <SidebarItem caption='Studio' url='/manage/studios' />
+      </ul>
+    </div>
+    <div id='content' className={styles['dashboard-page-content']}></div>
+  </main>
+);
 
 export default DashboardPage;

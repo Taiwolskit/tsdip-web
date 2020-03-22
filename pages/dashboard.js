@@ -5,6 +5,12 @@ import DashboardPage from '../components/DashboardPage';
 
 const App = ({ title }) => (
   <div className='main'>
+    <style jsx global>{`
+      #__next .main {
+        display: grid;
+        grid-template-rows: 56px calc(100% - 56px);
+      }
+    `}</style>
     <Head>
       <title>{title}</title>
     </Head>
