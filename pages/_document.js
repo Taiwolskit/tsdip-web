@@ -52,12 +52,6 @@ export default class MyDocument extends Document {
               $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
               })
-
-              $(document).ready(function () {
-                  $('#sidebarCollapse').on('click', function () {
-                      $('#sidebarx').toggleClass('active');
-                  });
-              });
             `
             }}
           />
