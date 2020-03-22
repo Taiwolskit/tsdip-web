@@ -108,3 +108,15 @@ body {
     }
   }
 }
+
+/* ---------------------------------------------------
+  Dashboard Page
+----------------------------------------------------- */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+
+  .dashboard-content {
+    background-color: #f9e9cd;
+  }
+}

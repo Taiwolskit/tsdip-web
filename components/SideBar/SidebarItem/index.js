@@ -4,7 +4,7 @@ import styles from './SidebarItem.module.scss';
 
 const SidebarItem = ({ caption, url }) => (
   <Link href={url}>
-    <li className={styles['dashboard-page-sidebar-item']}>
+    <li className={styles['sidebar-item']}>
       <a href={url}>{caption}</a>
     </li>
   </Link>
