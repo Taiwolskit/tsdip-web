@@ -1,0 +1,26 @@
+.dashboard-page-sidebar-item {
+  border: 1px solid #00000020;
+  display: block;
+  padding: .75rem 1.25rem;
+
+  &:hover {
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+
+  &:first-child {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+  }
+
+  a {
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: large;
+    text-decoration: none;
+  }
+}
