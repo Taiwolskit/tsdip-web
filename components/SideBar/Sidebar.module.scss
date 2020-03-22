@@ -1,0 +1,34 @@
+.sidebar {
+  background-color: #ADA1EA;
+
+  .sidebar-header {
+    background-color: #9B90C2;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 20px;
+    transition: all 0.3s;
+
+    h3 {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .sidebar-header-short {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    .sidebar-header {
+      h3 {
+        display: none;
+      }
+
+      .sidebar-header-short {
+        display: block;
+      }
+    }
+  }
+}
