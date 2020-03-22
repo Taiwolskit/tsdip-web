@@ -3,9 +3,16 @@ $footer-font-color: #cccccc;
 $footer-font-hover-color: #ffffff;
 
 body {
+  background-color: #b3cab4;
   font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
     'Arial', sans-serif;
-  background-color: #b3cab4;
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    min-height: stretch;
+    width: 100%;
+  }
 }
 
 .bs-tooltip-bottom {
@@ -105,12 +112,12 @@ body {
 /* ---------------------------------------------------
   SIDEBAR STYLE
 ----------------------------------------------------- */
-#dashboard-page {
+#dashboard-pagex {
   display: flex;
   align-items: stretch;
 }
 
-#sidebar {
+#sidebarx {
   min-width: 200px;
   max-width: 200px;
   background-color: #7386d5;
@@ -203,7 +210,7 @@ body {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
-  #sidebar {
+  #sidebarx {
     min-width: 80px;
     max-width: 80px;
     margin-left: -80px;
