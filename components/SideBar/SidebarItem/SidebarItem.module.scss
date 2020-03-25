@@ -26,3 +26,8 @@ $item-radius: .25rem;
     text-decoration: none;
   }
 }
+
+.item-active {
+  background-color: #ffffff;
+  cursor: pointer;
+}
