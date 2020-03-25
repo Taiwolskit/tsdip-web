@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import SidebarItem from './SidebarItem';
 import styles from './Sidebar.module.scss';
 
-const Sidebar = ({ items }) => (
+const Sidebar = ({ items, itemActive, sidebarClick }) => (
   <div id='sidebar' className={styles['sidebar']}>
     <div id='sidebar-header' className={styles['sidebar-header']}>
       <h3>Dashboard</h3>
@@ -10,14 +10,30 @@ const Sidebar = ({ items }) => (
     </div>
 
     <ul className='list-unstyled list-group'>
-      {items.map(({ caption, url }) => (
-        <SidebarItem key={caption} caption={caption} url={url} />
-      ))}
+      {items.map(({ caption, url }) =>
+        url === itemActive ? (
+          <SidebarItem
+            active={true}
+            caption={caption}
+            handleClick={sidebarClick}
+            key={caption}
+            url={url}
+          />
+        ) : (
+          <SidebarItem
+            caption={caption}
+            handleClick={sidebarClick}
+            key={caption}
+            url={url}
+          />
+        )
+      )}
     </ul>
   </div>
 );
 
 Sidebar.defaultProps = {
+  // itemActive: '/profile',
   items: [
     { caption: 'Profile', url: '/profile' },
     { caption: 'Studio', url: '/manage/studios' },
@@ -26,12 +42,14 @@ Sidebar.defaultProps = {
 };
 
 Sidebar.propTypes = {
+  itemActive: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       caption: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  sidebarClick: PropTypes.func.isRequired
 };
 
 export default Sidebar;
