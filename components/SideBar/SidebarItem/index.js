@@ -16,9 +16,7 @@ const SidebarItem = ({ caption, url, active, handleClick }) => {
   }
   return (
     <Link href={url}>
-      <li
-        className={styles['sidebar-item']}
-        onClick={event => handleClick(event, url)}>
+      <li className={styles['sidebar-item']} onClick={() => handleClick(url)}>
         <a href={url}>{caption}</a>
       </li>
     </Link>
