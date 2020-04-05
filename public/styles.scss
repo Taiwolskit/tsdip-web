@@ -117,7 +117,9 @@ body {
   grid-template-columns: 1fr 5fr;
 
   .dashboard-content,
-  .manage-studio {
+  .manage-studio,
+  .manage-profile {
+    padding: 15px;
     background-color: #f9e9cd;
   }
 }

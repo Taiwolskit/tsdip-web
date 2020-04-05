@@ -16,7 +16,7 @@ const App = ({ title }) => (
     </Head>
     <Header />
     <main id='dashboard' className='dashboard'>
-      <Sidebar itemActive='/manage/events' />
+      <Sidebar />
       <div id='dashboard-content' className='dashboard-content'></div>
     </main>
   </div>
