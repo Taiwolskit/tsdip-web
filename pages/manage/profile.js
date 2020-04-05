@@ -2,7 +2,7 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import Sidebar from '../../containers/Sidebar';
-import ManageStudio from '../../components/Mange/Studio';
+import ManageProfile from '../../components/Mange/Profile';
 
 const App = ({ title }) => (
   <div className='main'>
@@ -17,14 +17,14 @@ const App = ({ title }) => (
     </Head>
     <Header />
     <main id='dashboard' className='dashboard'>
-      <Sidebar itemActive='/manage/profile' />
-      <ManageStudio />
+      <Sidebar />
+      <ManageProfile />
     </main>
   </div>
 );
 
 App.defaultProps = {
-  title: 'HIP HOP TW | Manga studios information'
+  title: 'HIP HOP TW | Manga profile'
 };
 
 App.propTypes = {

@@ -1,15 +1,21 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import SidebarItem from './SidebarItem';
 import styles from './Sidebar.module.scss';
 
 const Sidebar = ({ items, itemActive, sidebarClick }) => {
   const router = useRouter();
+
   return (
     <div id='sidebar' className={styles['sidebar']}>
       <div id='sidebar-header' className={styles['sidebar-header']}>
-        <h3>Dashboard</h3>
-        <h3 className={styles['sidebar-header-short']}>DB</h3>
+        <Link href='/dashboard'>
+          <h3>Dashboard</h3>
+        </Link>
+        <Link href='/dashboard'>
+          <h3 className={styles['sidebar-header-short']}>DB</h3>
+        </Link>
       </div>
 
       <ul className='list-unstyled list-group'>
