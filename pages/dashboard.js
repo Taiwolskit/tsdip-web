@@ -23,11 +23,11 @@ const App = ({ title }) => (
 );
 
 App.defaultProps = {
-  title: 'HIP HOP TW | User dashboard'
+  title: 'HIP HOP TW | User dashboard',
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default App;

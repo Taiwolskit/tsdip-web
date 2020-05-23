@@ -66,9 +66,9 @@ Carousel.propTypes = {
     PropTypes.shape({
       caption: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired
+      imageUrl: PropTypes.string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default Carousel;

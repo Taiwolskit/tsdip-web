@@ -22,14 +22,14 @@ const NavItem = ({ active, description, link, name }) => (
 );
 
 NavItem.defaultProps = {
-  active: ''
+  active: '',
 };
 
 NavItem.propTypes = {
   active: PropTypes.string,
   description: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };
 
 export default NavItem;

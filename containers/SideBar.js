@@ -4,10 +4,10 @@ import SideBar from '../components/SideBar';
 import * as SideBarActions from '../actions/sidebar';
 
 const mapStateToProps = ({ sidebar: { itemActive } }) => ({
-  itemActive
+  itemActive,
 });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(SideBarActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

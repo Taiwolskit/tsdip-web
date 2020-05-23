@@ -5,8 +5,8 @@ const navList = [
     active: 'active',
     description: '有哪些街舞活動可以參加呢?',
     link: '/events',
-    name: '活動介紹'
-  }
+    name: '活動介紹',
+  },
 ];
 
 const Navbar = () => (

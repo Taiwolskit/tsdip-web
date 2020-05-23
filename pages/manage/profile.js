@@ -24,11 +24,11 @@ const App = ({ title }) => (
 );
 
 App.defaultProps = {
-  title: 'HIP HOP TW | Manga profile'
+  title: 'HIP HOP TW | Manga profile',
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default App;
