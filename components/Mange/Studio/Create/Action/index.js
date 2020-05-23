@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrashAlt,
   faEdit,
-  faPaperPlane
+  faPaperPlane,
 } from '@fortawesome/free-regular-svg-icons';
 import styles from './CreateStudioAction.module.scss';
 

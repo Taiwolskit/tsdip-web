@@ -52,7 +52,7 @@ export default class MyDocument extends Document {
               $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
               })
-            `
+            `,
             }}
           />
         </Head>

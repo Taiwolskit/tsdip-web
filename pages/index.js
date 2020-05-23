@@ -16,11 +16,11 @@ const App = ({ title }) => (
 );
 
 App.defaultProps = {
-  title: 'Taiwan Street Dance Information Platform'
+  title: 'Taiwan Street Dance Information Platform',
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default App;

@@ -8,7 +8,7 @@ const SidebarItem = ({ caption, url, active, handleClick }) => {
       <Link href={url}>
         <li
           className={`${styles['sidebar-item']} ${styles['item-active']}`}
-          onClick={event => handleClick(event, url)}>
+          onClick={(event) => handleClick(event, url)}>
           <a href={url}>{caption}</a>
         </li>
       </Link>
@@ -27,7 +27,7 @@ SidebarItem.propTypes = {
   active: PropTypes.bool,
   caption: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 };
 
 export default SidebarItem;

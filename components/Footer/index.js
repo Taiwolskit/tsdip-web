@@ -2,13 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faEnvelope,
   faLocationArrow,
-  faPhone
+  faPhone,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
   faInstagram,
   faLinkedin,
-  faTwitter
+  faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => (

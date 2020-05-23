@@ -34,9 +34,9 @@ CardBlock.propTypes = {
       endDate: PropTypes.number,
       imageUrl: PropTypes.string.isRequired,
       registrationLink: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
+      title: PropTypes.string.isRequired,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default CardBlock;
