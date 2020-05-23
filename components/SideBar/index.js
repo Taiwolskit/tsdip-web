@@ -20,7 +20,7 @@ const Sidebar = ({ items, itemActive, sidebarClick }) => {
 
       <ul className='list-unstyled list-group'>
         {items.map(({ caption, url }) =>
-          ([itemActive, router.pathname].indexOf(url) > -1) ? (
+          [itemActive, router.pathname].indexOf(url) > -1 ? (
             <SidebarItem
               active={true}
               caption={caption}
@@ -46,8 +46,8 @@ Sidebar.defaultProps = {
   items: [
     { caption: 'Profile', url: '/manage/profile' },
     { caption: 'Studio', url: '/manage/studios' },
-    { caption: 'Event', url: '/manage/events' }
-  ]
+    { caption: 'Event', url: '/manage/events' },
+  ],
 };
 
 Sidebar.propTypes = {
@@ -55,10 +55,10 @@ Sidebar.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       caption: PropTypes.string.isRequired,
-      url: PropTypes.string.isRequired
+      url: PropTypes.string.isRequired,
     })
   ).isRequired,
-  sidebarClick: PropTypes.func.isRequired
+  sidebarClick: PropTypes.func.isRequired,
 };
 
 export default Sidebar;
