@@ -60,4 +60,13 @@ typings/
 # next.js build output
 .next
 
+.dockerignore
 .DS_Store
+.eslintrc
+.git
+.github
+.gitignore
+*.md
+*.yml
+Dockerfile
+LICENSE
