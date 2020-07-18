@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import SideBar from '../containers/SideBar';
 
-const App = ({ title }) => (
+const App = ({ title, data }) => (
   <div className='main'>
     <style jsx global>{`
       #__next .main {
@@ -16,11 +16,21 @@ const App = ({ title }) => (
     </Head>
     <Header />
     <main id='dashboard' className='dashboard'>
+      <div>{data}</div>
       <SideBar />
       <div id='dashboard-content' className='dashboard-content'></div>
     </main>
   </div>
 );
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`${process.env.API_URL}/hello`);
+  const { text } = await res.json();
+
+  // Pass data to the page via props
+  return { props: { data: text } };
+}
 
 App.defaultProps = {
   title: 'HIP HOP TW | User dashboard',
