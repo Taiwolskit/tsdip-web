@@ -11,4 +11,4 @@ resources:
 configMapGenerator:
   - name: cm-env
     literals:
-      - API_URL=http://localhost:5000
+      - API_URL=http://tsdip-api-svc
