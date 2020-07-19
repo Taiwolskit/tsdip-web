@@ -1,0 +1,22 @@
+apiVersion: skaffold/v2beta5
+kind: Config
+metadata:
+  name: tsdip-web
+
+build:
+  tagPolicy:
+    gitCommit:
+      variant: CommitSha
+  artifacts:
+    - image: tsdip-web
+
+deploy:
+  kustomize:
+    paths:
+      - k8s/overlays/staging
+
+portForward:
+  - resourceType: deployment
+    resourceName: tsdip-web-deploy
+    port: 3000
+    localPort: 3000
