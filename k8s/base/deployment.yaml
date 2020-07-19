@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: tsdip-web
+          image: tsdip-web:latest
+          ports:
+            - name: web-port
+              containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: cm-env
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              path: /
+              port: web-port
+            initialDelaySeconds: 5
+            failureThreshold: 2
+            successThreshold: 1
+            periodSeconds: 15
+            timeoutSeconds: 5
+      tolerations:
+        - key: "sandbox.gke.io/runtime"
+          operator: "Equal"
+          value: "gvisor"
+          effect: "NoSchedule"
