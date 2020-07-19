@@ -32,8 +32,8 @@ spec:
             successThreshold: 1
             periodSeconds: 15
             timeoutSeconds: 5
-      tolerations:
-        - key: "sandbox.gke.io/runtime"
-          operator: "Equal"
-          value: "gvisor"
-          effect: "NoSchedule"
+      # tolerations:
+      #   - key: "sandbox.gke.io/runtime"
+      #     operator: "Equal"
+      #     value: "gvisor"
+      #     effect: "NoSchedule"
