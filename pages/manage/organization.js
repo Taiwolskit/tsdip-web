@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../../components/Header';
-import SideBar from '../../containers/SideBar';
+import Sidebar from '../../containers/Sidebar';
 import ManageStudio from '../../components/Mange/Studio';
 
 const App = ({ title }) => (
@@ -17,7 +17,7 @@ const App = ({ title }) => (
     </Head>
     <Header />
     <main id='dashboard' className='dashboard'>
-      <SideBar />
+      <Sidebar />
       <ManageStudio />
     </main>
   </div>

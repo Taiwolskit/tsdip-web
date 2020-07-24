@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
-import SideBar from '../containers/SideBar';
+import Sidebar from '../containers/Sidebar';
 
 const App = ({ title, data }) => (
   <div className='main'>

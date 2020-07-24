@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import SideBar from '../components/SideBar';
-import * as SideBarActions from '../actions/sidebar';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import Sidebar from "../components/Sidebar";
+import * as SidebarActions from "../actions/sidebar";
 
-const mapStateToProps = ({ sidebar: { itemActive } }) => ({
-  itemActive,
+const mapStateToProps = ({ sidebar: { sidebarActive } }) => ({
+  sidebarActive,
 });
 
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(SideBarActions, dispatch);
+  bindActionCreators(SidebarActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

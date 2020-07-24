@@ -1,22 +1,19 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 import styles from './SidebarItem.module.scss';
 
-const SidebarItem = ({ caption, url, active, handleClick }) => {
-  if (active) {
-    return (
-      <Link href={url}>
-        <li
-          className={`${styles['sidebar-item']} ${styles['item-active']}`}
-          onClick={(event) => handleClick(event, url)}>
-          <a href={url}>{caption}</a>
-        </li>
-      </Link>
-    );
+const SidebarItem = ({ active, caption, handleClick, url }) => {
+  const router = useRouter();
+  const checkUrl = [active, router.pathname].includes(url);
+  let className = `${styles['sidebar-item']}`;
+  if (checkUrl) {
+    className += ` ${styles['item-active']}`;
   }
+
   return (
     <Link href={url}>
-      <li className={styles['sidebar-item']} onClick={() => handleClick(url)}>
+      <li className={className} onClick={() => handleClick(url)}>
         <a href={url}>{caption}</a>
       </li>
     </Link>
@@ -24,7 +21,7 @@ const SidebarItem = ({ caption, url, active, handleClick }) => {
 };
 
 SidebarItem.propTypes = {
-  active: PropTypes.bool,
+  active: PropTypes.string,
   caption: PropTypes.string.isRequired,
   handleClick: PropTypes.func.isRequired,
   url: PropTypes.string.isRequired,
