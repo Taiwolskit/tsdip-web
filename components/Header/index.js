@@ -1,4 +1,4 @@
-import Navbar from './Navbar';
+import Navbar from '../../containers/Navbar';
 
 const Header = () => (
   <header id='header'>
