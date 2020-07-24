@@ -123,3 +123,7 @@ body {
     background-color: #f9e9cd;
   }
 }
+
+.fade:not(.show) {
+  display: none;
+}

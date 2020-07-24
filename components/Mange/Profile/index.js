@@ -3,7 +3,7 @@ const Profile = () => (
     <form>
       <div className='form-row'>
         <div className='form-group col-md-6'>
-          <label for='profile-email'>Email</label>
+          <label htmlFor='profile-email'>Email</label>
           <input
             type='email'
             className='form-control'
@@ -13,7 +13,7 @@ const Profile = () => (
         </div>
 
         <div className='form-group col-md-6'>
-          <label for='profile-password'>Password</label>
+          <label htmlFor='profile-password'>Password</label>
           <input
             type='password'
             className='form-control'
@@ -25,18 +25,18 @@ const Profile = () => (
 
       <div className='form-row'>
         <div className='form-group col-md-6'>
-          <label for='inputCity'>City</label>
+          <label htmlFor='inputCity'>City</label>
           <input type='text' className='form-control' id='inputCity' />
         </div>
         <div className='form-group col-md-4'>
-          <label for='inputState'>State</label>
+          <label htmlFor='inputState'>State</label>
           <select id='inputState' className='form-control'>
             <option selected>Choose...</option>
             <option>...</option>
           </select>
         </div>
         <div className='form-group col-md-2'>
-          <label for='inputZip'>Zip</label>
+          <label htmlFor='inputZip'>Zip</label>
           <input type='text' className='form-control' id='inputZip' />
         </div>
       </div>
@@ -44,7 +44,7 @@ const Profile = () => (
       <div className='form-group'>
         <div className='form-check'>
           <input className='form-check-input' type='checkbox' id='gridCheck' />
-          <label className='form-check-label' for='gridCheck'>
+          <label className='form-check-label' htmlFor='gridCheck'>
             Check me out
           </label>
         </div>
