@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import NavItem from './NavItem';
 
-const Navbar = ({items, navbarActive, navbarClick}) => (
+const Navbar = ({ items, navbarActive, navbarClick }) => (
   <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
     <a className='navbar-brand' href='/'>
       Taiwan Street Dance
@@ -46,7 +46,7 @@ Navbar.defaultProps = {
       link: '/login',
       name: '登入',
     },
-  ]
+  ],
 };
 
 Navbar.propTypes = {
@@ -60,6 +60,5 @@ Navbar.propTypes = {
   navbarActive: PropTypes.string,
   navbarClick: PropTypes.func.isRequired,
 };
-
 
 export default Navbar;

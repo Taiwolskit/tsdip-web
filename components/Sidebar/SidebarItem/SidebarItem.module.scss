@@ -1,9 +1,9 @@
-$item-radius: .25rem;
+$item-radius: 0.25rem;
 
 .sidebar-item {
   border: 1px solid #00000020;
   display: block;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
 
   &:hover {
     background-color: #ffffff;
@@ -21,7 +21,8 @@ $item-radius: .25rem;
   }
 
   a {
-    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+      'Arial', sans-serif;
     font-size: large;
     text-decoration: none;
   }
