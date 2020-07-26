@@ -57,10 +57,11 @@ const LoginPage = () => {
               aria-labelledby='login-page-form-signup-tab'>
               <SignupForm />
             </div>
-            <div className={`${styles['separator']}`}>
-              Log In / Sign Up with social media account
-            </div>
           </div>
+          <div className={`${styles['separator']}`}>
+            Log In / Sign Up with social media account
+          </div>
+          <p>Social bar here</p>
         </div>
       </div>
     </main>

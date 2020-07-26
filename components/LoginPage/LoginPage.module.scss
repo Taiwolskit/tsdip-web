@@ -23,26 +23,27 @@
 
     .login-page-form-tab-content {
       margin: 10px;
-      min-height: 450px;
+      min-height: 285px;
       overflow: hidden;
       width: -webkit-fill-available;
+    }
 
-      .separator {
-        display: flex;
-        align-items: center;
+    .separator {
+      display: flex;
+      width: -webkit-fill-available;
+      align-items: center;
 
-        &::before,
-        &::after {
-          content: '';
-          flex: 1;
-          border-bottom: 1px solid #000;
-        }
-        &::before {
-          margin-right: 0.25em;
-        }
-        &::after {
-          margin-left: 0.25em;
-        }
+      &::before,
+      &::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #000;
+      }
+      &::before {
+        margin-right: 0.25em;
+      }
+      &::after {
+        margin-left: 0.25em;
       }
     }
   }

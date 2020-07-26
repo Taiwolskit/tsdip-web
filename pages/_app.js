@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import Cookies from 'js-cookie';
+import Router from 'next/router';
 import ContextStore from '../ctx';
 import loginReducer from '../reducers/login';
 import { wrapper } from '../store';
@@ -10,8 +11,20 @@ const App = ({ Component, pageProps }) => {
 
   useEffect(() => {
     const token = Cookies.get('token');
-    if (token !== auth.token && auth.token === undefined) {
+    // If cookie have token, then update it at context
+    if (token !== auth.token) {
       authDispatch({ type: 'LOGIN', token });
+    }
+
+    // Un login user
+    if (token === undefined) {
+      if (window.location.pathname === '/dashboard') {
+        Router.push('/');
+      }
+    } else {
+      if (window.location.pathname === '/login') {
+        Router.back();
+      }
     }
   });
 

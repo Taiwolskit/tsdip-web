@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
 import Cookies from 'js-cookie';
 import ContextStore from '../../../ctx';
 
@@ -12,6 +13,7 @@ const LoginForm = () => {
       expires: 7,
     });
     authDispatch({ type: 'LOGIN', token: 'isLogin' });
+    Router.push('/dashboard');
   };
 
   return (
