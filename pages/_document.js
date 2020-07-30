@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-export default class MyDocument extends Document {
+export default class NextDocument extends Document {
   render() {
     return (
       <Html lang='zh-Hant-TW'>
@@ -39,13 +39,7 @@ export default class MyDocument extends Document {
             integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI'
             crossOrigin='anonymous'></script>
           <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-              })
-            `,
-            }}
+            dangerouslySetInnerHTML={{ __html: `$(() => $('[data-toggle="tooltip"]').tooltip())` }}
           />
         </Head>
         <body>
