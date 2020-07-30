@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
+import Head from 'next/head';
 import ContextStore from '../ctx';
 import loginReducer from '../reducers/login';
 import { wrapper } from '../store';
@@ -34,6 +35,12 @@ const App = ({ Component, pageProps }) => {
         token: auth.token,
         authDispatch,
       }}>
+      <Head>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
+        />
+      </Head>
       <Component {...pageProps} />
     </ContextStore.Provider>
   );

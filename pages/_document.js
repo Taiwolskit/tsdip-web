@@ -21,10 +21,6 @@ export default class MyDocument extends Document {
           <meta name='revisit-after' content='7 days' />
           <meta name='author' content='Taiwolskit' />
           <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
-          />
           <link
             rel='stylesheet'
             href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
