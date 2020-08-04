@@ -16,6 +16,11 @@ App.defaultProps = {
   title: 'Taiwan Street Dance Information Platform',
 };
 
+App.getInitialProps = async () => ({
+  namespacesRequired: ['common'],
+});
+
+
 App.propTypes = {
   title: PropTypes.string.isRequired,
 };
