@@ -4,6 +4,7 @@
   "scripts": {
     "build": "next build",
     "build-storybook": "build-storybook",
+    "build-storybook:watch": "build-storybook -w",
     "dev": "next",
     "start": "next start",
     "storybook": "start-storybook -p 6006",
@@ -38,6 +39,7 @@
     "@storybook/addon-viewport": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@storybook/theming": "^5.3.19",
     "babel-jest": "^26.2.2",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
