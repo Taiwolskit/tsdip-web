@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Run dev",
+            "request": "launch",
+            "runtimeArgs": [
+                "run",
+                "dev"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "Run storybook",
+            "request": "launch",
+            "runtimeArgs": [
+                "run",
+                "storybook"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "Run/Debug on Kubernetes",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true,
+            "imageRegistry": "asia-east1-docker.pkg.dev/tsdip-dev/tsdip-web/tsdip-web"
+        }
+    ]
+}

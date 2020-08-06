@@ -11,12 +11,13 @@ const Header = ({ t }) => (
     </Button>
     <button
       type='button'
-      onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'zh-TW' : 'en')}>
+      onClick={() =>
+        i18n.changeLanguage(i18n.language === 'en' ? 'zh-TW' : 'en')
+      }>
       {t('change-locale')}
     </button>
   </div>
 );
-
 
 Header.propTypes = {
   t: PropTypes.func.isRequired,
