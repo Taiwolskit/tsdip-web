@@ -14,7 +14,7 @@ const Header = ({ t }) => {
         Hello Next.js
         {t('description')}
       </Button>
-      <Button variant='contained' color='primary' onClick={() => dispatch({type: 'LOGIN'})}>Login {JSON.stringify(accessToken)}</Button>
+      <Button variant='contained' color='primary' onClick={() => dispatch({type: 'LOGIN', accessToken: true })}>Login {JSON.stringify(accessToken)}</Button>
       <button
         type='button'
         onClick={() =>
