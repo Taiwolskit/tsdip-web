@@ -1,4 +1,9 @@
 import React from 'react';
-export default function Custom404() {
-  return <h1>404 - Page Not Found</h1>;
-}
+
+const Custom404 = () => <h1>404 - Page Not Found</h1>;
+
+Custom404.getInitialProps = () => ({
+  namespacesRequired: ['common'],
+});
+
+export default Custom404;
