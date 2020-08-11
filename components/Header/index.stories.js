@@ -6,8 +6,12 @@ export default {
   component: Header,
 };
 
-export const HeaderNav = () => <Header />;
+export const Basic = (args) => <Header {...args} />;
 
-HeaderNav.story = {
-  name: 'Header Navs',
+Basic.story = {
+  name: 'Header',
+};
+
+Basic.args = {
+  label: 'hello',
 };
