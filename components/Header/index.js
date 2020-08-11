@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import LanguageIcon from '@material-ui/icons/Language';
@@ -14,7 +15,15 @@ import Typography from '@material-ui/core/Typography';
 import { ContextStore } from '../../ctx';
 import { i18n, withTranslation } from '../../i18n';
 
+
+const useStyles = makeStyles(() => ({
+  toolBar: {
+    justifyContent: 'space-between',
+  },
+}));
+
 const Header = ({ t, items, languages }) => {
+  const classes = useStyles();
   const { accessToken, dispatch } = useContext(ContextStore);
   const [anchorEl, setAnchorEl] = React.useState(false);
 
@@ -31,7 +40,7 @@ const Header = ({ t, items, languages }) => {
   return (
     <header id="header">
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <Typography variant="h6">
             {t('tsdip-full')}
           </Typography>
