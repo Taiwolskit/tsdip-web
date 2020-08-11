@@ -1,4 +1,11 @@
 {
-  "description": "測試",
-  "change-locale": "轉換"
+  "tsdip-full": "台灣街舞資訊平台",
+  "navitem-language-tooltip": "切換語言",
+  "navitem-event-caption": "活動",
+  "navitem-event-tooltip": "有哪些街舞活動可以參加呢?",
+  "navitem-studio-caption": "工作室",
+  "navitem-studio-tooltip": "我可以去哪學舞呢?",
+  "navitem-login-tooltip": "登入會員",
+  "navitem-teacher-caption": "老師",
+  "navitem-teacher-tooltip": "各路前輩介紹"
 }
