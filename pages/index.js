@@ -9,6 +9,8 @@ const App = ({ title }) => (
       <title>{title}</title>
     </Head>
     <Header />
+    <div>Content</div>
+    <footer>Footer</footer>
   </div>
 );
 
