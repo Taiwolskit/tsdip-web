@@ -20,10 +20,10 @@ const MyApp = ({ Component, pageProps }) => {
   const [authState, authDispatch] = useReducer(authReducers, authInitState);
 
   useEffect(() => {
-    console.log('d0000');
-    console.log(authState);
+    console.log('Token------');
     if (localStorage) {
-      const token = JSON.parse(localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
+      console.log(`token is ${token}`);
       if (token) authDispatch({type: 'LOGIN', accessToken: token });
     }
   }, []);
