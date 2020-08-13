@@ -17,7 +17,7 @@ import { i18n, withTranslation } from '../../i18n';
 import styles from './index.module.scss';
 
 const Header = ({ t, items, languages }) => {
-  const { accessToken } = useContext(ContextStore);
+  const { accessToken, dispatch } = useContext(ContextStore);
   const [anchorLang, setAnchorLang] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -30,6 +30,11 @@ const Header = ({ t, items, languages }) => {
 
   const handleProfileClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setAnchorEl(null);
+    dispatch({ type: 'LOGOUT' });
   };
 
   const handleClose = (event, lang) => {
@@ -131,7 +136,7 @@ const Header = ({ t, items, languages }) => {
             <Link href='/dashboard'>
               <MenuItem onClick={handleProfileClose}>Dashboard</MenuItem>
             </Link>
-            <MenuItem onClick={handleProfileClose}>Logout</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
 
           <Menu

@@ -11,6 +11,9 @@ const authReducers = (state, action) => {
     case "LOGIN":
       localStorage.setItem('token', action.accessToken)
       return Object.assign({}, state, { accessToken: action.accessToken });
+    case "LOGOUT":
+      localStorage.removeItem('token');
+      return Object.assign({}, state, { accessToken: undefined });
     default:
       return state;
   }
