@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
 import App from 'next/app';
+import Router from 'next/router';
 import { appWithTranslation } from '../i18n';
 import { ContextStore } from '../ctx';
 import '../public/styles.scss';
@@ -10,6 +11,7 @@ const authReducers = (state, action) => {
   switch (action.type) {
     case "LOGIN":
       localStorage.setItem('token', action.accessToken)
+      Router.push('/');
       return Object.assign({}, state, { accessToken: action.accessToken });
     case "LOGOUT":
       localStorage.removeItem('token');

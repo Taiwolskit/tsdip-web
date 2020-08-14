@@ -44,6 +44,12 @@ const Header = ({ t, items, languages }) => {
     setAnchorLang(null);
   };
 
+  const LinkRef = React.forwardRef((props, ref) => (
+    <Link ref={ref} href="/dashboard">
+      <a>Dashboard</a>
+    </Link>
+  ));
+
   return (
     <AppBar position="static">
       <Toolbar className={`${styles['header-container']}`}>
@@ -122,22 +128,24 @@ const Header = ({ t, items, languages }) => {
             </IconButton>
           </Tooltip>
 
-          <Menu
-            id="profile-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            transformOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleProfileClose}
-          >
-            <Link href='/dashboard'>
-              <MenuItem onClick={handleProfileClose}>Dashboard</MenuItem>
-            </Link>
-            <MenuItem onClick={handleLogout}>Logout</MenuItem>
-          </Menu>
+          {
+            accessToken && (
+              <Menu
+                id="profile-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleProfileClose}
+              >
+                <MenuItem onClick={handleProfileClose}><LinkRef /></MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            )
+          }
 
           <Menu
             id="lang-menu"
