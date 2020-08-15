@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import App from 'next/app';
 import Router from 'next/router';
 import { appWithTranslation } from '../i18n';
@@ -30,7 +29,7 @@ const authReducers = (state, action) => {
   switch (type) {
     case 'LOGIN':
       login(accessToken);
-      return Object.assign(state, {
+      return Object.assign({}, state, {
         accessToken,
         loading: true,
         refreshToken,
@@ -38,7 +37,7 @@ const authReducers = (state, action) => {
       });
     case 'LOGOUT':
       logout();
-      return Object.assign(state, authInitState);
+      return Object.assign({}, state, authInitState);
     default:
       return state;
   }
@@ -61,8 +60,8 @@ const Application = ({ Component, pageProps }) => {
 
   useEffect(() => {
     console.log('Check token------');
-    if (localStorage) checkAuthenticated();
-  });
+    if (localStorage && !state.accessToken) checkAuthenticated();
+  }, []);
 
   return (
     <ContextStore.Provider
@@ -79,10 +78,5 @@ const Application = ({ Component, pageProps }) => {
 Application.getInitialProps = async (ctx) => ({
   ...(await App.getInitialProps(ctx)),
 });
-
-Application.propTypes = {
-  Component: PropTypes.objectOf(PropTypes.object()).isRequired,
-  pageProps: PropTypes.objectOf(PropTypes.object()).isRequired,
-};
 
 export default appWithTranslation(Application);

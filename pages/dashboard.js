@@ -1,10 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { ContextStore } from '../ctx';
 
 const App = ({ title }) => {
   const { accessToken, dispatch } = useContext(ContextStore);
+
+  useEffect(() => {
+    if (!accessToken) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        Router.push('/');
+        return;
+      }
+      dispatch({
+        type: 'LOGIN',
+        accessToken: token,
+        refreshToken: 'test',
+        user: {},
+      });
+    }
+  }, [accessToken]);
 
   return (
     <div className='main'>
