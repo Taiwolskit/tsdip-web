@@ -8,6 +8,7 @@
     "dev": "next",
     "start": "next start",
     "storybook": "start-storybook -p 6006 -s ./public",
+    "lint": "eslint --color .",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"

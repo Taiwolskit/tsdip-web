@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import App from 'next/app';
 import Router from 'next/router';
 import { appWithTranslation } from '../i18n';
@@ -24,12 +25,12 @@ const logout = () => {
 
 const authReducers = (state, action) => {
   const { type, ...args } = action;
+  const { accessToken, refreshToken, user } = args;
 
   switch (type) {
     case 'LOGIN':
-      const { accessToken, refreshToken, user } = args;
       login(accessToken);
-      return Object.assign({}, state, {
+      return Object.assign(state, {
         accessToken,
         loading: true,
         refreshToken,
@@ -37,7 +38,7 @@ const authReducers = (state, action) => {
       });
     case 'LOGOUT':
       logout();
-      return Object.assign({}, state, authInitState);
+      return Object.assign(state, authInitState);
     default:
       return state;
   }
@@ -53,7 +54,7 @@ const Application = ({ Component, pageProps }) => {
         type: 'LOGIN',
         accessToken,
         refreshToken: 'test',
-        user,
+        user: {},
       });
     }
   };
@@ -68,7 +69,8 @@ const Application = ({ Component, pageProps }) => {
       value={{
         accessToken: state.accessToken,
         dispatch,
-      }}>
+      }}
+    >
       <Component {...pageProps} />
     </ContextStore.Provider>
   );
@@ -77,5 +79,10 @@ const Application = ({ Component, pageProps }) => {
 Application.getInitialProps = async (ctx) => ({
   ...(await App.getInitialProps(ctx)),
 });
+
+Application.propTypes = {
+  Component: PropTypes.objectOf(PropTypes.object()).isRequired,
+  pageProps: PropTypes.objectOf(PropTypes.object()).isRequired,
+};
 
 export default appWithTranslation(Application);

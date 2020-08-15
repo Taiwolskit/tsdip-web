@@ -11,7 +11,10 @@ const App = ({ title }) => {
         <title>{title}</title>
       </Head>
       <p>{accessToken}</p>
-      <button onClick={() => dispatch({ type: 'LOGIN', accessToken: 'test' })}>
+      <button
+        type='submit'
+        onClick={() => dispatch({ type: 'LOGIN', accessToken: 'test' })}
+      >
         Submit
       </button>
       <div>Content</div>
@@ -29,7 +32,7 @@ App.defaultProps = {
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default App;

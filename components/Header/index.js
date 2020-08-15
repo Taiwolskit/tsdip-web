@@ -46,7 +46,7 @@ const Header = ({ t, items, languages }) => {
 
   const LinkRef = React.forwardRef((props, ref) => (
     <Link ref={ref} href='/dashboard'>
-      <a>Dashboard</a>
+      <a href='/dashboard'>Dashboard</a>
     </Link>
   ));
 
@@ -64,7 +64,8 @@ const Header = ({ t, items, languages }) => {
               TransitionProps={{ timeout: 600 }}
               aria-label='add'
               placement='bottom-start'
-              arrow>
+              arrow
+            >
               <Button color='inherit' href={link}>
                 {t(caption)}
               </Button>
@@ -77,7 +78,8 @@ const Header = ({ t, items, languages }) => {
             TransitionProps={{ timeout: 600 }}
             aria-label='add'
             placement='bottom-start'
-            arrow>
+            arrow
+          >
             {accessToken ? (
               <IconButton
                 edge='end'
@@ -85,7 +87,8 @@ const Header = ({ t, items, languages }) => {
                 aria-controls='profile-menu'
                 aria-haspopup='true'
                 onClick={handleProfileMenu}
-                color='inherit'>
+                color='inherit'
+              >
                 <AccountCircle />
               </IconButton>
             ) : (
@@ -101,14 +104,16 @@ const Header = ({ t, items, languages }) => {
             TransitionProps={{ timeout: 600 }}
             aria-label='add'
             placement='bottom-start'
-            arrow>
+            arrow
+          >
             <IconButton
               edge='end'
               aria-label='language setting'
               aria-controls='lang-menu'
               aria-haspopup='true'
               onClick={handleLangMenu}
-              color='inherit'>
+              color='inherit'
+            >
               <LanguageIcon />
             </IconButton>
           </Tooltip>
@@ -123,7 +128,8 @@ const Header = ({ t, items, languages }) => {
                 horizontal: 'right',
               }}
               open={Boolean(anchorEl)}
-              onClose={handleProfileClose}>
+              onClose={handleProfileClose}
+            >
               <MenuItem onClick={handleProfileClose}>
                 <LinkRef />
               </MenuItem>
@@ -140,11 +146,13 @@ const Header = ({ t, items, languages }) => {
               horizontal: 'right',
             }}
             open={Boolean(anchorLang)}
-            onClose={handleClose}>
+            onClose={handleClose}
+          >
             {languages.map((lang) => (
               <MenuItem
                 key={lang}
-                onClick={(event) => handleClose(event, lang)}>
+                onClick={(event) => handleClose(event, lang)}
+              >
                 {lang}
               </MenuItem>
             ))}
@@ -178,14 +186,14 @@ Header.defaultProps = {
 
 Header.propTypes = {
   t: PropTypes.func.isRequired,
-  languages: PropTypes.arrayOf(PropTypes.string).isRequired,
+  languages: PropTypes.arrayOf(PropTypes.string),
   items: PropTypes.arrayOf(
     PropTypes.shape({
       caption: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       tooltip: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+    }),
+  ),
 };
 
 export default withTranslation('common')(Header);
