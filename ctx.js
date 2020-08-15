@@ -1,6 +1,8 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const ContextStore = createContext({
-    accessToken: undefined,
-    refreshToken: undefined
+  accessToken: undefined,
+  loading: false,
+  refreshToken: undefined,
+  user: {},
 });

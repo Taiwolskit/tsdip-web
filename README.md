@@ -2,7 +2,7 @@
 
 ## Required
 
-- Bootstrap
+- Material UI
 - Node.js
 - Next.js
 

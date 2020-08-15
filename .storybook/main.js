@@ -8,6 +8,6 @@ module.exports = {
     '@storybook/addon-events',
     '@storybook/addon-links',
     '@storybook/addon-notes',
-    '@storybook/addon-viewport'
+    '@storybook/addon-viewport',
   ],
 };

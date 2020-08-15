@@ -4,30 +4,32 @@ import PropTypes from 'prop-types';
 import { ContextStore } from '../ctx';
 
 const App = ({ title }) => {
-    const { accessToken, dispatch } = useContext(ContextStore);
-    return (
-        <div className='main'>
-            <Head>
-                <title>{title}</title>
-            </Head>
-            <p>{accessToken}</p>
-            <button onClick={() => dispatch({type:'LOGIN', accessToken: 'test'})}>Submit</button>
-            <div>Content</div>
-            <footer>Footer</footer>
-        </div>
-    );
+  const { accessToken, dispatch } = useContext(ContextStore);
+  return (
+    <div className='main'>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <p>{accessToken}</p>
+      <button onClick={() => dispatch({ type: 'LOGIN', accessToken: 'test' })}>
+        Submit
+      </button>
+      <div>Content</div>
+      <footer>Footer</footer>
+    </div>
+  );
 };
 
 App.getInitialProps = () => ({
-    namespacesRequired: ['common'],
+  namespacesRequired: ['common'],
 });
 
 App.defaultProps = {
-    title: 'Login page | Taiwan Street Dance Information Platform',
+  title: 'Login page | Taiwan Street Dance Information Platform',
 };
 
 App.propTypes = {
-    title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default App;

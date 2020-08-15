@@ -1,7 +1,7 @@
 import React from 'react';
+import { I18nextProvider } from 'react-i18next';
 import { addDecorator } from '@storybook/react';
 import { addParameters } from '@storybook/client-api';
-import { I18nextProvider } from 'react-i18next';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import { withA11y } from '@storybook/addon-a11y';
 import { withCssResources } from '@storybook/addon-cssresources';

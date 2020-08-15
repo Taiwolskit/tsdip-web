@@ -11,11 +11,11 @@
     "ecmaVersion": 11,
     "sourceType": "module",
     "ecmaFeatures": {
+      "allowImportExportEverywhere": true,
+      "experimentalObjectRestSpread": true,
       "globalReturn": true,
       "impliedStrict": true,
-      "jsx": true,
-      "experimentalObjectRestSpread": true,
-      "allowImportExportEverywhere": true
+      "jsx": true
     }
   },
   "plugins": ["jsx-a11y", "react-hooks", "react"],

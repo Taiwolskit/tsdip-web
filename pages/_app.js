@@ -5,48 +5,77 @@ import { appWithTranslation } from '../i18n';
 import { ContextStore } from '../ctx';
 import '../public/styles.scss';
 
-const authInitState = { accessToken: undefined, refreshToken: undefined };
+const authInitState = {
+  accessToken: undefined,
+  loading: false,
+  refreshToken: undefined,
+  user: {},
+};
+
+const login = (token) => {
+  localStorage.setItem('token', token);
+  console.info(`__get_token__ ${token}`);
+};
+
+const logout = () => {
+  localStorage.removeItem('token');
+  Router.push('/');
+};
 
 const authReducers = (state, action) => {
-  switch (action.type) {
-    case "LOGIN":
-      localStorage.setItem('token', action.accessToken)
-      Router.push('/');
-      return Object.assign({}, state, { accessToken: action.accessToken });
-    case "LOGOUT":
-      localStorage.removeItem('token');
-      return Object.assign({}, state, { accessToken: undefined });
+  const { type, ...args } = action;
+
+  switch (type) {
+    case 'LOGIN':
+      const { accessToken, refreshToken, user } = args;
+      login(accessToken);
+      return Object.assign({}, state, {
+        accessToken,
+        loading: true,
+        refreshToken,
+        user,
+      });
+    case 'LOGOUT':
+      logout();
+      return Object.assign({}, state, authInitState);
     default:
       return state;
   }
 };
 
-const MyApp = ({ Component, pageProps }) => {
-  const [authState, authDispatch] = useReducer(authReducers, authInitState);
+const Application = ({ Component, pageProps }) => {
+  const [state, dispatch] = useReducer(authReducers, authInitState);
+
+  const checkAuthenticated = () => {
+    const accessToken = localStorage.getItem('token');
+    if (accessToken) {
+      dispatch({
+        type: 'LOGIN',
+        accessToken,
+        refreshToken: 'test',
+        user,
+      });
+    }
+  };
 
   useEffect(() => {
-    console.log('Token------');
-    if (localStorage) {
-      const token = localStorage.getItem('token');
-      console.log(`token is ${token}`);
-      if (token) authDispatch({type: 'LOGIN', accessToken: token });
-    }
-  }, []);
+    console.log('Check token------');
+    if (localStorage) checkAuthenticated();
+  });
 
   return (
     <ContextStore.Provider
       value={{
-        accessToken: authState.accessToken,
-        dispatch: authDispatch
-      }}
-    >
+        accessToken: state.accessToken,
+        dispatch,
+      }}>
       <Component {...pageProps} />
     </ContextStore.Provider>
   );
 };
 
-MyApp.getInitialProps = async (appContext) => ({
-  ...(await App.getInitialProps(appContext)),
+Application.getInitialProps = async (ctx) => ({
+  ...(await App.getInitialProps(ctx)),
 });
 
-export default appWithTranslation(MyApp);
+export default appWithTranslation(Application);

@@ -45,110 +45,94 @@ const Header = ({ t, items, languages }) => {
   };
 
   const LinkRef = React.forwardRef((props, ref) => (
-    <Link ref={ref} href="/dashboard">
+    <Link ref={ref} href='/dashboard'>
       <a>Dashboard</a>
     </Link>
   ));
 
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Toolbar className={`${styles['header-container']}`}>
-        <Typography variant="h6">
-          {t('tsdip-full')}
-        </Typography>
+        <Typography variant='h6'>{t('tsdip-full')}</Typography>
 
-        <div className="nav-link" flexgrow={1}>
-          {
-            items.map(({ caption, link, tooltip }) => (
-              <Tooltip
-                title={t(tooltip)}
-                key={link}
-                TransitionComponent={Fade}
-                TransitionProps={{ timeout: 600 }}
-                aria-label="add"
-                placement="bottom-start"
-                arrow
-              >
-                <Button color='inherit' href={link}>{t(caption)}</Button>
-              </Tooltip>
-            ))
-          }
+        <div className='nav-link' flexgrow={1}>
+          {items.map(({ caption, link, tooltip }) => (
+            <Tooltip
+              title={t(tooltip)}
+              key={link}
+              TransitionComponent={Fade}
+              TransitionProps={{ timeout: 600 }}
+              aria-label='add'
+              placement='bottom-start'
+              arrow>
+              <Button color='inherit' href={link}>
+                {t(caption)}
+              </Button>
+            </Tooltip>
+          ))}
 
           <Tooltip
             title={t('navitem-login-tooltip')}
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
-            aria-label="add"
-            placement="bottom-start"
-            arrow
-          >
-            {
-              accessToken ? (
-                <IconButton
-                  edge="end"
-                  aria-label="account setting"
-                  aria-controls="profile-menu"
-                  aria-haspopup="true"
-                  onClick={handleProfileMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              ) : (
-                  (
-                    <IconButton
-                      edge="end"
-                      color="inherit"
-                      href="/login"
-                    >
-                      <AccountCircle />
-                    </IconButton>
-                  )
-                )
-            }
+            aria-label='add'
+            placement='bottom-start'
+            arrow>
+            {accessToken ? (
+              <IconButton
+                edge='end'
+                aria-label='account setting'
+                aria-controls='profile-menu'
+                aria-haspopup='true'
+                onClick={handleProfileMenu}
+                color='inherit'>
+                <AccountCircle />
+              </IconButton>
+            ) : (
+              <IconButton edge='end' color='inherit' href='/login'>
+                <AccountCircle />
+              </IconButton>
+            )}
           </Tooltip>
 
           <Tooltip
             title={t('navitem-language-tooltip')}
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
-            aria-label="add"
-            placement="bottom-start"
-            arrow
-          >
+            aria-label='add'
+            placement='bottom-start'
+            arrow>
             <IconButton
-              edge="end"
-              aria-label="language setting"
-              aria-controls="lang-menu"
-              aria-haspopup="true"
+              edge='end'
+              aria-label='language setting'
+              aria-controls='lang-menu'
+              aria-haspopup='true'
               onClick={handleLangMenu}
-              color="inherit"
-            >
+              color='inherit'>
               <LanguageIcon />
             </IconButton>
           </Tooltip>
 
-          {
-            accessToken && (
-              <Menu
-                id="profile-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleProfileClose}
-              >
-                <MenuItem onClick={handleProfileClose}><LinkRef /></MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            )
-          }
+          {accessToken && (
+            <Menu
+              id='profile-menu'
+              anchorEl={anchorEl}
+              keepMounted
+              transformOrigin={{
+                vertical: 'bottom',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleProfileClose}>
+              <MenuItem onClick={handleProfileClose}>
+                <LinkRef />
+              </MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
+          )}
 
           <Menu
-            id="lang-menu"
+            id='lang-menu'
             anchorEl={anchorLang}
             keepMounted
             transformOrigin={{
@@ -156,13 +140,11 @@ const Header = ({ t, items, languages }) => {
               horizontal: 'right',
             }}
             open={Boolean(anchorLang)}
-            onClose={handleClose}
-          >
+            onClose={handleClose}>
             {languages.map((lang) => (
               <MenuItem
                 key={lang}
-                onClick={(event) => handleClose(event, lang)}
-              >
+                onClick={(event) => handleClose(event, lang)}>
                 {lang}
               </MenuItem>
             ))}
