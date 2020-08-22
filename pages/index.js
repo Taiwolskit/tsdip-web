@@ -2,6 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import Carousel from '../components/Carousel';
+import CardBlock from '../components/CardBlock';
 
 const App = ({ title }) => (
   <div className='main'>
@@ -9,7 +11,10 @@ const App = ({ title }) => (
       <title>{title}</title>
     </Head>
     <Header />
-    <div>Content</div>
+    <main id='index-page'>
+      <Carousel />
+      <CardBlock />
+    </main>
     <footer>Footer</footer>
   </div>
 );
