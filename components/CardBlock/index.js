@@ -1,21 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import Fade from '@material-ui/core/Fade';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import ShareIcon from '@material-ui/icons/Share';
+import { withTranslation } from '../../i18n';
 import styles from './CardBlock.module.scss';
 
-const CardItem = () => (
-  <Grid container item xs={12} sm={6} md={3} lg={2}>
+const CardItem = ({ t }) => (
+  <Grid
+    container
+    item
+    xs={12}
+    sm={6}
+    md={3}
+    lg={2}
+    className={styles['card-block-item-warpper']}
+  >
     <Card className={styles['card-block-item']}>
       <CardActionArea>
         <CardMedia
@@ -36,26 +46,50 @@ const CardItem = () => (
       </CardActionArea>
 
       <CardActions disableSpacing>
-        <IconButton aria-label='add to favorites'>
-          <FavoriteIcon />
-        </IconButton>
+        <Tooltip
+          title={t('card-item-icon-favorite')}
+          TransitionComponent={Fade}
+          TransitionProps={{ timeout: 600 }}
+          aria-label='add to favorites'
+          placement='bottom-start'
+          arrow>
+          <IconButton aria-label='add to favorites'>
+            <FavoriteIcon />
+          </IconButton>
+        </Tooltip>
 
-        <IconButton aria-label='share'>
-          <ShareIcon />
-        </IconButton>
+        <Tooltip
+          title={t('card-item-icon-share')}
+          TransitionComponent={Fade}
+          TransitionProps={{ timeout: 600 }}
+          aria-label='share the event'
+          placement='bottom-start'
+          arrow>
+          <IconButton aria-label='share the event'>
+            <ShareIcon />
+          </IconButton>
+        </Tooltip>
 
-        <IconButton aria-label='register'>
-          <GroupAddIcon />
-        </IconButton>
+        <Tooltip
+          title={t('card-item-icon-register')}
+          TransitionComponent={Fade}
+          TransitionProps={{ timeout: 600 }}
+          aria-label='join the event'
+          placement='bottom-start'
+          arrow>
+          <IconButton aria-label='join the event'>
+            <GroupAddIcon />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   </Grid>
 );
 
-const CardBlock = ({ items }) => (
-  <Grid id='card-block' className={styles['card-block']} container spacing={3}>
+const CardBlock = ({ t, items }) => (
+  <Grid id='card-block' className={styles['card-block']} container>
     {items.map((item, index) => (
-      <CardItem key={index} />
+      <CardItem key={index} t={t} />
     ))}
   </Grid>
 );
@@ -138,6 +172,7 @@ CardBlock.defaultProps = {
 };
 
 CardBlock.propTypes = {
+  t: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       description: PropTypes.string.isRequired,
@@ -149,4 +184,4 @@ CardBlock.propTypes = {
   ).isRequired,
 };
 
-export default CardBlock;
+export default withTranslation('card-block')(CardBlock);

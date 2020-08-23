@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
+import Grid from '@material-ui/core/Grid';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +15,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { ContextStore } from '../../ctx';
 import { i18n, withTranslation } from '../../i18n';
-import styles from './index.module.scss';
 
 const Header = ({ t, items, languages }) => {
   const { accessToken, dispatch } = useContext(ContextStore);
@@ -52,10 +52,18 @@ const Header = ({ t, items, languages }) => {
 
   return (
     <AppBar position='static'>
-      <Toolbar className={`${styles['header-container']}`}>
-        <Typography variant='h6'>{t('tsdip-full')}</Typography>
+      <Toolbar>
+        <Grid container item xs={12} sm={12} className='header-brand-title'>
+          <Typography variant='h6'>{t('tsdip-full')}</Typography>
+        </Grid>
 
-        <div className='nav-link' flexgrow={1}>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          className='nav-link'
+          justify='flex-end'>
           {items.map(({ caption, link, tooltip }) => (
             <Tooltip
               title={t(tooltip)}
@@ -64,8 +72,7 @@ const Header = ({ t, items, languages }) => {
               TransitionProps={{ timeout: 600 }}
               aria-label='add'
               placement='bottom-start'
-              arrow
-            >
+              arrow>
               <Button color='inherit' href={link}>
                 {t(caption)}
               </Button>
@@ -78,8 +85,7 @@ const Header = ({ t, items, languages }) => {
             TransitionProps={{ timeout: 600 }}
             aria-label='add'
             placement='bottom-start'
-            arrow
-          >
+            arrow>
             {accessToken ? (
               <IconButton
                 edge='end'
@@ -87,8 +93,7 @@ const Header = ({ t, items, languages }) => {
                 aria-controls='profile-menu'
                 aria-haspopup='true'
                 onClick={handleProfileMenu}
-                color='inherit'
-              >
+                color='inherit'>
                 <AccountCircle />
               </IconButton>
             ) : (
@@ -104,16 +109,14 @@ const Header = ({ t, items, languages }) => {
             TransitionProps={{ timeout: 600 }}
             aria-label='add'
             placement='bottom-start'
-            arrow
-          >
+            arrow>
             <IconButton
               edge='end'
               aria-label='language setting'
               aria-controls='lang-menu'
               aria-haspopup='true'
               onClick={handleLangMenu}
-              color='inherit'
-            >
+              color='inherit'>
               <LanguageIcon />
             </IconButton>
           </Tooltip>
@@ -128,8 +131,7 @@ const Header = ({ t, items, languages }) => {
                 horizontal: 'right',
               }}
               open={Boolean(anchorEl)}
-              onClose={handleProfileClose}
-            >
+              onClose={handleProfileClose}>
               <MenuItem onClick={handleProfileClose}>
                 <LinkRef />
               </MenuItem>
@@ -146,18 +148,16 @@ const Header = ({ t, items, languages }) => {
               horizontal: 'right',
             }}
             open={Boolean(anchorLang)}
-            onClose={handleClose}
-          >
+            onClose={handleClose}>
             {languages.map((lang) => (
               <MenuItem
                 key={lang}
-                onClick={(event) => handleClose(event, lang)}
-              >
+                onClick={(event) => handleClose(event, lang)}>
                 {lang}
               </MenuItem>
             ))}
           </Menu>
-        </div>
+        </Grid>
       </Toolbar>
     </AppBar>
   );
@@ -192,7 +192,7 @@ Header.propTypes = {
       caption: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       tooltip: PropTypes.string.isRequired,
-    }),
+    })
   ),
 };
 

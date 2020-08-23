@@ -2,20 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@material-ui/core';
+import styles from './Carousel.module.scss';
 
-const CarouselItem = ({ caption, description, images }) => {
-  return (
-    <Paper>
-      {images.map((url, index) => (
-        <img key={index} className='d-block w-100' src={url} alt={caption} />
-      ))}
-      <div className='carousel-caption d-none d-md-block'>
-        <h2>{caption}</h2>
-        <p>{description}</p>
-      </div>
-    </Paper>
-  );
-};
+const CarouselItem = ({ caption, description, images }) => (
+  <Paper className={styles['carousel-item']}>
+    {images.map((url, index) => (
+      <img
+        key={index}
+        className={styles['carousel-item-image']}
+        src={url}
+        alt={caption}
+      />
+    ))}
+    <div className='carousel-caption d-none d-md-block'>
+      <h2>{caption}</h2>
+      <p>{description}</p>
+    </div>
+  </Paper>
+);
 
 const App = ({ items }) => (
   <Carousel indicators={false} navButtonsAlwaysVisible={true} autoPlay={false}>

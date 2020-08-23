@@ -1,0 +1,19 @@
+$footer-font-color: #cccccc;
+
+.footer {
+  background-color: #c7802d;
+  color: $footer-font-color;
+  min-height: 100px;
+  padding: 15px 0px 25px;
+
+  .footer-divider {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  .social-icon-warpper {
+    border-style: solid;
+    border-width: 2px;
+    color: $footer-font-color;
+  }
+}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Carousel from '../components/Carousel';
 import CardBlock from '../components/CardBlock';
+import Footer from '../components/Footer';
 
 const App = ({ title }) => (
   <div className='main'>
@@ -15,7 +16,7 @@ const App = ({ title }) => (
       <Carousel />
       <CardBlock />
     </main>
-    <footer>Footer</footer>
+    <Footer />
   </div>
 );
 
