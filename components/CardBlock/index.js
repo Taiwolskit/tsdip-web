@@ -24,7 +24,7 @@ const CardItem = ({ t }) => (
     sm={6}
     md={3}
     lg={2}
-    className={styles['card-block-item-warpper']}
+    className={styles['card-block-item-wrapper']}
   >
     <Card className={styles['card-block-item']}>
       <CardActionArea>

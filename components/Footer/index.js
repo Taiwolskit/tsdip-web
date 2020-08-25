@@ -17,7 +17,7 @@ const Footer = () => (
       <Grid container>
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
-            className={styles['social-icon-warpper']}
+            className={styles['social-icon-wrapper']}
             aria-label='facebook link'>
             <FacebookIcon />
           </IconButton>
@@ -25,7 +25,7 @@ const Footer = () => (
 
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
-            className={styles['social-icon-warpper']}
+            className={styles['social-icon-wrapper']}
             aria-label='facebook link'>
             <TwitterIcon />
           </IconButton>
@@ -33,7 +33,7 @@ const Footer = () => (
 
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
-            className={styles['social-icon-warpper']}
+            className={styles['social-icon-wrapper']}
             aria-label='facebook link'>
             <InstagramIcon />
           </IconButton>
@@ -41,7 +41,7 @@ const Footer = () => (
 
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
-            className={styles['social-icon-warpper']}
+            className={styles['social-icon-wrapper']}
             aria-label='facebook link'>
             <YouTubeIcon />
           </IconButton>
