@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import Sidebar from '../components/Sidebar';
 import { ContextStore } from '../ctx';
 
 const App = ({ title }) => {
@@ -28,15 +29,7 @@ const App = ({ title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <p>{accessToken}</p>
-      <button
-        type='submit'
-        onClick={() => dispatch({ type: 'LOGIN', accessToken: 'test' })}
-      >
-        Submit
-      </button>
-      <div>Content</div>
-      <footer>Footer</footer>
+      <Sidebar/>
     </div>
   );
 };
