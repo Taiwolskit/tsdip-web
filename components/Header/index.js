@@ -94,7 +94,7 @@ const Header = ({ t, items, languages }) => {
             {accessToken ? (
               <IconButton
                 edge='end'
-                aria-label='account setting'
+                aria-label={userAriaLabel}
                 aria-controls='profile-menu'
                 aria-haspopup='true'
                 onClick={handleProfileMenu}
@@ -102,7 +102,11 @@ const Header = ({ t, items, languages }) => {
                 <AccountCircle />
               </IconButton>
             ) : (
-              <IconButton edge='end' color='inherit' href='/login'>
+              <IconButton
+                edge='end'
+                color='inherit'
+                href='/login'
+                aria-label={userAriaLabel}>
                 <AccountCircle />
               </IconButton>
             )}
@@ -117,7 +121,7 @@ const Header = ({ t, items, languages }) => {
             arrow>
             <IconButton
               edge='end'
-              aria-label='language setting'
+              aria-label='change language'
               aria-controls='lang-menu'
               aria-haspopup='true'
               onClick={handleLangMenu}
