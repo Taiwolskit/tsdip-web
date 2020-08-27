@@ -70,7 +70,7 @@ const Header = ({ t, items, languages }) => {
               key={link}
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 600 }}
-              aria-label='add'
+              aria-label={caption}
               placement='bottom-start'
               arrow>
               <Button color='inherit' href={link}>
