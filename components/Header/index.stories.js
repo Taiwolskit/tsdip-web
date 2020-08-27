@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './index';
+import { ContextStore } from '../../ctx';
 
 export default {
   title: 'Header',
@@ -15,3 +16,9 @@ Basic.story = {
 Basic.args = {
   label: 'hello',
 };
+
+export const StateHeader = (args) => (
+  <ContextStore.Provider value={{ accessToken: 'test', dispatch: () => '' }}>
+    <Header {...args} />
+  </ContextStore.Provider>
+);

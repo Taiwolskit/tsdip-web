@@ -154,5 +154,11 @@ Temporary Items
 # Local History for Visual Studio Code
 .history/
 
+### Sass
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
 .env.local
 storybook-static

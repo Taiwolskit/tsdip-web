@@ -50,6 +50,11 @@ const Header = ({ t, items, languages }) => {
     </Link>
   ));
 
+  const profileTooltip = accessToken
+    ? t('navitem-profile-tooltip')
+    : t('navitem-login-tooltip');
+  const userAriaLabel = accessToken ? 'manager user' : 'user login';
+
   return (
     <AppBar position='static'>
       <Toolbar>
@@ -80,10 +85,10 @@ const Header = ({ t, items, languages }) => {
           ))}
 
           <Tooltip
-            title={t('navitem-login-tooltip')}
+            title={profileTooltip}
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
-            aria-label='add'
+            aria-label={userAriaLabel}
             placement='bottom-start'
             arrow>
             {accessToken ? (
@@ -107,7 +112,7 @@ const Header = ({ t, items, languages }) => {
             title={t('navitem-language-tooltip')}
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
-            aria-label='add'
+            aria-label='change language'
             placement='bottom-start'
             arrow>
             <IconButton
