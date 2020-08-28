@@ -8,10 +8,10 @@ const CarouselItem = ({ caption, description, images }) => (
   <Paper className={styles['carousel-item']}>
     {images.map((url, index) => (
       <img
-        key={index}
-        className={styles['carousel-item-image']}
-        src={url}
         alt={caption}
+        className={styles['carousel-item-image']}
+        key={index}
+        src={url}
       />
     ))}
     <div className='carousel-caption d-none d-md-block'>
@@ -20,6 +20,12 @@ const CarouselItem = ({ caption, description, images }) => (
     </div>
   </Paper>
 );
+
+CarouselItem.propTypes = {
+  caption: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  images: PropTypes.arrayOf(PropTypes.string),
+};
 
 const App = ({ items }) => (
   <Carousel indicators={false} navButtonsAlwaysVisible={true} autoPlay={false}>
@@ -59,8 +65,8 @@ App.propTypes = {
       caption: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       images: PropTypes.arrayOf(PropTypes.string),
-    })
-  ).isRequired,
+    }),
+  ),
 };
 
 export default App;

@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -12,37 +13,41 @@ import YouTubeIcon from '@material-ui/icons/YouTube';
 import styles from './Footer.module.scss';
 
 const Footer = () => (
-  <footer id='footer' className={styles['footer']}>
+  <footer id='footer' className={styles.footer}>
     <Container>
       <Grid container>
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
+            aria-label='facebook link'
             className={styles['social-icon-wrapper']}
-            aria-label='facebook link'>
+          >
             <FacebookIcon />
           </IconButton>
         </Grid>
 
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
+            aria-label='facebook link'
             className={styles['social-icon-wrapper']}
-            aria-label='facebook link'>
+          >
             <TwitterIcon />
           </IconButton>
         </Grid>
 
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
+            aria-label='facebook link'
             className={styles['social-icon-wrapper']}
-            aria-label='facebook link'>
+          >
             <InstagramIcon />
           </IconButton>
         </Grid>
 
         <Grid container item xs={3} justify='space-evenly'>
           <IconButton
+            aria-label='facebook link'
             className={styles['social-icon-wrapper']}
-            aria-label='facebook link'>
+          >
             <YouTubeIcon />
           </IconButton>
         </Grid>
@@ -55,8 +60,9 @@ const Footer = () => (
         <Grid container item xs={12} sm={3} justify='space-evenly'>
           <Link href='https://taiwolskit.com'>
             <Typography>
-              Copyright &copy;{new Date().getFullYear()} | All rights reserved.
-              Powered by
+              Copyright &copy;{
+                new Date().getFullYear()
+              } | All rights reserved. Powered by
               <a href='https://taiwolskit.com'>Taiwolskit</a>
             </Typography>
           </Link>

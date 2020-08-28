@@ -18,13 +18,13 @@ import styles from './CardBlock.module.scss';
 
 const CardItem = ({ t }) => (
   <Grid
+    className={styles['card-block-item-wrapper']}
     container
     item
-    xs={12}
-    sm={6}
-    md={4}
     lg={3}
-    className={styles['card-block-item-wrapper']}
+    md={4}
+    sm={6}
+    xs={12}
   >
     <Card className={styles['card-block-item']}>
       <CardActionArea>
@@ -47,36 +47,39 @@ const CardItem = ({ t }) => (
 
       <CardActions disableSpacing>
         <Tooltip
+          aria-label='add to favorites'
+          arrow
+          placement='bottom-start'
           title={t('card-item-icon-favorite')}
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}
-          aria-label='add to favorites'
-          placement='bottom-start'
-          arrow>
+        >
           <IconButton aria-label='add to favorites'>
             <FavoriteIcon />
           </IconButton>
         </Tooltip>
 
         <Tooltip
+          aria-label='share the event'
+          arrow
+          placement='bottom-start'
           title={t('card-item-icon-share')}
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}
-          aria-label='share the event'
-          placement='bottom-start'
-          arrow>
+        >
           <IconButton aria-label='share the event'>
             <ShareIcon />
           </IconButton>
         </Tooltip>
 
         <Tooltip
+          aria-label='join the event'
+          arrow
+          placement='bottom-start'
           title={t('card-item-icon-register')}
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}
-          aria-label='join the event'
-          placement='bottom-start'
-          arrow>
+        >
           <IconButton aria-label='join the event'>
             <GroupAddIcon />
           </IconButton>
@@ -85,6 +88,10 @@ const CardItem = ({ t }) => (
     </Card>
   </Grid>
 );
+
+CardItem.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
 const CardBlock = ({ t, items }) => (
   <Grid id='card-block' className={styles['card-block']} container>
@@ -180,8 +187,8 @@ CardBlock.propTypes = {
       imageUrl: PropTypes.string.isRequired,
       registrationLink: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+    }),
+  ),
 };
 
 export default withTranslation('card-block')(CardBlock);

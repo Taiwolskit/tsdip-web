@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LanguageIcon from '@material-ui/icons/Language';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
@@ -13,6 +11,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
+
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import LanguageIcon from '@material-ui/icons/Language';
 import { ContextStore } from '../../ctx';
 import { i18n, withTranslation } from '../../i18n';
 
@@ -21,16 +22,9 @@ const Header = ({ t, items, languages }) => {
   const [anchorLang, setAnchorLang] = React.useState(null);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleLangMenu = (event) => {
-    setAnchorLang(event.currentTarget);
-  };
-  const handleProfileMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleProfileClose = () => {
-    setAnchorEl(null);
-  };
+  const handleLangMenu = (event) => setAnchorLang(event.currentTarget);
+  const handleProfileMenu = (event) => setAnchorEl(event.currentTarget);
+  const handleProfileClose = () => setAnchorEl(null);
 
   const handleLogout = () => {
     setAnchorEl(null);
@@ -63,21 +57,23 @@ const Header = ({ t, items, languages }) => {
         </Grid>
 
         <Grid
+          className='nav-link'
           container
           item
-          xs={12}
+          justify='flex-end'
           sm={12}
-          className='nav-link'
-          justify='flex-end'>
+          xs={12}
+        >
           {items.map(({ caption, link, tooltip }) => (
             <Tooltip
-              title={t(tooltip)}
+              aria-label={caption}
+              arrow
               key={link}
+              placement='bottom-start'
+              title={t(tooltip)}
               TransitionComponent={Fade}
               TransitionProps={{ timeout: 600 }}
-              aria-label={caption}
-              placement='bottom-start'
-              arrow>
+            >
               <Button color='inherit' href={link}>
                 {t(caption)}
               </Button>
@@ -85,62 +81,68 @@ const Header = ({ t, items, languages }) => {
           ))}
 
           <Tooltip
+            aria-label={userAriaLabel}
+            arrow
+            placement='bottom-start'
             title={profileTooltip}
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
-            aria-label={userAriaLabel}
-            placement='bottom-start'
-            arrow>
+          >
             {accessToken ? (
               <IconButton
-                edge='end'
-                aria-label={userAriaLabel}
                 aria-controls='profile-menu'
                 aria-haspopup='true'
+                aria-label={userAriaLabel}
+                color='inherit'
+                edge='end'
                 onClick={handleProfileMenu}
-                color='inherit'>
+              >
                 <AccountCircle />
               </IconButton>
             ) : (
               <IconButton
-                edge='end'
+                aria-label={userAriaLabel}
                 color='inherit'
+                edge='end'
                 href='/login'
-                aria-label={userAriaLabel}>
+              >
                 <AccountCircle />
               </IconButton>
             )}
           </Tooltip>
 
           <Tooltip
+            aria-label='change language'
+            arrow
+            placement='bottom-start'
             title={t('navitem-language-tooltip')}
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
-            aria-label='change language'
-            placement='bottom-start'
-            arrow>
+          >
             <IconButton
-              edge='end'
-              aria-label='change language'
               aria-controls='lang-menu'
               aria-haspopup='true'
+              aria-label='change language'
+              color='inherit'
+              edge='end'
               onClick={handleLangMenu}
-              color='inherit'>
+            >
               <LanguageIcon />
             </IconButton>
           </Tooltip>
 
           {accessToken && (
             <Menu
-              id='profile-menu'
               anchorEl={anchorEl}
+              id='profile-menu'
               keepMounted
+              onClose={handleProfileClose}
+              open={Boolean(anchorEl)}
               transformOrigin={{
                 vertical: 'bottom',
                 horizontal: 'right',
               }}
-              open={Boolean(anchorEl)}
-              onClose={handleProfileClose}>
+            >
               <MenuItem onClick={handleProfileClose}>
                 <LinkRef />
               </MenuItem>
@@ -149,19 +151,21 @@ const Header = ({ t, items, languages }) => {
           )}
 
           <Menu
-            id='lang-menu'
             anchorEl={anchorLang}
+            id='lang-menu'
             keepMounted
+            onClose={handleClose}
+            open={Boolean(anchorLang)}
             transformOrigin={{
               vertical: 'bottom',
               horizontal: 'right',
             }}
-            open={Boolean(anchorLang)}
-            onClose={handleClose}>
+          >
             {languages.map((lang) => (
               <MenuItem
                 key={lang}
-                onClick={(event) => handleClose(event, lang)}>
+                onClick={(event) => handleClose(event, lang)}
+              >
                 {lang}
               </MenuItem>
             ))}
@@ -201,7 +205,7 @@ Header.propTypes = {
       caption: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       tooltip: PropTypes.string.isRequired,
-    })
+    }),
   ),
 };
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
-import Sidebar from '../components/Sidebar';
+import Drawer from '../components/Drawer';
 import { ContextStore } from '../ctx';
 
 const App = ({ title }) => {
@@ -29,7 +29,7 @@ const App = ({ title }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Sidebar/>
+      <Drawer />
     </div>
   );
 };

@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,22 +12,45 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import styles from './Sidebar.module.scss';
+
+import BusinessIcon from '@material-ui/icons/Business';
+import EventIcon from '@material-ui/icons/Event';
+import MenuIcon from '@material-ui/icons/Menu';
+import PersonIcon from '@material-ui/icons/Person';
+
 import { withTranslation } from '../../i18n';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  hide: {
+    display: 'none',
+  },
   drawer: {
     width: drawerWidth,
-    backgroundColor: 'red',
     flexShrink: 0,
     whiteSpace: 'nowrap',
   },
@@ -60,35 +86,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Sidebar = ({t}) => {
+const MiniDrawer = ({ t, sidebarItems }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
-  };
-
+  const handleListItemClick = (event, index) => setSelectedIndex(index);
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
 
   return (
-    <div className={styles['sidebar']}>
+    <div className={classes.root}>
       <AppBar
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
         position='fixed'
-        className={clsx(styles['app-bar'], {
-          [styles['app-bar-shift']]: open,
-        })}>
+      >
         <Toolbar>
           <IconButton
-            color='inherit'
             aria-label='open drawer'
-            onClick={handleDrawerOpen}
+            className={clsx(classes.menuButton, {
+              [classes.hide]: open,
+            })}
+            color='inherit'
             edge='start'
-            className={clsx(styles['menu-button'], {
-              [styles['hide']]: open,
-            })}>
+            onClick={handleDrawerOpen}
+          >
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
@@ -98,17 +123,18 @@ const Sidebar = ({t}) => {
       </AppBar>
 
       <Drawer
-        variant='permanent'
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
         classes={{
           paper: clsx({
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           }),
-        }}>
+        }}
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        })}
+        variant='permanent'
+      >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? (
@@ -118,27 +144,21 @@ const Sidebar = ({t}) => {
             )}
           </IconButton>
         </div>
+
         <Divider />
 
-        <List component='nav' aria-label='main mailbox folders'>
-          <ListItem
-            button
-            selected={selectedIndex === 0}
-            onClick={(event) => handleListItemClick(event, 0)}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary='Inbox' />
-          </ListItem>
-          <ListItem
-            button
-            selected={selectedIndex === 1}
-            onClick={(event) => handleListItemClick(event, 1)}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary='Drafts' />
-          </ListItem>
+        <List component='nav' aria-label='profile events organization'>
+          {sidebarItems.map(({ icon, text }, key) => (
+            <ListItem
+              button
+              key={key}
+              onClick={(event) => handleListItemClick(event, key)}
+              selected={selectedIndex === key}
+            >
+              <ListItemIcon>{icon}</ListItemIcon>
+              <ListItemText primary={t(text)} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
 
@@ -159,23 +179,36 @@ const Sidebar = ({t}) => {
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
         </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
       </main>
     </div>
   );
-}
+};
 
-export default withTranslation('common')(Sidebar);
+MiniDrawer.defaultProps = {
+  sidebarItems: [
+    {
+      icon: <PersonIcon />,
+      text: 'drawer:item-profile',
+    },
+    {
+      icon: <EventIcon />,
+      text: 'drawer:item-event',
+    },
+    {
+      icon: <BusinessIcon />,
+      text: 'drawer:item-org',
+    },
+  ],
+};
+
+MiniDrawer.propTypes = {
+  t: PropTypes.func.isRequired,
+  sidebarItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.object.isRequired,
+      text: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
+export default withTranslation(['common', 'drawer'])(MiniDrawer);

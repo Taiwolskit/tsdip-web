@@ -20,7 +20,8 @@ const App = ({ title }) => {
             refreshToken: 'test',
             user: {},
           })
-        }>
+        }
+      >
         Submit
       </button>
       <div>Content</div>
