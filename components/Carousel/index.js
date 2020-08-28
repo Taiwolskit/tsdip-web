@@ -6,11 +6,11 @@ import styles from './Carousel.module.scss';
 
 const CarouselItem = ({ caption, description, images }) => (
   <Paper className={styles['carousel-item']}>
-    {images.map((url, index) => (
+    {images.map((url) => (
       <img
         alt={caption}
         className={styles['carousel-item-image']}
-        key={index}
+        key={caption}
         src={url}
       />
     ))}
@@ -24,14 +24,14 @@ const CarouselItem = ({ caption, description, images }) => (
 CarouselItem.propTypes = {
   caption: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(PropTypes.string),
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const App = ({ items }) => (
-  <Carousel indicators={false} navButtonsAlwaysVisible={true} autoPlay={false}>
-    {items.map(({ caption, description, images }, index) => (
+  <Carousel indicators={false} navButtonsAlwaysVisible autoPlay={false}>
+    {items.map(({ caption, description, images }) => (
       <CarouselItem
-        key={index}
+        key={caption}
         caption={caption}
         description={description}
         images={images}

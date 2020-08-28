@@ -1,0 +1,13 @@
+{
+  "navitem-language-tooltip": "Switch language",
+  "navitem-event-caption": "Event",
+  "navitem-event-tooltip": "What dance events I could join?",
+  "navitem-studio-caption": "Studio",
+  "navitem-studio-tooltip": "Where I could learn dance?",
+  "navitem-login-tooltip": "Login user",
+  "navitem-profile-tooltip": "Manage user profile",
+  "navitem-teacher-caption": "Teacher",
+  "navitem-teacher-tooltip": "Introduction teachers",
+  "navitem-dashboard-caption": "Dashboard",
+  "navitem-logout-caption": "Logout"
+}

@@ -13,14 +13,12 @@ const App = ({ title }) => {
       <p>{accessToken}</p>
       <button
         type='submit'
-        onClick={() =>
-          dispatch({
-            type: 'LOGIN',
-            accessToken: 'test',
-            refreshToken: 'test',
-            user: {},
-          })
-        }
+        onClick={() => dispatch({
+          type: 'LOGIN',
+          accessToken: 'test',
+          refreshToken: 'test',
+          user: {},
+        })}
       >
         Submit
       </button>

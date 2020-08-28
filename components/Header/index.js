@@ -40,7 +40,7 @@ const Header = ({ t, items, languages }) => {
 
   const LinkRef = React.forwardRef((props, ref) => (
     <Link ref={ref} href='/dashboard'>
-      <a href='/dashboard'>Dashboard</a>
+      <a href='/dashboard'>{t('navitem-dashboard-caption')}</a>
     </Link>
   ));
 
@@ -53,7 +53,7 @@ const Header = ({ t, items, languages }) => {
     <AppBar position='static'>
       <Toolbar>
         <Grid container item xs={12} sm={12} className='header-brand-title'>
-          <Typography variant='h6'>{t('tsdip-full')}</Typography>
+          <Typography variant='h6'>{t('common:tsdip-full')}</Typography>
         </Grid>
 
         <Grid
@@ -146,7 +146,9 @@ const Header = ({ t, items, languages }) => {
               <MenuItem onClick={handleProfileClose}>
                 <LinkRef />
               </MenuItem>
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout}>
+                {t('navitem-logout-caption')}
+              </MenuItem>
             </Menu>
           )}
 
@@ -209,4 +211,4 @@ Header.propTypes = {
   ),
 };
 
-export default withTranslation('common')(Header);
+export default withTranslation(['header', 'common'])(Header);

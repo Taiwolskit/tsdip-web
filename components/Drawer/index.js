@@ -7,12 +7,14 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
+import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
 import BusinessIcon from '@material-ui/icons/Business';
@@ -148,16 +150,25 @@ const MiniDrawer = ({ t, sidebarItems }) => {
         <Divider />
 
         <List component='nav' aria-label='profile events organization'>
-          {sidebarItems.map(({ icon, text }, key) => (
-            <ListItem
-              button
-              key={key}
-              onClick={(event) => handleListItemClick(event, key)}
-              selected={selectedIndex === key}
+          {sidebarItems.map(({ ariaLabel, icon, text }, key) => (
+            <Tooltip
+              aria-label={ariaLabel}
+              arrow
+              key={text}
+              placement='bottom-start'
+              title={t(text)}
+              TransitionComponent={Fade}
+              TransitionProps={{ timeout: 600 }}
             >
-              <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={t(text)} />
-            </ListItem>
+              <ListItem
+                button
+                onClick={(event) => handleListItemClick(event, key)}
+                selected={selectedIndex === key}
+              >
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText primary={t(text)} />
+              </ListItem>
+            </Tooltip>
           ))}
         </List>
       </Drawer>
@@ -187,14 +198,17 @@ const MiniDrawer = ({ t, sidebarItems }) => {
 MiniDrawer.defaultProps = {
   sidebarItems: [
     {
+      ariaLabel: 'User profile',
       icon: <PersonIcon />,
       text: 'drawer:item-profile',
     },
     {
+      ariaLabel: 'Manage event',
       icon: <EventIcon />,
       text: 'drawer:item-event',
     },
     {
+      ariaLabel: 'Manage organization',
       icon: <BusinessIcon />,
       text: 'drawer:item-org',
     },
@@ -205,9 +219,10 @@ MiniDrawer.propTypes = {
   t: PropTypes.func.isRequired,
   sidebarItems: PropTypes.arrayOf(
     PropTypes.shape({
+      ariaLabel: PropTypes.string.isRequired,
       icon: PropTypes.object.isRequired,
       text: PropTypes.string.isRequired,
-    }),
+    })
   ),
 };
 

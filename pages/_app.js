@@ -1,6 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import App from 'next/app';
 import Router from 'next/router';
+import PropTypes from 'prop-types';
 import { appWithTranslation } from '../i18n';
 import { ContextStore } from '../ctx';
 import '../public/styles.scss';
@@ -29,15 +30,16 @@ const authReducers = (state, action) => {
   switch (type) {
     case 'LOGIN':
       login(accessToken);
-      return Object.assign({}, state, {
+      return {
+        ...state,
         accessToken,
         loading: true,
         refreshToken,
         user,
-      });
+      };
     case 'LOGOUT':
       logout();
-      return Object.assign({}, state, authInitState);
+      return { ...state, ...authInitState };
     default:
       return state;
   }
@@ -78,5 +80,10 @@ const Application = ({ Component, pageProps }) => {
 Application.getInitialProps = async (ctx) => ({
   ...(await App.getInitialProps(ctx)),
 });
+
+Application.propTypes = {
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
 
 export default appWithTranslation(Application);

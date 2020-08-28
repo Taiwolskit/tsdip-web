@@ -60,9 +60,12 @@ const Footer = () => (
         <Grid container item xs={12} sm={3} justify='space-evenly'>
           <Link href='https://taiwolskit.com'>
             <Typography>
-              Copyright &copy;{
+              Copyright &copy;
+              {
                 new Date().getFullYear()
-              } | All rights reserved. Powered by
+              }
+              {' '}
+              | All rights reserved. Powered by
               <a href='https://taiwolskit.com'>Taiwolskit</a>
             </Typography>
           </Link>
