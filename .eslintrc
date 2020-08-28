@@ -11,15 +11,22 @@
     "ecmaVersion": 11,
     "sourceType": "module",
     "ecmaFeatures": {
+      "allowImportExportEverywhere": true,
+      "experimentalObjectRestSpread": true,
       "globalReturn": true,
       "impliedStrict": true,
-      "jsx": true,
-      "experimentalObjectRestSpread": true,
-      "allowImportExportEverywhere": true
+      "jsx": true
     }
   },
   "plugins": ["jsx-a11y", "react-hooks", "react"],
   "rules": {
+    "jsx-quotes": ["error", "prefer-single"],
+    "import/prefer-default-export": "warn",
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".js", ".jsx"] }
+    ],
+    "react/jsx-props-no-spreading": "off",
     "react-hooks/exhaustive-deps": "warn",
     "react-hooks/rules-of-hooks": "error"
   },

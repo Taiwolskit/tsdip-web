@@ -1,7 +1,8 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
-const ContextStore = createContext({
-  token: undefined,
+export const ContextStore = createContext({
+  accessToken: undefined,
+  loading: false,
+  refreshToken: undefined,
+  user: {},
 });
-
-export default ContextStore;

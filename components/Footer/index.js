@@ -1,106 +1,101 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faEnvelope,
-  faLocationArrow,
-  faPhone,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faInstagram,
-  faLinkedin,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
+import React from 'react';
+import Link from 'next/link';
+import Container from '@material-ui/core/Container';
+import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import styles from './Footer.module.scss';
 
 const Footer = () => (
-  <footer id='footer'>
-    <div className='container footer-quicklink'>
-      <div className='row'>
-        <div className='footer-quicklink-block find-us col-6 col-xs-12'>
-          <h5 className='footer-quicklink-block-h5'>Find us</h5>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faLocationArrow} /> 9878/25 sec 9 rohini 35{' '}
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faPhone} /> +91-9999878398{' '}
-          </p>
-          <p>
-            <FontAwesomeIcon icon={faEnvelope} /> info@example.com{' '}
-          </p>
-        </div>
+  <footer id='footer' className={styles.footer}>
+    <Container>
+      <Grid container>
+        <Grid container item xs={3} justify='space-evenly'>
+          <IconButton
+            aria-label='facebook link'
+            className={styles['social-icon-wrapper']}
+          >
+            <FacebookIcon />
+          </IconButton>
+        </Grid>
 
-        <div className='footer-quicklink-block quick-link col-6 col-xs-12'>
-          <h5 className='footer-quicklink-block-h5'>Quick links</h5>
-          <ul className='quick-link-items'>
-            <li>
-              <a href='http://webenlance.com'>Remove Background</a>
-            </li>
-            <li>
-              <a href='http://webenlance.com'>Shadows & Mirror Reflection</a>
-            </li>
-            <li>
-              <a href='http://webenlance.com'>Logo Design</a>
-            </li>
-            <li>
-              <a href='http://webenlance.com'>Vectorization</a>
-            </li>
-            <li>
-              <a href='http://webenlance.com'>Hair Masking/Clipping</a>
-            </li>
-            <li>
-              <a href='http://webenlance.com'>Image Cropping</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+        <Grid container item xs={3} justify='space-evenly'>
+          <IconButton
+            aria-label='facebook link'
+            className={styles['social-icon-wrapper']}
+          >
+            <TwitterIcon />
+          </IconButton>
+        </Grid>
 
-    <div className='container'>
-      <ul className='footer-social-list'>
-        <li>
-          <a href='http://webenlance.com'>
-            <FontAwesomeIcon icon={faFacebook} />
-          </a>
-        </li>
-        <li>
-          <a href='http://webenlance.com'>
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-        </li>
-        <li>
-          <a href='http://webenlance.com'>
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-        </li>
-        <li>
-          <a href='http://webenlance.com'>
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
-        </li>
-      </ul>
+        <Grid container item xs={3} justify='space-evenly'>
+          <IconButton
+            aria-label='facebook link'
+            className={styles['social-icon-wrapper']}
+          >
+            <InstagramIcon />
+          </IconButton>
+        </Grid>
 
-      <ul className='footer-additional-info'>
-        <li>
-          <p className='footer-additional-info-copyright'>
-            Copyright &copy;2019 | All rights reserved. Powered by
-            <a href='/'>Taiwolskit</a>
-          </p>
-        </li>
-        <li>
-          <a href='/'>Sitemap</a>
-        </li>
-        <li>
-          <a href='/'>Terms of Use</a>
-        </li>
-        <li>
-          <a href='/'>Private Policy</a>
-        </li>
-      </ul>
-    </div>
+        <Grid container item xs={3} justify='space-evenly'>
+          <IconButton
+            aria-label='facebook link'
+            className={styles['social-icon-wrapper']}
+          >
+            <YouTubeIcon />
+          </IconButton>
+        </Grid>
+      </Grid>
+    </Container>
+    <Divider className={styles['footer-divider']} variant='middle' />
+
+    <Container>
+      <Grid container>
+        <Grid container item xs={12} sm={3} justify='space-evenly'>
+          <Link href='https://taiwolskit.com'>
+            <Typography>
+              Copyright &copy;
+              {
+                new Date().getFullYear()
+              }
+              {' '}
+              | All rights reserved. Powered by
+              <a href='https://taiwolskit.com'>Taiwolskit</a>
+            </Typography>
+          </Link>
+        </Grid>
+
+        <Grid container item xs={4} sm={3} justify='space-evenly'>
+          <Link href='/'>
+            <Typography>
+              <a href='/'>Sitemap</a>
+            </Typography>
+          </Link>
+        </Grid>
+
+        <Grid container item xs={4} sm={3} justify='space-evenly'>
+          <Link href='/'>
+            <Typography>
+              <a href='/'>Terms of Use</a>
+            </Typography>
+          </Link>
+        </Grid>
+
+        <Grid container item xs={4} sm={3} justify='space-evenly'>
+          <Link href='/'>
+            <Typography>
+              <a href='/'>Private Policy</a>
+            </Typography>
+          </Link>
+        </Grid>
+      </Grid>
+    </Container>
   </footer>
 );
 

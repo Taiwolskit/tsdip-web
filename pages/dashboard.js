@@ -1,33 +1,49 @@
+import React, { useContext, useEffect } from 'react';
 import Head from 'next/head';
+import Router from 'next/router';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import Sidebar from '../containers/Sidebar';
+import Drawer from '../components/Drawer';
+import { ContextStore } from '../ctx';
 
-const App = ({ title }) => (
-  <div className='main'>
-    <style jsx global>{`
-      #__next .main {
-        display: grid;
-        grid-template-rows: 56px calc(100% - 56px);
+const App = ({ title }) => {
+  const { accessToken, dispatch } = useContext(ContextStore);
+
+  useEffect(() => {
+    if (!accessToken) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        Router.push('/');
+        return;
       }
-    `}</style>
-    <Head>
-      <title>{title}</title>
-    </Head>
-    <Header />
-    <main id='dashboard' className='dashboard'>
-      <Sidebar />
-      <div id='dashboard-content' className='dashboard-content'></div>
-    </main>
-  </div>
-);
+      dispatch({
+        type: 'LOGIN',
+        accessToken: token,
+        refreshToken: 'test',
+        user: {},
+      });
+    }
+  }, [accessToken]);
+
+  return (
+    <div className='main'>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <Drawer />
+    </div>
+  );
+};
+
+App.getInitialProps = () => ({
+  namespacesRequired: ['common'],
+});
 
 App.defaultProps = {
-  title: 'HIP HOP TW | User dashboard',
+  title: 'Dashboard | Taiwan Street Dance Information Platform',
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default App;

@@ -1,49 +1,89 @@
-import React, { useEffect, useReducer } from 'react';
-import Cookies from 'js-cookie';
+import React, { useReducer, useEffect } from 'react';
+import App from 'next/app';
 import Router from 'next/router';
-import Head from 'next/head';
-import ContextStore from '../ctx';
-import loginReducer from '../reducers/login';
-import { wrapper } from '../store';
+import PropTypes from 'prop-types';
+import { appWithTranslation } from '../i18n';
+import { ContextStore } from '../ctx';
 import '../public/styles.scss';
 
-const App = ({ Component, pageProps }) => {
-  const [auth, authDispatch] = useReducer(loginReducer, { token: undefined });
+const authInitState = {
+  accessToken: undefined,
+  loading: false,
+  refreshToken: undefined,
+  user: {},
+};
+
+const login = (token) => {
+  localStorage.setItem('token', token);
+  console.info(`__get_token__ ${token}`);
+};
+
+const logout = () => {
+  localStorage.removeItem('token');
+  Router.push('/');
+};
+
+const authReducers = (state, action) => {
+  const { type, ...args } = action;
+  const { accessToken, refreshToken, user } = args;
+
+  switch (type) {
+    case 'LOGIN':
+      login(accessToken);
+      return {
+        ...state,
+        accessToken,
+        loading: true,
+        refreshToken,
+        user,
+      };
+    case 'LOGOUT':
+      logout();
+      return { ...state, ...authInitState };
+    default:
+      return state;
+  }
+};
+
+const Application = ({ Component, pageProps }) => {
+  const [state, dispatch] = useReducer(authReducers, authInitState);
+
+  const checkAuthenticated = () => {
+    const accessToken = localStorage.getItem('token');
+    if (accessToken) {
+      dispatch({
+        type: 'LOGIN',
+        accessToken,
+        refreshToken: 'test',
+        user: {},
+      });
+    }
+  };
 
   useEffect(() => {
-    const token = Cookies.get('token');
-    // If cookie have token, then update it at context
-    if (token !== auth.token) {
-      authDispatch({ type: 'LOGIN', token });
-    }
-
-    // Un login user
-    if (token === undefined) {
-      if (window.location.pathname === '/dashboard') {
-        Router.push('/');
-      }
-    } else {
-      if (window.location.pathname === '/login') {
-        Router.back();
-      }
-    }
-  });
+    console.log('Check token------');
+    if (localStorage && !state.accessToken) checkAuthenticated();
+  }, []);
 
   return (
     <ContextStore.Provider
       value={{
-        token: auth.token,
-        authDispatch,
-      }}>
-      <Head>
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
-        />
-      </Head>
+        accessToken: state.accessToken,
+        dispatch,
+      }}
+    >
       <Component {...pageProps} />
     </ContextStore.Provider>
   );
 };
 
-export default wrapper.withRedux(App);
+Application.getInitialProps = async (ctx) => ({
+  ...(await App.getInitialProps(ctx)),
+});
+
+Application.propTypes = {
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};
+
+export default appWithTranslation(Application);

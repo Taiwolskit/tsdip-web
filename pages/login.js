@@ -1,26 +1,43 @@
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import LoginPage from '../components/LoginPage';
-import Footer from '../components/Footer';
+import { ContextStore } from '../ctx';
 
-const App = ({ title }) => (
-  <div className='main'>
-    <Head>
-      <title>{title}</title>
-    </Head>
-    <Header />
-    <LoginPage />
-    <Footer />
-  </div>
-);
+const App = ({ title }) => {
+  const { accessToken, dispatch } = useContext(ContextStore);
+  return (
+    <div className='main'>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <p>{accessToken}</p>
+      <button
+        type='submit'
+        onClick={() => dispatch({
+          type: 'LOGIN',
+          accessToken: 'test',
+          refreshToken: 'test',
+          user: {},
+        })}
+      >
+        Submit
+      </button>
+      <div>Content</div>
+      <footer>Footer</footer>
+    </div>
+  );
+};
+
+App.getInitialProps = () => ({
+  namespacesRequired: ['common'],
+});
 
 App.defaultProps = {
-  title: 'Login / Sign Up Taiwan Street Dance Information Platform',
+  title: 'Login page | Taiwan Street Dance Information Platform',
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default App;
