@@ -84,7 +84,7 @@ const Profile = ({ t }) => (
       </Grid>
 
       <Button type='submit' color='primary' variant='contained'>
-        Submit
+        Save
       </Button>
     </FormGroup>
   </form>

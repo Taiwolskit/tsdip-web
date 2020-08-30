@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Link from 'next/link';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Divider from '@material-ui/core/Divider';
@@ -33,6 +34,9 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  brand: {
+    cursor: 'pointer',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -108,7 +112,7 @@ const MiniDrawer = ({ t, sidebarItems }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleListItemClick = (event, index) => setSelectedIndex(index);
   const handleDrawerOpen = () => setOpen(true);
@@ -134,9 +138,11 @@ const MiniDrawer = ({ t, sidebarItems }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap>
-            {t('tsdip-full')}
-          </Typography>
+          <Link href='/'>
+            <Typography className={classes.brand} variant='h6' noWrap>
+              {t('tsdip-full')}
+            </Typography>
+          </Link>
         </Toolbar>
       </AppBar>
 

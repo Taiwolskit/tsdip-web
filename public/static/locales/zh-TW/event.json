@@ -1,0 +1,12 @@
+{
+  "table-title": "管理活動",
+  "table-header-title": "活動標題",
+  "table-header-editor": "編輯者",
+  "table-header-approve": "審核狀態",
+  "table-header-lastUpdate": "最後更新時間",
+  "table-header-publish": "發佈時間",
+  "table-action-publish-tooltip": "發布這項活動",
+  "table-action-unpublish-tooltip": "取消發布這項活動",
+  "table-action-edit-tooltip": "編輯",
+  "table-action-add-tooltip": "新增活動"
+}

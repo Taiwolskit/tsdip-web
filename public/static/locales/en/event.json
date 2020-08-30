@@ -1,0 +1,12 @@
+{
+  "table-title": "Manage events",
+  "table-header-title": "Title",
+  "table-header-editor": "Editor",
+  "table-header-approve": "Approve status",
+  "table-header-lastUpdate": "Last update date",
+  "table-header-publish": "Publish date",
+  "table-action-publish-tooltip": "Publish this event",
+  "table-action-unpublish-tooltip": "Cancel publish this event",
+  "table-action-add-tooltip": "Add new event",
+  "table-action-edit-tooltip": "Edit"
+}
