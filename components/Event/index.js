@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 import GetApp from '@material-ui/icons/GetApp';
@@ -27,7 +28,6 @@ const Event = ({ t }) => {
     },
   ];
 
-
   const actions = [
     {
       name: 'edit',
@@ -41,7 +41,7 @@ const Event = ({ t }) => {
       icon: AddBox,
       tooltip: t('event:table-action-add-tooltip'),
       isFreeAction: true,
-      onClick: (event) => alert('You want to add a new row'),
+      onClick: (event) => Router.push('/edit/event'),
     },
     {
       name: 'publish',
