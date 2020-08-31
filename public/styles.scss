@@ -6,7 +6,7 @@ body {
 
   .main {
     display: grid;
-    grid-template-rows: 64px 5fr 150px;
+    grid-template-rows: 64px 1fr auto;
   }
 }
 
