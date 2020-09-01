@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 import { withTranslation } from '../../i18n';
+import EditStep from './EditStep';
 
 const defaultTheme = createMuiTheme();
 
@@ -60,6 +61,7 @@ const EditEvent = ({ t }) => (
     <Typography variant='h3' gutterBottom align='center'>
       {t('edit-event-title')}
     </Typography>
+    <EditStep />
     <Link href='/dashboard'>
       <Button variant='contained' startIcon={<CancelIcon />}>
         Cancel
