@@ -1,10 +1,37 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
+import Link from 'next/link';
+import MUIRichTextEditor from 'mui-rte';
+import {
+  makeStyles,
+  createMuiTheme,
+  MuiThemeProvider,
+} from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import CancelIcon from '@material-ui/icons/Cancel';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
+import Stepper from '@material-ui/core/Stepper';
 import Typography from '@material-ui/core/Typography';
+
+const defaultTheme = createMuiTheme();
+
+Object.assign(defaultTheme, {
+  overrides: {
+    MUIRichTextEditor: {
+      container: {
+        border: '5px solid gray',
+        borderRadius: '5px',
+        padding: '5px',
+        height: '-webkit-fill-available',
+      },
+      toolbar: {
+        borderBottom: '1px solid gray',
+        display: 'flex',
+        justifyContent: 'space-around',
+      },
+    },
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     border: '5px solid white',
-    borderRadius: '10px'
+    borderRadius: '10px',
   },
   button: {
     marginRight: theme.spacing(1),
@@ -23,60 +50,73 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Create an ad'];
-}
+const stepList = [
+  {
+    title: 'Edit the event',
+    description: "Edit the event's description.",
+  },
+  {
+    title: 'Event extra information',
+    description:
+      'Add the event extra information, such as social media link...',
+    skip: true,
+  },
+  {
+    title: 'Save the event data',
+    description: 'Make sure you want to save this change.',
+  },
+];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return 'Select campaign settings...';
-    case 1:
-      return 'What is an ad group anyways?';
-    case 2:
-      return 'This is the bit I really care about!';
-    default:
-      return 'Unknown step';
-  }
-}
+const fakeData = {
+  blocks: [
+    {
+      key: '3fbbl',
+      text: '測試測試',
+      type: 'unstyled',
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+    {
+      key: '31bq5',
+      text: '哈囉哈囉',
+      type: 'unstyled',
+      depth: 0,
+      inlineStyleRanges: [],
+      entityRanges: [],
+      data: {},
+    },
+  ],
+  entityMap: {},
+};
 
 const EditStep = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
-  const steps = getSteps();
-
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
 
   const handleNext = () => {
     let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
+    if (skipped.has(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (activeStep === stepList.length - 1) {
+      setActiveStep(0);
+      return;
+    }
+    setActiveStep((prevActiveStep) => ++prevActiveStep);
     setSkipped(newSkipped);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => --prevActiveStep);
   };
 
   const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => ++prevActiveStep);
     setSkipped((prevSkipped) => {
       const newSkipped = new Set(prevSkipped.values());
       newSkipped.add(activeStep);
@@ -84,8 +124,29 @@ const EditStep = () => {
     });
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
+  const rednerDiv = (step) => {
+    let component = undefined;
+    switch (step) {
+      case 0:
+        component = <p>VV</p>;
+        break;
+      case 1:
+        component = (
+          <MuiThemeProvider theme={defaultTheme}>
+            <MUIRichTextEditor
+              defaultValue={JSON.stringify(fakeData)}
+              inlineToolbar={true}
+              label='sss'
+              onSave={(...data) => console.log(JSON.stringify(data))}
+            />
+          </MuiThemeProvider>
+        );
+        break;
+      default:
+        component = <p>cccccc</p>;
+        break;
+    }
+    return component;
   };
 
   return (
@@ -95,71 +156,66 @@ const EditStep = () => {
         alternativeLabel
         className={classes.wrapper}
       >
-        {steps.map((label, index) => {
+        {stepList.map((data, index) => {
           const stepProps = {};
           const labelProps = {};
-          if (isStepOptional(index)) {
+          if (data.skip) {
             labelProps.optional = (
               <Typography variant='caption'>Optional</Typography>
             );
           }
-          if (isStepSkipped(index)) {
+          if (skipped.has(index)) {
             stepProps.completed = false;
           }
           return (
-            <Step key={label} {...stepProps}>
-              <StepButton {...labelProps}>{label}</StepButton>
+            <Step key={data.title} {...stepProps}>
+              <StepButton {...labelProps}>{data.title}</StepButton>
             </Step>
           );
         })}
       </Stepper>
 
       <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Reset
+        <Typography className={classes.instructions}>
+          {stepList[activeStep].description}
+        </Typography>
+        <div>
+          <Link href='/dashboard'>
+            <Button variant='contained' startIcon={<CancelIcon />}>
+              Cancel
             </Button>
-          </div>
-        ) : (
-          <div>
-            <Typography className={classes.instructions}>
-              {getStepContent(activeStep)}
-            </Typography>
-            <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.button}
-              >
-                Back
-              </Button>
-              {isStepOptional(activeStep) && (
-                <Button
-                  variant='contained'
-                  color='primary'
-                  onClick={handleSkip}
-                  className={classes.button}
-                >
-                  Skip
-                </Button>
-              )}
+          </Link>
+          <Button
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            className={classes.button}
+          >
+            Back
+          </Button>
 
-              <Button
-                variant='contained'
-                color='primary'
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-              </Button>
-            </div>
-          </div>
-        )}
+          {stepList[activeStep].skip && (
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={handleSkip}
+              className={classes.button}
+            >
+              Skip
+            </Button>
+          )}
+
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={handleNext}
+            className={classes.button}
+          >
+            {activeStep === stepList.length - 1 ? 'Finish' : 'Next'}
+          </Button>
+        </div>
       </div>
+
+      {rednerDiv(activeStep)}
     </div>
   );
 };
