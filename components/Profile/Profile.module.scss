@@ -1,5 +1,9 @@
 .profile-form {
-  flex-grow: 1;
+  margin: 5px;
+
+  .profile-form-item {
+    flex-grow: 1;
+  }
 
   .profile-form-control {
     width: stretch;

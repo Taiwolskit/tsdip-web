@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
@@ -6,6 +6,7 @@ import GetApp from '@material-ui/icons/GetApp';
 import AddBox from '@material-ui/icons/AddBox';
 
 import { withTranslation } from '../../i18n';
+import axios from '../../lib/axios';
 
 const Event = ({ t }) => {
   const columns = [
@@ -56,6 +57,15 @@ const Event = ({ t }) => {
       onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
     },
   ];
+
+  useEffect(async () => {
+    const {
+      data: {
+        data,
+      },
+    } = await axios.get('/organizations/558d1889-fff0-4f3e-9026-26fb1291b6b6/events');
+    console.log(data);
+  }, []);
 
   const [state, setState] = React.useState({
     data: [
