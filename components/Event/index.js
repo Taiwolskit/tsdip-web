@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
@@ -58,39 +58,41 @@ const Event = ({ t }) => {
     },
   ];
 
-  useEffect(async () => {
-    const {
-      data: {
-        data,
-      },
-    } = await axios.get('/organizations/558d1889-fff0-4f3e-9026-26fb1291b6b6/events');
-    console.log(data);
+  useEffect(() => {
+    const getEvents = async () => {
+      try {
+        const {
+          data: {
+            data: { items },
+          },
+        } = await axios.get(
+          '/organizations/558d1889-fff0-4f3e-9026-26fb1291b6b6/events'
+        );
+
+        setEvent(
+          items.map((item) => ({
+            title: item.name,
+            editor: 'Baran',
+            approve: item.approve_at !== null,
+            updatedAt: new Date(item.updated_at),
+            publishedAt: new Date(),
+          }))
+        );
+      } catch (error) {
+        console.error(`Get events API fail ${JSON.stringify(error)}`);
+      }
+    };
+
+    getEvents();
   }, []);
 
-  const [state, setState] = React.useState({
-    data: [
-      {
-        title: 'Mehmet',
-        editor: 'Baran',
-        approve: true,
-        updatedAt: new Date(),
-        publishedAt: new Date(),
-      },
-      {
-        title: 'Zerya Betül',
-        editor: 'Baran',
-        approve: false,
-        updatedAt: new Date(),
-        publishedAt: new Date(),
-      },
-    ],
-  });
+  const [events, setEvent] = useState([]);
 
   return (
     <MaterialTable
       title={t('event:table-title')}
       columns={columns}
-      data={state.data}
+      data={events}
       options={{ selection: true }}
       actions={actions}
       editable={{
@@ -98,10 +100,10 @@ const Event = ({ t }) => {
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
-                const data = [...prevState.data];
+              setEvent((prevState) => {
+                const data = [...prevState];
                 data.splice(data.indexOf(oldData), 1);
-                return { ...prevState, data };
+                return data;
               });
             }, 600);
           }),
