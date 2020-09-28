@@ -1,0 +1,9 @@
+{
+  "table-header-name": "名稱",
+  "table-header-role": "權限",
+  "table-header-approve": "審核狀態",
+  "table-action-add-tooltip": "建立組織",
+  "table-action-invite-tooltip": "邀請使用者",
+  "table-action-leave-tooltip": "退出使用者",
+  "table-action-delete-tooltip": "關閉組織"
+}

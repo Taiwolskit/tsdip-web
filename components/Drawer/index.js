@@ -98,9 +98,9 @@ const useStyles = makeStyles((theme) => ({
 
 const renderSwitch = (param) => {
   switch (param) {
-    case 1:
-      return <Event />;
     case 2:
+      return <Event />;
+    case 1:
       return <Organization />;
     case 0:
     default:
@@ -211,14 +211,14 @@ MiniDrawer.defaultProps = {
       text: 'drawer:item-profile',
     },
     {
-      ariaLabel: 'Manage event',
-      icon: <EventIcon />,
-      text: 'drawer:item-event',
-    },
-    {
       ariaLabel: 'Manage organization',
       icon: <BusinessIcon />,
       text: 'drawer:item-org',
+    },
+    {
+      ariaLabel: 'Manage event',
+      icon: <EventIcon />,
+      text: 'drawer:item-event',
     },
   ],
 };

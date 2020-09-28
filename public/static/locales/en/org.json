@@ -1,0 +1,9 @@
+{
+  "table-header-name": "Name",
+  "table-header-role": "Role",
+  "table-header-approve": "Approve Status",
+  "table-action-add-tooltip": "Create organization",
+  "table-action-invite-tooltip": "Invite user",
+  "table-action-leave-tooltip": "Leave user",
+  "table-action-delete-tooltip": "Delete organization"
+}
