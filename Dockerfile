@@ -3,7 +3,8 @@ ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm install && \
+    npm install preact@10.5.3 typescript@4.0.3 vue@2.6.12
 COPY . .
 RUN npm run build
 
