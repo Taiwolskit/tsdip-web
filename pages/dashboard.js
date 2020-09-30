@@ -10,7 +10,7 @@ const App = ({ title }) => {
 
   useEffect(() => {
     if (!accessToken) {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('access_token');
       if (!token) {
         Router.push('/');
         return;

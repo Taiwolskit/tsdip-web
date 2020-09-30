@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
@@ -8,19 +8,25 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Email from '@material-ui/icons/Email';
-import PhoneIphone from '@material-ui/icons/PhoneIphone';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 
 import { withTranslation } from '../../i18n';
 import styles from './Profile.module.scss';
 import axios from '../../lib/axios';
+import { ContextStore } from '../../ctx';
 
 const Profile = ({ t }) => {
+  const { accessToken } = useContext(ContextStore);
   const [inputStatus, setInputStatus] = useState(false);
   const [stateUsername, setUsername] = useState('');
   const [stateEmail, setEmail] = useState('');
   const [statePhone, setPhone] = useState('');
+
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
 
   useEffect(() => {
     const getProfile = async () => {
@@ -29,7 +35,7 @@ const Profile = ({ t }) => {
           data: {
             data: { username = '', telephone = '', email = '' },
           },
-        } = await axios.get('/users/profile');
+        } = await axios.get('/users/profile', { headers });
         setUsername(username);
         setPhone(telephone);
         setEmail(email);
@@ -38,6 +44,7 @@ const Profile = ({ t }) => {
         setInputStatus(true);
       }
     };
+
     getProfile();
   }, []);
 
@@ -60,15 +67,20 @@ const Profile = ({ t }) => {
   const saveProfile = async (event) => {
     event.preventDefault();
     try {
-      await axios.put('/users/profile', {
-        username:
-          typeof stateUsername === 'string'
-            ? stateUsername.toLowerCase()
-            : null,
-        telephone:
-          typeof statePhone === 'string' ? statePhone.toLowerCase() : null,
-        email: typeof stateEmail === 'string' ? stateEmail.toLowerCase() : null,
-      });
+      await axios.put(
+        '/users/profile',
+        {
+          username:
+            typeof stateUsername === 'string'
+              ? stateUsername.toLowerCase()
+              : null,
+          telephone:
+            typeof statePhone === 'string' ? statePhone.toLowerCase() : null,
+          email:
+            typeof stateEmail === 'string' ? stateEmail.toLowerCase() : null,
+        },
+        { headers }
+      );
     } catch (error) {
       console.error(`Save user profile failed ${JSON.stringify(error)}`);
     }
@@ -77,9 +89,9 @@ const Profile = ({ t }) => {
   return (
     <form noValidate onSubmit={saveProfile}>
       <FormGroup>
-        <Grid container alignItems='center' className={styles['profile-form']}>
+        <Grid container spacing={1} alignItems='center' className={styles['profile-form']}>
           <Grid item>
-            <AccountCircle />
+            <AccountCircleIcon />
           </Grid>
 
           <Grid item className={styles['profile-form-item']}>
@@ -104,9 +116,9 @@ const Profile = ({ t }) => {
           </Grid>
         </Grid>
 
-        <Grid container alignItems='center' className={styles['profile-form']}>
+        <Grid container spacing={1} alignItems='center' className={styles['profile-form']}>
           <Grid item>
-            <PhoneIphone />
+            <PhoneIphoneIcon />
           </Grid>
           <Grid item className={styles['profile-form-item']}>
             <FormControl className={styles['profile-form-control']}>
@@ -128,9 +140,9 @@ const Profile = ({ t }) => {
           </Grid>
         </Grid>
 
-        <Grid container alignItems='center' className={styles['profile-form']}>
+        <Grid container spacing={1} alignItems='center' className={styles['profile-form']}>
           <Grid item>
-            <Email />
+            <EmailIcon />
           </Grid>
           <Grid item className={styles['profile-form-item']}>
             <FormControl className={styles['profile-form-control']}>
@@ -152,7 +164,7 @@ const Profile = ({ t }) => {
           </Grid>
         </Grid>
 
-        <Button type='submit' color='primary' variant='contained'>
+        <Button type='submit' color='primary' variant='contained' className={styles['profile-save-btn']}>
           Save
         </Button>
       </FormGroup>

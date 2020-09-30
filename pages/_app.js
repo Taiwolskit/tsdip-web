@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import App from 'next/app';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
+import axios from '../lib/axios';
 import { appWithTranslation } from '../i18n';
 import { ContextStore } from '../ctx';
 import '../public/styles.scss';
@@ -13,29 +14,45 @@ const authInitState = {
   user: {},
 };
 
-const login = (token) => {
-  localStorage.setItem('token', token);
+const login = async (token) => {
+  const {
+    data: {
+      data: { access_token = '', refresh_token = '' },
+    },
+  } = await axios.post('/users/login');
+  localStorage.setItem('access_token', access_token);
+  localStorage.setItem('refresh_token', refresh_token);
   console.info(`__get_token__ ${token}`);
+  return {
+    accessToken: access_token,
+    refreshToken: refresh_token,
+  };
 };
 
 const logout = () => {
-  localStorage.removeItem('token');
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('refresh_token');
   Router.push('/');
 };
 
 const authReducers = (state, action) => {
   const { type, ...args } = action;
-  const { accessToken, refreshToken, user } = args;
 
   switch (type) {
     case 'LOGIN':
-      login(accessToken);
+      let { accessToken, refreshToken } = args;
+      if (!accessToken && !refreshToken) {
+        const data = login('token');
+        accessToken = data.accessToken;
+        refreshToken = data.refreshToken;
+      }
+
       return {
         ...state,
         accessToken,
         loading: true,
         refreshToken,
-        user,
+        user: {},
       };
     case 'LOGOUT':
       logout();
@@ -49,19 +66,15 @@ const Application = ({ Component, pageProps }) => {
   const [state, dispatch] = useReducer(authReducers, authInitState);
 
   const checkAuthenticated = () => {
-    const accessToken = localStorage.getItem('token');
-    if (accessToken) {
-      dispatch({
-        type: 'LOGIN',
-        accessToken,
-        refreshToken: 'test',
-        user: {},
-      });
+    const accessToken = localStorage.getItem('access_token');
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (accessToken && refreshToken) {
+      dispatch({ type: 'LOGIN', accessToken, refreshToken });
     }
   };
 
   useEffect(() => {
-    console.log('Check token------');
+    console.debug('Check token------');
     if (localStorage && !state.accessToken) checkAuthenticated();
   }, []);
 
