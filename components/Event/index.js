@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
-import GetApp from '@material-ui/icons/GetApp';
-import AddBox from '@material-ui/icons/AddBox';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 import { withTranslation } from '../../i18n';
+import { ContextStore } from '../../ctx';
 import axios from '../../lib/axios';
 
 const Event = ({ t }) => {
+  const { accessToken } = useContext(ContextStore);
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+  };
+
   const columns = [
-    { title: t('event:table-header-title'), field: 'title' },
-    { title: t('event:table-header-editor'), field: 'editor' },
+    { title: t('table-header-org-name'), field: 'org_name' },
+    { title: t('table-header-event-name'), field: 'name' },
+    { title: t('table-header-editor'), field: 'username' },
     {
-      title: t('event:table-header-approve'),
-      field: 'approve',
-      type: 'boolean',
-    },
-    {
-      title: t('event:table-header-lastUpdate'),
-      field: 'updatedAt',
+      title: t('table-header-lastUpdate'),
+      field: 'updated_at',
       type: 'datetime',
     },
     {
-      title: t('event:table-header-publish'),
-      field: 'publishedAt',
+      title: t('table-header-approve'),
+      field: 'approve_at',
+      type: 'boolean',
+    },
+    {
+      title: t('table-header-publish'),
+      field: 'published_at',
       type: 'datetime',
     },
   ];
@@ -33,66 +40,63 @@ const Event = ({ t }) => {
     {
       name: 'edit',
       icon: 'edit',
-      tooltip: t('event:table-action-edit-tooltip'),
+      tooltip: t('table-action-edit-tooltip'),
       onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
       position: 'row',
     },
     {
       name: 'add',
-      icon: AddBox,
-      tooltip: t('event:table-action-add-tooltip'),
+      icon: AddBoxIcon,
+      tooltip: t('table-action-add-tooltip'),
       isFreeAction: true,
       onClick: (event) => Router.push('/edit/event'),
     },
     {
       name: 'publish',
       icon: 'publish',
-      tooltip: t('event:table-action-publish-tooltip'),
+      tooltip: t('table-action-publish-tooltip'),
       onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
     },
     {
       name: 'unpublish',
-      icon: GetApp,
-      tooltip: t('event:table-action-unpublish-tooltip'),
+      icon: GetAppIcon,
+      tooltip: t('table-action-un-publish-tooltip'),
       onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
     },
   ];
 
-  useEffect(() => {
-    const getEvents = async () => {
-      try {
-        const {
-          data: {
-            data: { items },
-          },
-        } = await axios.get(
-          '/organizations/558d1889-fff0-4f3e-9026-26fb1291b6b6/events'
-        );
+  const getEvents = async (query) => {
+    const { page: current_page, pageSize } = query;
 
-        setEvent(
-          items.map((item) => ({
-            title: item.name,
-            editor: 'Baran',
-            approve: item.approve_at !== null,
-            updatedAt: new Date(item.updated_at),
-            publishedAt: new Date(),
-          }))
-        );
-      } catch (error) {
-        console.error(`Get events API fail ${JSON.stringify(error)}`);
-      }
-    };
+    try {
+      const {
+        data: {
+          data: { page = 1, total = 0, items = [] },
+        },
+      } = await axios.get('/events', {
+        headers,
+        params: {
+          limit: pageSize,
+          page_size: pageSize,
+          page: current_page + 1,
+        },
+      });
 
-    getEvents();
-  }, []);
-
-  const [events, setEvent] = useState([]);
+      return {
+        data: items,
+        page: page - 1,
+        totalCount: total,
+      };
+    } catch (error) {
+      console.error(`Get events API fail ${JSON.stringify(error)}`);
+    }
+  };
 
   return (
     <MaterialTable
-      title={t('event:table-title')}
+      title={t('table-title')}
       columns={columns}
-      data={events}
+      data={getEvents}
       options={{ selection: true }}
       actions={actions}
       editable={{

@@ -18,11 +18,11 @@ import axios from '../../lib/axios';
 import { ContextStore } from '../../ctx';
 
 const Profile = ({ t }) => {
-  const { accessToken } = useContext(ContextStore);
+  const { accessToken, user } = useContext(ContextStore);
   const [inputStatus, setInputStatus] = useState(false);
-  const [stateUsername, setUsername] = useState('');
-  const [stateEmail, setEmail] = useState('');
-  const [statePhone, setPhone] = useState('');
+  const [stateUsername, setUsername] = useState(user.username);
+  const [stateEmail, setEmail] = useState(user.email);
+  const [statePhone, setPhone] = useState(user.telephone);
 
   const headers = {
     Authorization: `Bearer ${accessToken}`,

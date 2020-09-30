@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
-import AddBox from '@material-ui/icons/AddBox';
-import PersonAdd from '@material-ui/icons/PersonAdd';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonAddDisabledIcon from '@material-ui/icons/PersonAddDisabled';
 
 import { withTranslation } from '../../i18n';
@@ -16,40 +16,51 @@ const Organization = ({ t }) => {
   };
 
   const columns = [
-    { title: t('org:table-header-name'), field: 'name' },
-    { title: t('org:table-header-role'), field: 'role' },
+    { title: t('table-header-name'), field: 'name' },
     {
-      title: '類別',
+      title: t('table-header-role'),
+      field: 'role',
+      lookup: {
+        owner: t('table-field-role-owner'),
+        manager: t('table-field-role-manager'),
+        viewer: t('table-field-role-viewer'),
+      },
+    },
+    {
+      title: t('table-header-org-type'),
       field: 'org_type',
-      lookup: { dance_group: 'Dance Group', studio: 'Studio' },
+      lookup: {
+        dance_group: t('table-field-org-type-group'),
+        studio: t('table-field-org-type-studio'),
+      },
     },
   ];
 
   const actions = [
     {
       name: 'add',
-      icon: AddBox,
-      tooltip: t('org:table-action-add-tooltip'),
+      icon: AddBoxIcon,
+      tooltip: t('table-action-add-tooltip'),
       isFreeAction: true,
       onClick: (event) => Router.push('/edit/organization'),
     },
     (rowData) => ({
-      icon: PersonAdd,
-      tooltip: t('org:table-action-invite-tooltip'),
+      icon: PersonAddIcon,
+      tooltip: t('table-action-invite-tooltip'),
       onClick: (event, rowData) =>
         confirm('You want to delete ' + rowData.name),
       hidden: rowData.role === 'viewer',
     }),
     (rowData) => ({
       icon: PersonAddDisabledIcon,
-      tooltip: t('org:table-action-leave-tooltip'),
+      tooltip: t('table-action-leave-tooltip'),
       onClick: (event, rowData) =>
         confirm('You want to delete ' + rowData.name),
       hidden: rowData.role === 'owner',
     }),
     (rowData) => ({
       icon: 'delete',
-      tooltip: t('org:table-action-delete-tooltip'),
+      tooltip: t('table-action-delete-tooltip'),
       onClick: (event, rowData) =>
         confirm('You want to delete ' + rowData.name),
       hidden: rowData.role !== 'owner',
@@ -85,7 +96,7 @@ const Organization = ({ t }) => {
 
   return (
     <MaterialTable
-      title='Organizations'
+      title={t('table-title')}
       columns={columns}
       data={getOrg}
       actions={actions}

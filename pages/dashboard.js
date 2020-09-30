@@ -35,7 +35,7 @@ const App = ({ title }) => {
 };
 
 App.getInitialProps = () => ({
-  namespacesRequired: ['common', 'event', 'profile'],
+  namespacesRequired: ['common', 'event', 'profile', 'org'],
 });
 
 App.defaultProps = {

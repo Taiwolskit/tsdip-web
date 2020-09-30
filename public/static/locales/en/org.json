@@ -1,9 +1,15 @@
 {
-  "table-header-name": "Name",
-  "table-header-role": "Role",
-  "table-header-approve": "Approve Status",
   "table-action-add-tooltip": "Create organization",
+  "table-action-delete-tooltip": "Delete organization",
   "table-action-invite-tooltip": "Invite user",
   "table-action-leave-tooltip": "Leave user",
-  "table-action-delete-tooltip": "Delete organization"
+  "table-field-org-type-group": "Dance Group",
+  "table-field-org-type-studio": "Studio",
+  "table-field-role-manager": "Manager",
+  "table-field-role-owner": "Owner",
+  "table-field-role-viewer": "Viewer",
+  "table-header-name": "Name",
+  "table-header-org-type": "Group Type",
+  "table-header-role": "Role",
+  "table-title": "Manage organizations"
 }
