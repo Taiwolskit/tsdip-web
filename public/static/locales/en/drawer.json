@@ -1,5 +1,6 @@
 {
   "item-event": "Event",
   "item-org": "Organization",
-  "item-profile": "Profile"
+  "item-profile": "Profile",
+  "item-request-log": "Request"
 }

@@ -48,12 +48,17 @@ const authReducers = (state, action) => {
         refreshToken = data.refreshToken;
       }
 
+      let user = {}
+      if (accessToken) {
+        user = parseJwt(accessToken).identity;
+      }
+
       return {
         ...state,
         accessToken,
         loading: true,
         refreshToken,
-        user: parseJwt(accessToken).identity,
+        user,
       };
     case 'LOGOUT':
       logout();

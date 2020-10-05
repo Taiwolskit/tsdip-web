@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -18,16 +18,19 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import BusinessIcon from '@material-ui/icons/Business';
 import EventIcon from '@material-ui/icons/Event';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 
 import { withTranslation } from '../../i18n';
+import { ContextStore } from '../../ctx';
 
-import Profile from '../Profile';
 import Event from '../Event';
 import Organization from '../Organization';
+import Profile from '../Profile';
+import RequestLog from '../RequestLog';
 
 const drawerWidth = 240;
 
@@ -96,19 +99,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderSwitch = (param) => {
-  switch (param) {
-    case 2:
-      return <Event />;
-    case 1:
-      return <Organization />;
-    case 0:
-    default:
-      return <Profile />;
+const renderSwitch = (param, userType) => {
+  if (userType === 'user') {
+    switch (param) {
+      case 2:
+        return <Event />;
+      case 1:
+        return <Organization />;
+      case 0:
+      default:
+        return <Profile />;
+    }
+  } else if (userType === 'manager') {
+    switch (param) {
+      case 3:
+        return <Event />;
+      case 2:
+        return <Organization />;
+      case 1:
+        return <RequestLog />;
+      case 0:
+      default:
+        return <Profile />;
+    }
   }
 };
 
 const MiniDrawer = ({ t, sidebarItems }) => {
+  const { user } = useContext(ContextStore);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -117,6 +135,31 @@ const MiniDrawer = ({ t, sidebarItems }) => {
   const handleListItemClick = (event, index) => setSelectedIndex(index);
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
+
+  if (user.type === 'manager') {
+    sidebarItems = [
+      {
+        ariaLabel: 'User profile',
+        icon: <PersonIcon />,
+        text: 'drawer:item-profile',
+      },
+      {
+        ariaLabel: 'Request list',
+        icon: <AssignmentIcon />,
+        text: 'drawer:item-request-log',
+      },
+      {
+        ariaLabel: 'Manage organization',
+        icon: <BusinessIcon />,
+        text: 'drawer:item-org',
+      },
+      {
+        ariaLabel: 'Manage event',
+        icon: <EventIcon />,
+        text: 'drawer:item-event',
+      },
+    ];
+  }
 
   return (
     <div className={classes.root}>
@@ -197,7 +240,7 @@ const MiniDrawer = ({ t, sidebarItems }) => {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {renderSwitch(selectedIndex)}
+        {renderSwitch(selectedIndex, user.type)}
       </main>
     </div>
   );

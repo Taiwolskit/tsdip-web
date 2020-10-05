@@ -9,61 +9,116 @@ import { withTranslation } from '../../i18n';
 import { ContextStore } from '../../ctx';
 import axios from '../../lib/axios';
 
+
+const generateColumn = (userType, t) => {
+  let columns, actions;
+  if (userType === 'user') {
+    columns = [
+      { title: t('table-header-org-name'), field: 'org_name' },
+      { title: t('table-header-event-name'), field: 'name' },
+      { title: t('table-header-editor'), field: 'username' },
+      {
+        title: t('table-header-lastUpdate'),
+        field: 'updated_at',
+        type: 'datetime',
+      },
+      {
+        title: t('table-header-approve'),
+        field: 'approve_at',
+        type: 'boolean',
+      },
+      {
+        title: t('table-header-publish'),
+        field: 'published_at',
+        type: 'datetime',
+      },
+    ];
+
+    actions = [
+      {
+        name: 'edit',
+        icon: 'edit',
+        tooltip: t('table-action-edit-tooltip'),
+        onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+        position: 'row',
+      },
+      {
+        name: 'add',
+        icon: AddBoxIcon,
+        tooltip: t('table-action-add-tooltip'),
+        isFreeAction: true,
+        onClick: (event) => Router.push('/edit/event'),
+      },
+      {
+        name: 'publish',
+        icon: 'publish',
+        tooltip: t('table-action-publish-tooltip'),
+        onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+      },
+      {
+        name: 'unpublish',
+        icon: GetAppIcon,
+        tooltip: t('table-action-un-publish-tooltip'),
+        onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+      },
+    ];
+  } else if (userType === 'manager') {
+    columns = [
+      { title: t('table-header-org-name'), field: 'org_name' },
+      { title: t('table-header-event-name'), field: 'name' },
+      {
+        title: t('table-header-lastUpdate'),
+        field: 'updated_at',
+        type: 'datetime',
+      },
+      {
+        title: t('table-header-publish'),
+        field: 'published_at',
+        type: 'datetime',
+      },
+    ];
+
+    actions = [
+      {
+        name: 'edit',
+        icon: 'edit',
+        tooltip: t('table-action-edit-tooltip'),
+        onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+        position: 'row',
+      },
+      {
+        name: 'add',
+        icon: AddBoxIcon,
+        tooltip: t('table-action-add-tooltip'),
+        isFreeAction: true,
+        onClick: (event) => Router.push('/edit/event'),
+      },
+      {
+        name: 'publish',
+        icon: 'publish',
+        tooltip: t('table-action-publish-tooltip'),
+        onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+      },
+      {
+        name: 'unpublish',
+        icon: GetAppIcon,
+        tooltip: t('table-action-un-publish-tooltip'),
+        onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+      },
+    ];
+  }
+
+  return { columns, actions };
+};
+
+
 const Event = ({ t }) => {
-  const { accessToken } = useContext(ContextStore);
+  const { accessToken, user } = useContext(ContextStore);
   const headers = {
     Authorization: `Bearer ${accessToken}`,
   };
 
-  const columns = [
-    { title: t('table-header-org-name'), field: 'org_name' },
-    { title: t('table-header-event-name'), field: 'name' },
-    { title: t('table-header-editor'), field: 'username' },
-    {
-      title: t('table-header-lastUpdate'),
-      field: 'updated_at',
-      type: 'datetime',
-    },
-    {
-      title: t('table-header-approve'),
-      field: 'approve_at',
-      type: 'boolean',
-    },
-    {
-      title: t('table-header-publish'),
-      field: 'published_at',
-      type: 'datetime',
-    },
-  ];
-
-  const actions = [
-    {
-      name: 'edit',
-      icon: 'edit',
-      tooltip: t('table-action-edit-tooltip'),
-      onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
-      position: 'row',
-    },
-    {
-      name: 'add',
-      icon: AddBoxIcon,
-      tooltip: t('table-action-add-tooltip'),
-      isFreeAction: true,
-      onClick: (event) => Router.push('/edit/event'),
-    },
-    {
-      name: 'publish',
-      icon: 'publish',
-      tooltip: t('table-action-publish-tooltip'),
-      onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
-    },
-    {
-      name: 'unpublish',
-      icon: GetAppIcon,
-      tooltip: t('table-action-un-publish-tooltip'),
-      onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
-    },
-  ];
+  const { columns, actions } = generateColumn(user.type, t);
 
   const getEvents = async (query) => {
     const { page: current_page, pageSize } = query;
