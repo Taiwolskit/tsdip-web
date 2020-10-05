@@ -35,19 +35,19 @@
     "sass": "^1.26.11"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.0.25",
-    "@storybook/addon-actions": "^6.0.25",
+    "@storybook/addon-a11y": "^6.0.26",
+    "@storybook/addon-actions": "^6.0.26",
     "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-contexts": "^5.3.21",
-    "@storybook/addon-cssresources": "^6.0.25",
-    "@storybook/addon-events": "^6.0.25",
-    "@storybook/addon-links": "^6.0.25",
+    "@storybook/addon-cssresources": "^6.0.26",
+    "@storybook/addon-events": "^6.0.26",
+    "@storybook/addon-links": "^6.0.26",
     "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addon-viewport": "^6.0.25",
-    "@storybook/addons": "^6.0.25",
-    "@storybook/react": "^6.0.25",
-    "@storybook/theming": "^6.0.25",
-    "babel-jest": "^26.3.0",
+    "@storybook/addon-viewport": "^6.0.26",
+    "@storybook/addons": "^6.0.26",
+    "@storybook/react": "^6.0.26",
+    "@storybook/theming": "^6.0.26",
+    "babel-jest": "^26.5.0",
     "babel-loader": "^8.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
@@ -58,7 +58,7 @@
     "eslint-plugin-react": "^7.21.3",
     "eslint-plugin-react-hooks": "^4.1.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.4.2"
+    "jest": "^26.5.0"
   },
   "peerDependencies": {
     "preact": "^10.5.3",
