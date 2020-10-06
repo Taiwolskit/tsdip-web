@@ -18,7 +18,7 @@ import axios from '../../lib/axios';
 import { ContextStore } from '../../ctx';
 
 const Profile = ({ t }) => {
-  const { accessToken, user } = useContext(ContextStore);
+  const { accessToken, user, dispatch } = useContext(ContextStore);
   const [inputStatus, setInputStatus] = useState(false);
   const [stateUsername, setUsername] = useState(user.username);
   const [stateEmail, setEmail] = useState(user.email);
@@ -41,6 +41,10 @@ const Profile = ({ t }) => {
         setEmail(email);
       } catch (error) {
         console.error(`Get user profile failed ${JSON.stringify(error)}`);
+        if (error.response.data.msg === 'Token has expired') {
+          dispatch({ type: 'LOGOUT' });
+          return;
+        }
         setInputStatus(true);
       }
     };
@@ -89,7 +93,12 @@ const Profile = ({ t }) => {
   return (
     <form noValidate onSubmit={saveProfile}>
       <FormGroup>
-        <Grid container spacing={1} alignItems='center' className={styles['profile-form']}>
+        <Grid
+          container
+          spacing={1}
+          alignItems='center'
+          className={styles['profile-form']}
+        >
           <Grid item>
             <AccountCircleIcon />
           </Grid>
@@ -116,7 +125,12 @@ const Profile = ({ t }) => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={1} alignItems='center' className={styles['profile-form']}>
+        <Grid
+          container
+          spacing={1}
+          alignItems='center'
+          className={styles['profile-form']}
+        >
           <Grid item>
             <PhoneIphoneIcon />
           </Grid>
@@ -140,7 +154,12 @@ const Profile = ({ t }) => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={1} alignItems='center' className={styles['profile-form']}>
+        <Grid
+          container
+          spacing={1}
+          alignItems='center'
+          className={styles['profile-form']}
+        >
           <Grid item>
             <EmailIcon />
           </Grid>
@@ -164,7 +183,12 @@ const Profile = ({ t }) => {
           </Grid>
         </Grid>
 
-        <Button type='submit' color='primary' variant='contained' className={styles['profile-save-btn']}>
+        <Button
+          type='submit'
+          color='primary'
+          variant='contained'
+          className={styles['profile-save-btn']}
+        >
           Save
         </Button>
       </FormGroup>

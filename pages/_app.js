@@ -41,16 +41,20 @@ const authReducers = (state, action) => {
 
   switch (type) {
     case 'LOGIN':
-      let { accessToken, refreshToken } = args;
+      let { accessToken, refreshToken, redirect = false } = args;
       if (!accessToken && !refreshToken) {
         const data = login('token');
         accessToken = data.accessToken;
         refreshToken = data.refreshToken;
       }
 
-      let user = {}
+      let user = {};
       if (accessToken) {
         user = parseJwt(accessToken).identity;
+      }
+
+      if (redirect) {
+        Router.push('/');
       }
 
       return {

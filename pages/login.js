@@ -13,7 +13,7 @@ const App = ({ title }) => {
       <p>{accessToken}</p>
       <button
         type='submit'
-        onClick={() => dispatch({ type: 'LOGIN' })}
+        onClick={() => dispatch({ type: 'LOGIN', redirect: true })}
       >
         Submit
       </button>

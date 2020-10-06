@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -35,7 +36,6 @@ const generateColumn = (userType, t) => {
 
     actions = [
       {
-        name: 'add',
         icon: AddBoxIcon,
         tooltip: t('table-action-add-tooltip'),
         isFreeAction: true,
