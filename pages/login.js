@@ -1,7 +1,26 @@
 import React, { useContext } from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
+
 import { ContextStore } from '../ctx';
+import axios from '../lib/axios';
+
+const login = async (dispatch) => {
+  const {
+    data: {
+      data: { access_token = '', refresh_token = '' },
+    },
+  } = await axios.post('/users/login');
+  localStorage.setItem('accessToken', access_token);
+  localStorage.setItem('refreshToken', refresh_token);
+
+  return dispatch({
+    type: 'LOGIN',
+    accessToken: access_token,
+    direct: true,
+    refreshToken: refresh_token,
+  });
+};
 
 const App = ({ title }) => {
   const { accessToken, dispatch } = useContext(ContextStore);
@@ -11,10 +30,7 @@ const App = ({ title }) => {
         <title>{title}</title>
       </Head>
       <p>{accessToken}</p>
-      <button
-        type='submit'
-        onClick={() => dispatch({ type: 'LOGIN', redirect: true })}
-      >
+      <button type='submit' onClick={() => login(dispatch)}>
         Submit
       </button>
       <div>Content</div>

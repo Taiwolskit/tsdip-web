@@ -163,7 +163,7 @@ const Organization = ({ t }) => {
         totalCount: total,
       };
     } catch (error) {
-      console.error(`Get user profile failed ${JSON.stringify(error)}`);
+      console.error(`_get_reviewing_orgs_fail_ ${JSON.stringify(error)}`);
     }
   };
 
@@ -190,7 +190,7 @@ const Organization = ({ t }) => {
         totalCount: total,
       };
     } catch (error) {
-      console.error(`Get user profile failed ${JSON.stringify(error)}`);
+      console.error(`_get_orgs_fail_ ${JSON.stringify(error)}`);
     }
   };
 

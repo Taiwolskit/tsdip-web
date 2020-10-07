@@ -40,7 +40,7 @@ const Profile = ({ t }) => {
         setPhone(telephone);
         setEmail(email);
       } catch (error) {
-        console.error(`Get user profile failed ${JSON.stringify(error)}`);
+        console.error(`_get_profile_fail_ ${JSON.stringify(error)}`);
         if (error.response.data.msg === 'Token has expired') {
           dispatch({ type: 'LOGOUT' });
           return;
@@ -86,7 +86,7 @@ const Profile = ({ t }) => {
         { headers }
       );
     } catch (error) {
-      console.error(`Save user profile failed ${JSON.stringify(error)}`);
+      console.error(`_save_profile_fail_ ${JSON.stringify(error)}`);
     }
   };
 

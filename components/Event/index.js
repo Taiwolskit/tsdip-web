@@ -143,7 +143,7 @@ const Event = ({ t }) => {
         totalCount: total,
       };
     } catch (error) {
-      console.error(`Get events API fail ${JSON.stringify(error)}`);
+      console.error(`_get_events_fail_ ${JSON.stringify(error)}`);
     }
   };
 

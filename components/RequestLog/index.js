@@ -88,8 +88,7 @@ const RequestLog = () => {
         totalCount: total,
       };
     } catch (error) {
-      console.log(error);
-      console.error(`Get user profile failed ${JSON.stringify(error)}`);
+      console.error(`_get_org_requests_fail_ ${JSON.stringify(error)}`);
     }
   };
 
@@ -116,8 +115,7 @@ const RequestLog = () => {
         totalCount: total,
       };
     } catch (error) {
-      console.log(error);
-      console.error(`Get user profile failed ${JSON.stringify(error)}`);
+      console.error(`_get_event_requests_fail_ ${JSON.stringify(error)}`);
     }
   };
 
