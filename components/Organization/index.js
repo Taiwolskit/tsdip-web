@@ -6,8 +6,8 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonAddDisabledIcon from '@material-ui/icons/PersonAddDisabled';
 
-import { withTranslation } from '../../i18n';
 import { ContextStore } from '../../ctx';
+import { withTranslation } from '../../i18n';
 import axios from '../../lib/axios';
 
 const generateColumn = (userType, t) => {

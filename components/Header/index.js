@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
-import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import LanguageIcon from '@material-ui/icons/Language';
+
 import { ContextStore } from '../../ctx';
 import { i18n, withTranslation } from '../../i18n';
 
@@ -97,7 +97,7 @@ const Header = ({ t, items, languages }) => {
                 edge='end'
                 onClick={handleProfileMenu}
               >
-                <AccountCircle />
+                <AccountCircleIcon />
               </IconButton>
             ) : (
               <IconButton
@@ -106,7 +106,7 @@ const Header = ({ t, items, languages }) => {
                 edge='end'
                 href='/login'
               >
-                <AccountCircle />
+                <AccountCircleIcon />
               </IconButton>
             )}
           </Tooltip>
@@ -207,7 +207,7 @@ Header.propTypes = {
       caption: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       tooltip: PropTypes.string.isRequired,
-    }),
+    })
   ),
 };
 

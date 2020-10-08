@@ -12,61 +12,61 @@ const Step2 = ({ t }) => (
       {t('edit-org-step2-title')}
     </Typography>
     <TextField
-      label={t('edit-org-step2-input-address-label')}
+      fullWidth
       id='social-address'
+      label={t('edit-org-step2-input-address-label')}
       margin='normal'
-      fullWidth
     />
     <TextField
-      label={t('edit-org-step2-input-email-label')}
-      type='email'
+      fullWidth
       id='social-email'
+      label={t('edit-org-step2-input-email-label')}
       margin='normal'
-      fullWidth
+      type='email'
     />
     <TextField
-      label={t('edit-org-step2-input-fan-page-label')}
-      type='url'
+      fullWidth
       id='social-fan-page'
+      label={t('edit-org-step2-input-fan-page-label')}
       margin='normal'
-      fullWidth
+      type='url'
     />
     <TextField
-      label={t('edit-org-step2-input-instagram-label')}
-      id='social-instagram'
-      margin='normal'
-      helperText={t('edit-org-step2-input-instagram-helper')}
       fullWidth
+      helperText={t('edit-org-step2-input-instagram-helper')}
+      id='social-instagram'
       InputProps={{
         startAdornment: <InputAdornment position='start'>@</InputAdornment>,
       }}
+      label={t('edit-org-step2-input-instagram-label')}
+      margin='normal'
     />
     <TextField
-      label={t('edit-org-step2-input-line-label')}
+      fullWidth
       id='social-line'
+      label={t('edit-org-step2-input-line-label')}
       margin='normal'
-      fullWidth
     />
     <TextField
-      label={t('edit-org-step2-input-telephone-label')}
-      type='tel'
+      fullWidth
       id='social-telephone'
+      label={t('edit-org-step2-input-telephone-label')}
       margin='normal'
-      fullWidth
+      type='tel'
     />
     <TextField
-      label={t('edit-org-step2-input-website-label')}
-      type='url'
+      fullWidth
       id='social-website'
+      label={t('edit-org-step2-input-website-label')}
       margin='normal'
-      fullWidth
+      type='url'
     />
     <TextField
-      label={t('edit-org-step2-input-youtube-label')}
-      type='url'
-      id='social-youtube'
-      margin='normal'
       fullWidth
+      id='social-youtube'
+      label={t('edit-org-step2-input-youtube-label')}
+      margin='normal'
+      type='url'
     />
   </form>
 );

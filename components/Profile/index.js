@@ -7,15 +7,14 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 
-import { withTranslation } from '../../i18n';
-import styles from './Profile.module.scss';
-import axios from '../../lib/axios';
 import { ContextStore } from '../../ctx';
+import { withTranslation } from '../../i18n';
+import axios from '../../lib/axios';
+import styles from './Profile.module.scss';
 
 const Profile = ({ t }) => {
   const { accessToken, user, dispatch } = useContext(ContextStore);

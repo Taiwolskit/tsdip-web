@@ -8,17 +8,17 @@ import axios from '../lib/axios';
 const login = async (dispatch) => {
   const {
     data: {
-      data: { access_token = '', refresh_token = '' },
+      data: {
+        access_token: accessToken = '',
+        refresh_token: refreshToken = '',
+      },
     },
   } = await axios.post('/users/login');
-  localStorage.setItem('accessToken', access_token);
-  localStorage.setItem('refreshToken', refresh_token);
 
   return dispatch({
     type: 'LOGIN',
-    accessToken: access_token,
-    direct: true,
-    refreshToken: refresh_token,
+    accessToken,
+    refreshToken,
   });
 };
 

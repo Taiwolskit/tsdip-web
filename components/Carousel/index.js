@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Carousel from 'react-material-ui-carousel';
 import { Paper } from '@material-ui/core';
+
 import styles from './Carousel.module.scss';
 
 const CarouselItem = ({ caption, description, images }) => (
@@ -31,10 +32,10 @@ const App = ({ items }) => (
   <Carousel indicators={false} navButtonsAlwaysVisible autoPlay={false}>
     {items.map(({ caption, description, images }) => (
       <CarouselItem
-        key={caption}
         caption={caption}
         description={description}
         images={images}
+        key={caption}
       />
     ))}
   </Carousel>
@@ -65,7 +66,7 @@ App.propTypes = {
       caption: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       images: PropTypes.arrayOf(PropTypes.string),
-    }),
+    })
   ),
 };
 

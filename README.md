@@ -2,8 +2,24 @@
 
 ## Required
 
+### Package
+
+- Axios
+- i18n
+- Material Table
 - Material UI
-- Node.js
 - Next.js
+- Node.js
+- Sass
+
+### File
+
+- `.env.local`
 
 ## Environment Variable
+
+### Browser
+
+| Variable              | Description            | Default               |
+| --------------------- | ---------------------- | --------------------- |
+| `NEXT_PUBLIC_API_URL` | Backend API server URL | http://localhost:5000 |

@@ -5,11 +5,11 @@ import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
+
 import styles from './Footer.module.scss';
 
 const Footer = () => (
@@ -61,11 +61,7 @@ const Footer = () => (
           <Link href='https://taiwolskit.com'>
             <Typography>
               Copyright &copy;
-              {
-                new Date().getFullYear()
-              }
-              {' '}
-              | All rights reserved. Powered by
+              {new Date().getFullYear()} | All rights reserved. Powered by
               <a href='https://taiwolskit.com'>Taiwolskit</a>
             </Typography>
           </Link>

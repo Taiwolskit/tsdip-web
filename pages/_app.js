@@ -3,10 +3,12 @@ import App from 'next/app';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 
-import { parseJwt } from '../lib/parse';
 import { appWithTranslation } from '../i18n';
 import { ContextStore, authInitState } from '../ctx';
+import { parseJwt } from '../lib/parse';
 import '../public/styles.scss';
+
+const protectRoute = ['/dashboard'];
 
 const authReducers = (state, action) => {
   // Cannot async fetch data in reducer
@@ -14,9 +16,14 @@ const authReducers = (state, action) => {
 
   switch (type) {
     case 'LOGIN':
-      const { accessToken, refreshToken, direct = false } = args;
+      const { accessToken, refreshToken } = args;
       const user = accessToken ? parseJwt(accessToken).identity : {};
-      if (direct) Router.push('/');
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+
+      if (Router.pathname === '/login') {
+        Router.push('/');
+      }
       return {
         ...state,
         accessToken,
@@ -43,6 +50,8 @@ const Application = ({ Component, pageProps }) => {
 
     if (accessToken && refreshToken) {
       dispatch({ type: 'LOGIN', accessToken, refreshToken });
+    } else if (protectRoute.includes(Router.pathname)) {
+      Router.push('/');
     }
   };
 

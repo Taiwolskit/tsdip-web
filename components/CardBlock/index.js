@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import ShareIcon from '@material-ui/icons/Share';
+
 import { withTranslation } from '../../i18n';
 import styles from './CardBlock.module.scss';
 
@@ -29,7 +30,7 @@ const CardItem = ({ t }) => (
     <Card className={styles['card-block-item']}>
       <CardActionArea>
         <CardMedia
-          className={styles['card-media']}
+          className={styles['card-block-item-media']}
           image='https://static.toiimg.com/thumb/msid-67586673,width-800,height-600,resizemode-75,imgsize-3918697,pt-32,y_pad-40/67586673.jpg'
           title='Contemplative Reptile'
         />
@@ -187,7 +188,7 @@ CardBlock.propTypes = {
       imageUrl: PropTypes.string.isRequired,
       registrationLink: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-    }),
+    })
   ),
 };
 

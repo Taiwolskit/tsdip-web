@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 
 import { withTranslation } from '../../i18n';
+
 import EditStep from './EditStep';
 
 const EditOrg = ({ t }) => (

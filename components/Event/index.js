@@ -5,10 +5,9 @@ import MaterialTable from 'material-table';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
-import { withTranslation } from '../../i18n';
 import { ContextStore } from '../../ctx';
+import { withTranslation } from '../../i18n';
 import axios from '../../lib/axios';
-
 
 const generateColumn = (userType, t) => {
   let columns, actions;
@@ -110,7 +109,6 @@ const generateColumn = (userType, t) => {
 
   return { columns, actions };
 };
-
 
 const Event = ({ t }) => {
   const { accessToken, user } = useContext(ContextStore);

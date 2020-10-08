@@ -1,16 +1,16 @@
 .card-block {
-  padding: 20px 15px;
   min-height: 500px;
+  padding: 20px 15px;
 
   .card-block-item-wrapper {
     padding: 12px;
-  }
 
-  .card-block-item {
-    border-radius: 20px;
+    .card-block-item {
+      border-radius: 20px;
 
-    .card-media {
-      height: 140px;
+      .card-block-item-media {
+        height: 140px;
+      }
     }
   }
 }

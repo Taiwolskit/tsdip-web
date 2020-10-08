@@ -7,9 +7,4 @@ export const authInitState = {
   user: {},
 };
 
-export const ContextStore = createContext({
-  accessToken: undefined,
-  loading: false,
-  refreshToken: undefined,
-  user: {},
-});
+export const ContextStore = createContext(authInitState);

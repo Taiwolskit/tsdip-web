@@ -3,23 +3,23 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import CancelIcon from '@material-ui/icons/Cancel';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Stepper from '@material-ui/core/Stepper';
 import Typography from '@material-ui/core/Typography';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 import { withTranslation } from '../../../i18n';
 import styles from './EditStep.module.scss';
+
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
     marginBottom: '20px',
+    width: '100%',
   },
   wrapper: {
     border: '5px solid white',
@@ -29,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   instructions: {
-    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1),
   },
 }));
 
@@ -84,16 +84,16 @@ const EditStep = ({ t }) => {
       setActiveStep(0);
       return;
     }
-    setActiveStep((prevActiveStep) => ++prevActiveStep);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => --prevActiveStep);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleSkip = () => {
-    setActiveStep((prevActiveStep) => ++prevActiveStep);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped((prevSkipped) => {
       const newSkipped = new Set(prevSkipped.values());
       newSkipped.add(activeStep);

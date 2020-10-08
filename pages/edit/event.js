@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import EditEvent from '../../components/EditEvent';
 
 const App = ({ title }) => (
-  <div style={{'height': '100%'}}>
+  <div style={{ height: '100%' }}>
     <Head>
       <title>{title}</title>
     </Head>

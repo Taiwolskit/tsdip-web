@@ -42,6 +42,6 @@ const Step3 = () => {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default Step3;

@@ -16,8 +16,8 @@ Object.assign(defaultTheme, {
       container: {
         border: '5px solid gray',
         borderRadius: '5px',
-        padding: '5px',
         height: '-webkit-fill-available',
+        padding: '5px',
       },
       toolbar: {
         borderBottom: '1px solid gray',
@@ -31,22 +31,22 @@ Object.assign(defaultTheme, {
 const fakeData = {
   blocks: [
     {
+      data: {},
+      depth: 0,
+      entityRanges: [],
+      inlineStyleRanges: [],
       key: '3fbbl',
       text: '測試測試',
       type: 'unstyled',
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {},
     },
     {
+      data: {},
+      depth: 0,
+      entityRanges: [],
+      inlineStyleRanges: [],
       key: '31bq5',
       text: '哈囉哈囉',
       type: 'unstyled',
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {},
     },
   ],
   entityMap: {},
@@ -60,9 +60,9 @@ const Step1 = ({ t }) => {
       </Typography>
       <TextField
         className={styles['edit-org-step1-org-name']}
+        fullWidth
         label={t('edit-org-step1-input-name')}
         variant='outlined'
-        fullWidth
       />
       <MuiThemeProvider theme={defaultTheme}>
         <MUIRichTextEditor

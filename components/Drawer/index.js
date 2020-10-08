@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Link from 'next/link';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Fade from '@material-ui/core/Fade';
@@ -17,15 +15,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
-
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import BusinessIcon from '@material-ui/icons/Business';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import EventIcon from '@material-ui/icons/Event';
 import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 
-import { withTranslation } from '../../i18n';
 import { ContextStore } from '../../ctx';
+import { withTranslation } from '../../i18n';
 
 import Event from '../Event';
 import Organization from '../Organization';
@@ -42,19 +41,19 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   appBar: {
-    zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+      easing: theme.transitions.easing.sharp,
     }),
+    zIndex: theme.zIndex.drawer + 1,
   },
   appBarShift: {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.sharp,
     }),
+    width: `calc(100% - ${drawerWidth}px)`,
   },
   menuButton: {
     marginRight: 36,
@@ -63,31 +62,31 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
   },
   drawer: {
-    width: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
+    width: drawerWidth,
   },
   drawerOpen: {
-    width: drawerWidth,
     transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.sharp,
     }),
+    width: drawerWidth,
   },
   drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
     overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      duration: theme.transitions.duration.leavingScreen,
+      easing: theme.transitions.easing.sharp,
+    }),
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
   },
   toolbar: {
-    display: 'flex',
     alignItems: 'center',
+    display: 'flex',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar

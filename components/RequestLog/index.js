@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import MaterialTable from 'material-table';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-import { withTranslation } from '../../i18n';
 import { ContextStore } from '../../ctx';
+import { withTranslation } from '../../i18n';
 import axios from '../../lib/axios';
 
 const RequestLog = () => {
