@@ -5,51 +5,53 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import { ContextStore } from '../../ctx';
 import { withTranslation } from '../../i18n';
+import { tableLocalization } from '../../lib/parse';
 import axios from '../../lib/axios';
+import styles from './RequestLog.module.scss';
 
-const RequestLog = () => {
+const RequestLog = ({ t }) => {
   const { accessToken } = useContext(ContextStore);
   const headers = {
     Authorization: `Bearer ${accessToken}`,
-    'x-api-token': 'tsdip',
+    'x-api-token': process.env.NEXT_PUBLIC_ADMIN_API_KEY,
   };
 
   const columns = [
-    { title: 'Name', field: 'org_name' },
+    { title: t('request-table-column-name'), field: 'org_name' },
     {
-      title: 'Organization Type',
+      title: t('request-table-column-org-type'),
       field: 'org_type',
       lookup: {
-        dance_group: 'Dance Group',
-        studio: 'Studio',
+        dance_group: t('request-table-column-org-group'),
+        studio: t('request-table-column-org-studio'),
       },
     },
     {
-      title: 'Request Type',
+      title: t('request-table-column-req-type'),
       field: 'req_type',
       lookup: {
-        apply_org: 'Apply',
-        claim_org: 'Claim',
+        apply_org: t('request-table-column-req-apply'),
+        claim_org: t('request-table-column-req-claim'),
       },
     },
     {
-      title: 'Approve Status',
+      title: t('request-table-column-approve-status'),
       field: 'approve_at',
       type: 'boolean',
     },
   ];
 
   const eventColumns = [
-    { title: 'Name', field: 'event_name' },
+    { title: t('request-table-column-name'), field: 'event_name' },
     {
-      title: 'Request Type',
+      title: t('request-table-column-req-type'),
       field: 'req_type',
       lookup: {
-        apply_event: 'Apply',
+        apply_event: t('request-table-column-req-apply'),
       },
     },
     {
-      title: 'Approve Status',
+      title: t('request-table-column-approve-status'),
       field: 'approve_at',
       type: 'boolean',
     },
@@ -120,25 +122,29 @@ const RequestLog = () => {
   };
 
   return (
-    <div>
+    <div className={styles['dashboard-request-log']}>
       <MaterialTable
-        title='Organization Requests'
+        title={t('request-org-table-title')}
         columns={columns}
         data={getOrgRequests}
         actions={actions}
+        options={{ grouping: true, search: true }}
+        localization={tableLocalization(t)}
       />
       <MaterialTable
-        title='Event Requests'
+        title={t('request-event-table-title')}
         columns={eventColumns}
         data={getEventRequests}
         actions={actions}
+        options={{ grouping: true, search: true }}
+        localization={tableLocalization(t)}
       />
     </div>
   );
 };
 
-// RequestLog.propTypes = {
-//   t: PropTypes.func.isRequired,
-// };
+RequestLog.propTypes = {
+  t: PropTypes.func.isRequired,
+};
 
-export default RequestLog;
+export default withTranslation(['request-log', 'table'])(RequestLog);

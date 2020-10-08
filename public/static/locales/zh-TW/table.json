@@ -1,0 +1,14 @@
+{
+  "table-column-action": "操作",
+  "table-group-groupBy": "分組依據:",
+  "table-group-placeholder": "將標題多到此處進行分組",
+  "table-pagination-first": "第一頁",
+  "table-pagination-label-display": "{from}-{to} 共 {count}",
+  "table-pagination-label-row": "筆",
+  "table-pagination-last": "最後一頁",
+  "table-pagination-next": "下一頁",
+  "table-pagination-previous": "上一頁",
+  "table-toolbar-row-selected": "{0} 筆 已選擇",
+  "table-toolbar-search-placeholder": "搜尋",
+  "table-toolbar-search-tooltip": "搜尋"
+}

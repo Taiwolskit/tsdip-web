@@ -7,6 +7,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 
 import { ContextStore } from '../../ctx';
 import { withTranslation } from '../../i18n';
+import { tableLocalization } from '../../lib/parse';
 import axios from '../../lib/axios';
 
 const generateColumn = (userType, t) => {
@@ -152,6 +153,7 @@ const Event = ({ t }) => {
       data={getEvents}
       options={{ selection: true }}
       actions={actions}
+      localization={tableLocalization(t)}
       editable={{
         onRowDelete: (oldData) =>
           new Promise((resolve) => {
@@ -173,4 +175,4 @@ Event.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('event')(Event);
+export default withTranslation(['event', 'table'])(Event);

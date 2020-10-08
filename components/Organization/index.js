@@ -8,6 +8,7 @@ import PersonAddDisabledIcon from '@material-ui/icons/PersonAddDisabled';
 
 import { ContextStore } from '../../ctx';
 import { withTranslation } from '../../i18n';
+import { tableLocalization } from '../../lib/parse';
 import axios from '../../lib/axios';
 
 const generateColumn = (userType, t) => {
@@ -107,6 +108,7 @@ const renderTable = (userType, t, getOrg, getReviewOrg) => {
           columns={columns}
           data={getOrg}
           actions={actions}
+          localization={tableLocalization(t)}
         />
         <br />
         <br />
@@ -115,6 +117,7 @@ const renderTable = (userType, t, getOrg, getReviewOrg) => {
           columns={columns}
           data={getReviewOrg}
           actions={actions}
+          localization={tableLocalization(t)}
         />
       </div>
     );
@@ -125,6 +128,7 @@ const renderTable = (userType, t, getOrg, getReviewOrg) => {
         columns={columns}
         data={getOrg}
         actions={actions}
+        localization={tableLocalization(t)}
       />
     );
   } else {
@@ -201,4 +205,4 @@ Organization.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('org')(Organization);
+export default withTranslation(['org', 'table'])(Organization);

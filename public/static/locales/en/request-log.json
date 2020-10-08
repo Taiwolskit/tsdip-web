@@ -1,0 +1,12 @@
+{
+  "request-event-table-title": "Event Requests",
+  "request-org-table-title": "Organization Requests",
+  "request-table-column-approve-status": "Approve Status",
+  "request-table-column-name": "Name",
+  "request-table-column-org-group": "Dance Group",
+  "request-table-column-org-studio": "Studio",
+  "request-table-column-org-type": "Organization Type",
+  "request-table-column-req-apply": "Apply",
+  "request-table-column-req-claim": "Claim",
+  "request-table-column-req-type": "Request Type"
+}
