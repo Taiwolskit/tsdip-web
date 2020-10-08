@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { Editor, EditorState, RawDraftContentState, convertFromRaw } from 'draft-js';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -34,11 +35,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderDiv = (step) => {
+const renderDiv = (step, stepData, setStepData) => {
   let component = undefined;
   switch (step) {
     case 0:
-      component = <Step1 />;
+      console.log('step index------', stepData.article);
+      component = <Step1 stepData={stepData} setStepData={setStepData} />;
       break;
     case 1:
       component = <Step2 />;
@@ -56,6 +58,10 @@ const EditStep = ({ t }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const [stepData, setStepData] = React.useState({
+    article: undefined,
+    social: {},
+  });
 
   const stepList = [
     {
@@ -82,15 +88,14 @@ const EditStep = ({ t }) => {
 
     if (activeStep === stepList.length - 1) {
       setActiveStep(0);
-      return;
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      setSkipped(newSkipped);
     }
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
   };
 
-  const handleBack = () => {
+  const handleBack = () =>
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   const handleSkip = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -177,7 +182,7 @@ const EditStep = ({ t }) => {
       </div>
 
       <div className={styles['edit-org-step-block']}>
-        {renderDiv(activeStep)}
+        {renderDiv(activeStep, stepData, setStepData)}
       </div>
     </div>
   );

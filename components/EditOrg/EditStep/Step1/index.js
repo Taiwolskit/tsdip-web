@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MUIRichTextEditor from 'mui-rte';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import {
+  Editor,
+  EditorState,
+  RawDraftContentState,
+  convertFromRaw,
+  convertToRaw
+} from 'draft-js';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
@@ -52,7 +59,9 @@ const fakeData = {
   entityMap: {},
 };
 
-const Step1 = ({ t }) => {
+const Step1 = ({ setStepData, stepData, t }) => {
+  console.log('step1------', stepData.article);
+
   return (
     <div>
       <Typography align='center' variant='h4'>
@@ -66,10 +75,15 @@ const Step1 = ({ t }) => {
       />
       <MuiThemeProvider theme={defaultTheme}>
         <MUIRichTextEditor
-          defaultValue={JSON.stringify(fakeData)}
           inlineToolbar={true}
           label={t('edit-org-step1-input-desc')}
           onSave={(...data) => console.log(JSON.stringify(data))}
+          onChange={(editorState) => {
+            stepData.article = editorState.getCurrentContent();
+            console.info('dataxxxxxx', stepData);
+            console.info('dataxxxxxx', convertToRaw(stepData.article));
+            setStepData(stepData);
+          }}
         />
       </MuiThemeProvider>
     </div>
@@ -77,6 +91,8 @@ const Step1 = ({ t }) => {
 };
 
 Step1.propTypes = {
+  setStepData: PropTypes.func.isRequired,
+  stepData: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
 };
 

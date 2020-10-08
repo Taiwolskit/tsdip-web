@@ -8,6 +8,10 @@ body {
     display: grid;
     grid-template-rows: 64px 1fr auto;
   }
+
+  main#edit-page {
+    margin: 20px 0 50px;
+  }
 }
 
 a, input, form {

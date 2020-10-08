@@ -59,11 +59,11 @@ const RequestLog = ({ t }) => {
 
   const actions = [
     (rowData) => ({
-      name: 'approve',
-      icon: CheckCircleIcon,
-      tooltip: 'Approve',
-      onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
       hidden: rowData.approve_at !== undefined,
+      icon: CheckCircleIcon,
+      name: 'approve',
+      onClick: (event, rowData) => alert(JSON.stringify(rowData, null, 2)),
+      tooltip: 'Approve',
     }),
   ];
 
