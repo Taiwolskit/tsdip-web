@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import MUIRichTextEditor from 'mui-rte';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
@@ -28,15 +28,11 @@ Object.assign(defaultTheme, {
   },
 });
 
-const Step1 = ({
-  setStepData,
-  stepData,
-  t,
-  orgName,
-  setOrgName,
-  orgDescription,
-  setOrgDescription,
-}) => {
+const Step1 = ({ setStepData, stepData, t }) => {
+  const [name, setName] = useState(stepData.name);
+  const [description, setDescription] = useState(stepData.description);
+  console.log('description -----', description);
+
   return (
     <div>
       <Typography align='center' variant='h4'>
@@ -47,25 +43,29 @@ const Step1 = ({
         fullWidth
         label={t('edit-org-step1-input-name')}
         variant='outlined'
-        value={orgName}
+        value={name}
         onChange={(event) => {
           event.preventDefault();
-          // stepData.orgName = event.target.value;
-          console.log(event.target.value);
-          setOrgName(event.target.value);
+          stepData.name = event.target.value;
+          setName(event.target.value);
+          setStepData(stepData);
         }}
       />
-      <MuiThemeProvider theme={defaultTheme}>
+      {/* <MuiThemeProvider theme={defaultTheme}>
         <MUIRichTextEditor
-          defaultValue={orgDescription}
+          defaultValue={JSON.stringify(description)}
           inlineToolbar={true}
           label={t('edit-org-step1-input-desc')}
           onChange={(editorState) => {
-            orgDescription = editorState.getCurrentContent();
-            setOrgDescription(orgDescription);
+            const content = editorState.getCurrentContent();
+            console.log('content-change----');
+            console.log(content);
+            // stepData.description = JSON.stringify(content);
+            setDescription(content);
+            // setStepData(stepData);
           }}
         />
-      </MuiThemeProvider>
+      </MuiThemeProvider> */}
     </div>
   );
 };

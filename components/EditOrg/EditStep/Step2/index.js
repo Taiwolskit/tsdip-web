@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
@@ -13,43 +13,57 @@ import YouTube from '@material-ui/icons/YouTube';
 
 import { withTranslation } from '../../../../i18n';
 
-const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
+const Step2 = ({ setStepData, stepData, t }) => {
   const submit = (event) => {
     event.preventDefault();
     const { id, value } = event.target;
 
     switch (id) {
       case 'social-address':
-        social.address = value;
+        stepData.social.address = value;
+        setAddress(value);
         break;
       case 'social-email':
-        social.email = value;
+        stepData.social.email = value;
+        setEmail(value);
         break;
       case 'social-fan-page':
-        social.fanPage = value;
+        stepData.social.fanPage = value;
+        setFanPage(value);
         break;
       case 'social-instagram':
-        social.instagram = value;
+        stepData.social.instagram = value;
+        setInstagram(value);
         break;
       case 'social-line':
-        social.line = value;
+        stepData.social.line = value;
+        setLine(value);
         break;
       case 'social-telephone':
-        social.telephone = value;
+        stepData.social.telephone = value;
+        setTelephone(value);
         break;
       case 'social-website':
-        social.website = value;
+        stepData.social.website = value;
+        setWebsite(value);
         break;
       case 'social-youtube':
-        social.youtube = value;
+        stepData.social.youtube = value;
+        setYoutube(value);
         break;
     }
 
-    console.log('after ------', social);
-    setSocial(social);
+    setStepData(stepData);
   };
 
-  console.log('render---', stepData);
+  const [address, setAddress] = useState(stepData.social.address);
+  const [email, setEmail] = useState(stepData.social.email);
+  const [fanPage, setFanPage] = useState(stepData.social.fanPage);
+  const [instagram, setInstagram] = useState(stepData.social.instagram);
+  const [line, setLine] = useState(stepData.social.line);
+  const [telephone, setTelephone] = useState(stepData.social.telephone);
+  const [website, setWebsite] = useState(stepData.social.website);
+  const [youtube, setYoutube] = useState(stepData.social.youtube);
 
   return (
     <form noValidate autoComplete='off'>
@@ -63,7 +77,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         label={t('edit-org-step2-input-address-label')}
         margin='normal'
         onChange={submit}
-        value={social?.address}
+        value={address}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -79,7 +93,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         margin='normal'
         onChange={submit}
         type='email'
-        value={social?.email}
+        value={email}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -95,7 +109,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         margin='normal'
         onChange={submit}
         type='url'
-        value={social?.fanPage}
+        value={fanPage}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -111,7 +125,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         label={t('edit-org-step2-input-instagram-label')}
         margin='normal'
         onChange={submit}
-        value={social?.instagram}
+        value={instagram}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -126,7 +140,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         label={t('edit-org-step2-input-line-label')}
         margin='normal'
         onChange={submit}
-        value={social?.line}
+        value={line}
       />
       <TextField
         fullWidth
@@ -135,7 +149,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         margin='normal'
         onChange={submit}
         type='tel'
-        value={social?.telephone}
+        value={telephone}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -151,7 +165,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         margin='normal'
         onChange={submit}
         type='url'
-        value={social?.website}
+        value={website}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>
@@ -167,7 +181,7 @@ const Step2 = ({ setStepData, stepData, t, social, setSocial }) => {
         margin='normal'
         onChange={submit}
         type='url'
-        value={social?.youtube}
+        value={youtube}
         InputProps={{
           startAdornment: (
             <InputAdornment position='start'>

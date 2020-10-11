@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { EditorState, convertToRaw } from 'draft-js';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -34,40 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderDiv = (step, states) => {
-  const {
-    stepData,
-    setStepData,
-    orgName,
-    setOrgName,
-    orgDescription,
-    setOrgDescription,
-    social,
-    setSocial,
-  } = states;
+const renderDiv = (step, stepData, setStepData) => {
   let component = undefined;
   switch (step) {
     case 0:
-      component = (
-        <Step1
-          stepData={stepData}
-          setStepData={setStepData}
-          orgName={orgName}
-          setOrgName={setOrgName}
-          orgDescription={orgDescription}
-          setOrgDescription={setOrgDescription}
-        />
-      );
+      component = <Step1 stepData={stepData} setStepData={setStepData} />;
       break;
     case 1:
-      component = (
-        <Step2
-          stepData={stepData}
-          setStepData={setStepData}
-          social={social}
-          setSocial={setSocial}
-        />
-      );
+      component = <Step2 stepData={stepData} setStepData={setStepData} />;
       break;
     case 2:
       component = <Step3 stepData={stepData} />;
@@ -79,9 +54,18 @@ const renderDiv = (step, states) => {
 };
 
 const initialStepData = {
-  orgName: '',
-  orgDescription: undefined,
-  social: {},
+  name: '',
+  description: convertToRaw(EditorState.createEmpty().getCurrentContent()),
+  social: {
+    address: '',
+    email: '',
+    fanPage: '',
+    instagram: '',
+    line: '',
+    telephone: '',
+    website: '',
+    youtube: '',
+  },
 };
 
 const EditStep = ({ t }) => {
@@ -89,21 +73,6 @@ const EditStep = ({ t }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
   const [stepData, setStepData] = useState(initialStepData);
-
-  const [orgName, setOrgName] = useState(initialStepData.orgName);
-  const [orgDescription, setOrgDescription] = useState(
-    initialStepData.orgDescription
-  );
-  const [social, setSocial] = useState(initialStepData.social);
-
-  const states = {
-    orgName,
-    setOrgName,
-    orgDescription,
-    setOrgDescription,
-    social,
-    setSocial,
-  };
 
   const stepList = [
     {
@@ -224,7 +193,7 @@ const EditStep = ({ t }) => {
       </div>
 
       <div className={styles['edit-org-step-block']}>
-        {renderDiv(activeStep, states)}
+        {renderDiv(activeStep, stepData, setStepData)}
       </div>
     </div>
   );

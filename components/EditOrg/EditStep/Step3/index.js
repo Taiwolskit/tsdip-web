@@ -58,17 +58,18 @@ const genSocialItem = (social) => {
   return result;
 };
 
-
 const Step3 = ({ stepData }) => {
-  const { orgName, orgDescription, social } = stepData;
+  const { name, description, social } = stepData;
 
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        <Paper className={styles['edit-org-step3-item']}>{orgName}</Paper>
+        <Paper className={styles['edit-org-step3-item']}>{name}</Paper>
       </Grid>
       <Grid item xs={12}>
-        <Paper className={styles['edit-org-step3-item']}>{JSON.stringify(orgDescription)}</Paper>
+        <Paper className={styles['edit-org-step3-item']}>
+          {JSON.stringify(description)}
+        </Paper>
       </Grid>
       {genSocialItem(social)}
     </Grid>
