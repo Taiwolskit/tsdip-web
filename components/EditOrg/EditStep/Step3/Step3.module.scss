@@ -1,0 +1,14 @@
+.edit-org-step3-item {
+  display: flex;
+  padding: 8px;
+  word-break: break-word;
+
+  .edit-org-step3-item-text {
+    display: block;
+    line-height: 22px;
+    margin: 0 0 0 3px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

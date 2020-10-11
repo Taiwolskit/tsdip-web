@@ -1,4 +1,5 @@
 {
+  "table-body-empty": "No records to display",
   "table-column-action": "Actions",
   "table-group-groupBy": "Grouped By:",
   "table-group-placeholder": "Drag headers here to group by",

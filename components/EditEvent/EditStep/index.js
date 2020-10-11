@@ -124,7 +124,7 @@ const EditStep = () => {
     });
   };
 
-  const rednerDiv = (step) => {
+  const renderDiv = (step) => {
     let component = undefined;
     switch (step) {
       case 0:
@@ -215,7 +215,7 @@ const EditStep = () => {
         </div>
       </div>
 
-      {rednerDiv(activeStep)}
+      {renderDiv(activeStep)}
     </div>
   );
 };

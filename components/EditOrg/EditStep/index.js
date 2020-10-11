@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Editor, EditorState, RawDraftContentState, convertFromRaw } from 'draft-js';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -35,18 +34,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderDiv = (step, stepData, setStepData) => {
+const renderDiv = (step, states) => {
+  const {
+    stepData,
+    setStepData,
+    orgName,
+    setOrgName,
+    orgDescription,
+    setOrgDescription,
+    social,
+    setSocial,
+  } = states;
   let component = undefined;
   switch (step) {
     case 0:
-      console.log('step index------', stepData.article);
-      component = <Step1 stepData={stepData} setStepData={setStepData} />;
+      component = (
+        <Step1
+          stepData={stepData}
+          setStepData={setStepData}
+          orgName={orgName}
+          setOrgName={setOrgName}
+          orgDescription={orgDescription}
+          setOrgDescription={setOrgDescription}
+        />
+      );
       break;
     case 1:
-      component = <Step2 />;
+      component = (
+        <Step2
+          stepData={stepData}
+          setStepData={setStepData}
+          social={social}
+          setSocial={setSocial}
+        />
+      );
       break;
     case 2:
-      component = <Step3 />;
+      component = <Step3 stepData={stepData} />;
       break;
     default:
       component = <p>Empty</p>;
@@ -54,14 +78,32 @@ const renderDiv = (step, stepData, setStepData) => {
   return component;
 };
 
+const initialStepData = {
+  orgName: '',
+  orgDescription: undefined,
+  social: {},
+};
+
 const EditStep = ({ t }) => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
-  const [stepData, setStepData] = React.useState({
-    article: undefined,
-    social: {},
-  });
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set());
+  const [stepData, setStepData] = useState(initialStepData);
+
+  const [orgName, setOrgName] = useState(initialStepData.orgName);
+  const [orgDescription, setOrgDescription] = useState(
+    initialStepData.orgDescription
+  );
+  const [social, setSocial] = useState(initialStepData.social);
+
+  const states = {
+    orgName,
+    setOrgName,
+    orgDescription,
+    setOrgDescription,
+    social,
+    setSocial,
+  };
 
   const stepList = [
     {
@@ -142,38 +184,38 @@ const EditStep = ({ t }) => {
         <Link href='/dashboard'>
           <Button
             className={classes.button}
-            variant='contained'
             startIcon={<CancelIcon />}
+            variant='contained'
           >
             {t('edit-org-actions-cancel')}
           </Button>
         </Link>
 
         <Button
+          className={classes.button}
           disabled={activeStep === 0}
           onClick={handleBack}
           variant='contained'
-          className={classes.button}
         >
           {t('edit-org-actions-back')}
         </Button>
 
         {stepList[activeStep].skip && (
           <Button
-            variant='contained'
+            className={classes.button}
             color='primary'
             onClick={handleSkip}
-            className={classes.button}
+            variant='contained'
           >
             {t('edit-org-actions-skip')}
           </Button>
         )}
 
         <Button
-          variant='contained'
+          className={classes.button}
           color='primary'
           onClick={handleNext}
-          className={classes.button}
+          variant='contained'
         >
           {activeStep === stepList.length - 1
             ? t('edit-org-actions-finish')
@@ -182,7 +224,7 @@ const EditStep = ({ t }) => {
       </div>
 
       <div className={styles['edit-org-step-block']}>
-        {renderDiv(activeStep, stepData, setStepData)}
+        {renderDiv(activeStep, states)}
       </div>
     </div>
   );

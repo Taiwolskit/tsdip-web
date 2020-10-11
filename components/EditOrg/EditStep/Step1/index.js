@@ -2,13 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MUIRichTextEditor from 'mui-rte';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import {
-  Editor,
-  EditorState,
-  RawDraftContentState,
-  convertFromRaw,
-  convertToRaw
-} from 'draft-js';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
@@ -35,33 +28,15 @@ Object.assign(defaultTheme, {
   },
 });
 
-const fakeData = {
-  blocks: [
-    {
-      data: {},
-      depth: 0,
-      entityRanges: [],
-      inlineStyleRanges: [],
-      key: '3fbbl',
-      text: '測試測試',
-      type: 'unstyled',
-    },
-    {
-      data: {},
-      depth: 0,
-      entityRanges: [],
-      inlineStyleRanges: [],
-      key: '31bq5',
-      text: '哈囉哈囉',
-      type: 'unstyled',
-    },
-  ],
-  entityMap: {},
-};
-
-const Step1 = ({ setStepData, stepData, t }) => {
-  console.log('step1------', stepData.article);
-
+const Step1 = ({
+  setStepData,
+  stepData,
+  t,
+  orgName,
+  setOrgName,
+  orgDescription,
+  setOrgDescription,
+}) => {
   return (
     <div>
       <Typography align='center' variant='h4'>
@@ -72,17 +47,22 @@ const Step1 = ({ setStepData, stepData, t }) => {
         fullWidth
         label={t('edit-org-step1-input-name')}
         variant='outlined'
+        value={orgName}
+        onChange={(event) => {
+          event.preventDefault();
+          // stepData.orgName = event.target.value;
+          console.log(event.target.value);
+          setOrgName(event.target.value);
+        }}
       />
       <MuiThemeProvider theme={defaultTheme}>
         <MUIRichTextEditor
+          defaultValue={orgDescription}
           inlineToolbar={true}
           label={t('edit-org-step1-input-desc')}
-          onSave={(...data) => console.log(JSON.stringify(data))}
           onChange={(editorState) => {
-            stepData.article = editorState.getCurrentContent();
-            console.info('dataxxxxxx', stepData);
-            console.info('dataxxxxxx', convertToRaw(stepData.article));
-            setStepData(stepData);
+            orgDescription = editorState.getCurrentContent();
+            setOrgDescription(orgDescription);
           }}
         />
       </MuiThemeProvider>
