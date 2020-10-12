@@ -7,6 +7,7 @@ import { appWithTranslation } from '../i18n';
 import { ContextStore, authInitState } from '../ctx';
 import { parseJwt } from '../lib/parse';
 import '../public/styles.scss';
+import 'react-quill/dist/quill.snow.css';
 
 const protectRoute = ['/dashboard'];
 

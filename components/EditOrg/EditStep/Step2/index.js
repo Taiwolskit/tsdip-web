@@ -13,7 +13,7 @@ import YouTube from '@material-ui/icons/YouTube';
 
 import { withTranslation } from '../../../../i18n';
 
-const Step2 = ({ setStepData, stepData, t }) => {
+const Step2 = ({ setStepData, stepData, t, setActiveStep }) => {
   const submit = (event) => {
     event.preventDefault();
     const { id, value } = event.target;
@@ -55,6 +55,11 @@ const Step2 = ({ setStepData, stepData, t }) => {
 
     setStepData(stepData);
   };
+
+  if (!stepData.name || !stepData.description) {
+    setActiveStep(0);
+    return null;
+  }
 
   const [address, setAddress] = useState(stepData.social.address);
   const [email, setEmail] = useState(stepData.social.email);

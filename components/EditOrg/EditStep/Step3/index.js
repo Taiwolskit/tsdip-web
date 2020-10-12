@@ -68,7 +68,13 @@ const Step3 = ({ stepData }) => {
       </Grid>
       <Grid item xs={12}>
         <Paper className={styles['edit-org-step3-item']}>
-          {JSON.stringify(description)}
+          {
+            <div
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+            />
+          }
         </Paper>
       </Grid>
       {genSocialItem(social)}

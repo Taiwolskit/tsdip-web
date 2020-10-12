@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import PropTypes from 'prop-types';
-import MUIRichTextEditor from 'mui-rte';
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 
 import { withTranslation } from '../../../../i18n';
 import styles from './Step1.module.scss';
+
+const QuillNoSSRWrapper = dynamic(import('react-quill'), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+});
 
 const defaultTheme = createMuiTheme();
 
@@ -28,10 +33,52 @@ Object.assign(defaultTheme, {
   },
 });
 
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [
+      { list: 'ordered' },
+      { list: 'bullet' },
+      { indent: '-1' },
+      { indent: '+1' },
+    ],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+};
+
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+];
+
 const Step1 = ({ setStepData, stepData, t }) => {
   const [name, setName] = useState(stepData.name);
   const [description, setDescription] = useState(stepData.description);
-  console.log('description -----', description);
+
+  const handleChange = (value) => {
+    stepData.description = value;
+    setDescription(value);
+    setStepData(stepData);
+  };
 
   return (
     <div>
@@ -51,21 +98,13 @@ const Step1 = ({ setStepData, stepData, t }) => {
           setStepData(stepData);
         }}
       />
-      {/* <MuiThemeProvider theme={defaultTheme}>
-        <MUIRichTextEditor
-          defaultValue={JSON.stringify(description)}
-          inlineToolbar={true}
-          label={t('edit-org-step1-input-desc')}
-          onChange={(editorState) => {
-            const content = editorState.getCurrentContent();
-            console.log('content-change----');
-            console.log(content);
-            // stepData.description = JSON.stringify(content);
-            setDescription(content);
-            // setStepData(stepData);
-          }}
-        />
-      </MuiThemeProvider> */}
+      <QuillNoSSRWrapper
+        modules={modules}
+        value={description}
+        onChange={handleChange}
+        formats={formats}
+        theme='snow'
+      />
     </div>
   );
 };

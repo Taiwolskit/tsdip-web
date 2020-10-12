@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { EditorState, convertToRaw } from 'draft-js';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
 import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Stepper from '@material-ui/core/Stepper';
@@ -16,6 +17,10 @@ import styles from './EditStep.module.scss';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,14 +40,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderDiv = (step, stepData, setStepData) => {
+const renderDiv = (step, stepData, setStepData, setActiveStep) => {
   let component = undefined;
   switch (step) {
     case 0:
       component = <Step1 stepData={stepData} setStepData={setStepData} />;
       break;
     case 1:
-      component = <Step2 stepData={stepData} setStepData={setStepData} />;
+      component = (
+        <Step2
+          stepData={stepData}
+          setStepData={setStepData}
+          setActiveStep={setActiveStep}
+        />
+      );
       break;
     case 2:
       component = <Step3 stepData={stepData} />;
@@ -55,7 +66,7 @@ const renderDiv = (step, stepData, setStepData) => {
 
 const initialStepData = {
   name: '',
-  description: convertToRaw(EditorState.createEmpty().getCurrentContent()),
+  description: '',
   social: {
     address: '',
     email: '',
@@ -73,6 +84,7 @@ const EditStep = ({ t }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
   const [stepData, setStepData] = useState(initialStepData);
+  const [openState, setOpen] = useState(false);
 
   const stepList = [
     {
@@ -97,6 +109,11 @@ const EditStep = ({ t }) => {
       newSkipped.delete(activeStep);
     }
 
+    if (!stepData.name || !stepData.description) {
+      handleClick();
+      return;
+    }
+
     if (activeStep === stepList.length - 1) {
       setActiveStep(0);
     } else {
@@ -117,8 +134,22 @@ const EditStep = ({ t }) => {
     });
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClick = (newState) => () => {
+    setState(true);
+  };
+
   return (
     <div className={classes.root}>
+      <Snackbar open={openState} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity='success'>
+          This is a success message!
+        </Alert>
+      </Snackbar>
+
       <Stepper
         activeStep={activeStep}
         alternativeLabel
@@ -193,7 +224,7 @@ const EditStep = ({ t }) => {
       </div>
 
       <div className={styles['edit-org-step-block']}>
-        {renderDiv(activeStep, stepData, setStepData)}
+        {renderDiv(activeStep, stepData, setStepData, setActiveStep)}
       </div>
     </div>
   );
