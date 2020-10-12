@@ -1,11 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import MUIRichTextEditor from 'mui-rte';
-import {
-  makeStyles,
-  createMuiTheme,
-  MuiThemeProvider,
-} from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Step from '@material-ui/core/Step';
@@ -13,28 +9,12 @@ import StepButton from '@material-ui/core/StepButton';
 import Stepper from '@material-ui/core/Stepper';
 import Typography from '@material-ui/core/Typography';
 
-const defaultTheme = createMuiTheme();
-
-Object.assign(defaultTheme, {
-  overrides: {
-    MUIRichTextEditor: {
-      container: {
-        border: '5px solid gray',
-        borderRadius: '5px',
-        padding: '5px',
-        height: '-webkit-fill-available',
-      },
-      toolbar: {
-        borderBottom: '1px solid gray',
-        display: 'flex',
-        justifyContent: 'space-around',
-      },
-    },
-  },
-});
+import { withTranslation } from '../../../i18n';
+import styles from './EditStep.module.scss';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginBottom: '20px',
     width: '100%',
   },
   wrapper: {
@@ -45,56 +25,15 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   instructions: {
-    marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    marginTop: theme.spacing(1),
   },
 }));
 
-const stepList = [
-  {
-    title: 'Edit the event',
-    description: "Edit the event's description.",
-  },
-  {
-    title: 'Event extra information',
-    description:
-      'Add the event extra information, such as social media link...',
-    skip: true,
-  },
-  {
-    title: 'Save the event data',
-    description: 'Make sure you want to save this change.',
-  },
-];
-
-const fakeData = {
-  blocks: [
-    {
-      key: '3fbbl',
-      text: '測試測試',
-      type: 'unstyled',
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {},
-    },
-    {
-      key: '31bq5',
-      text: '哈囉哈囉',
-      type: 'unstyled',
-      depth: 0,
-      inlineStyleRanges: [],
-      entityRanges: [],
-      data: {},
-    },
-  ],
-  entityMap: {},
-};
-
-const EditStep = () => {
+const EditStep = ({ t }) => {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set());
 
   const handleNext = () => {
     let newSkipped = skipped;
@@ -124,30 +63,21 @@ const EditStep = () => {
     });
   };
 
-  const renderDiv = (step) => {
-    let component = undefined;
-    switch (step) {
-      case 0:
-        component = <p>VV</p>;
-        break;
-      case 1:
-        component = (
-          <MuiThemeProvider theme={defaultTheme}>
-            <MUIRichTextEditor
-              defaultValue={JSON.stringify(fakeData)}
-              inlineToolbar={true}
-              label='sss'
-              onSave={(...data) => console.log(JSON.stringify(data))}
-            />
-          </MuiThemeProvider>
-        );
-        break;
-      default:
-        component = <p>cccccc</p>;
-        break;
-    }
-    return component;
-  };
+  const stepList = [
+    {
+      title: t('edit-event-step1-title'),
+      description: t('edit-event-step1-desc'),
+    },
+    {
+      title: t('edit-event-step2-title'),
+      description: t('edit-event-step2-desc'),
+      skip: true,
+    },
+    {
+      title: t('edit-event-step3-title'),
+      description: t('edit-event-step3-desc'),
+    },
+  ];
 
   return (
     <div className={classes.root}>
@@ -161,7 +91,9 @@ const EditStep = () => {
           const labelProps = {};
           if (data.skip) {
             labelProps.optional = (
-              <Typography variant='caption'>Optional</Typography>
+              <Typography variant='caption'>
+                {t('edit-event-step2-subtitle')}
+              </Typography>
             );
           }
           if (skipped.has(index)) {
@@ -175,49 +107,60 @@ const EditStep = () => {
         })}
       </Stepper>
 
-      <div>
-        <Typography className={classes.instructions}>
-          {stepList[activeStep].description}
-        </Typography>
-        <div>
-          <Link href='/dashboard'>
-            <Button variant='contained' startIcon={<CancelIcon />}>
-              Cancel
-            </Button>
-          </Link>
+      <Typography className={classes.instructions}>
+        {stepList[activeStep].description}
+      </Typography>
+
+      <div className={styles['edit-event-actions']}>
+        <Link href='/dashboard'>
           <Button
-            disabled={activeStep === 0}
-            onClick={handleBack}
             className={classes.button}
-          >
-            Back
-          </Button>
-
-          {stepList[activeStep].skip && (
-            <Button
-              variant='contained'
-              color='primary'
-              onClick={handleSkip}
-              className={classes.button}
-            >
-              Skip
-            </Button>
-          )}
-
-          <Button
+            startIcon={<CancelIcon />}
             variant='contained'
-            color='primary'
-            onClick={handleNext}
-            className={classes.button}
           >
-            {activeStep === stepList.length - 1 ? 'Finish' : 'Next'}
+            {t('edit-event-actions-cancel')}
           </Button>
-        </div>
+        </Link>
+
+        <Button
+          className={classes.button}
+          disabled={activeStep === 0}
+          onClick={handleBack}
+          variant='contained'
+        >
+          {t('edit-event-actions-back')}
+        </Button>
+
+        {stepList[activeStep].skip && (
+          <Button
+            className={classes.button}
+            color='primary'
+            onClick={handleSkip}
+            variant='contained'
+          >
+            {t('edit-event-actions-skip')}
+          </Button>
+        )}
+
+        <Button
+          className={classes.button}
+          color='primary'
+          onClick={handleNext}
+          variant='contained'
+        >
+          {activeStep === stepList.length - 1
+            ? t('edit-event-actions-finish')
+            : t('edit-event-actions-next')}
+        </Button>
       </div>
 
-      {renderDiv(activeStep)}
+      {/* {renderDiv(activeStep)} */}
     </div>
   );
 };
 
-export default EditStep;
+EditStep.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withTranslation('edit-event')(EditStep);

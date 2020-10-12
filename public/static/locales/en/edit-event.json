@@ -1,4 +1,16 @@
 {
-  "edit-event-title": "Edit event",
-  "edit-event-placeholder": "Add event detail"
+  "edit-event-actions-back": "Back",
+  "edit-event-actions-cancel": "Cancel",
+  "edit-event-actions-finish": "Finish",
+  "edit-event-actions-next": "Next",
+  "edit-event-actions-skip": "Skip",
+  "edit-event-placeholder": "Add event detail",
+  "edit-event-step1-desc": "Edit the event's basic information.",
+  "edit-event-step1-title": "Basic information",
+  "edit-event-step2-desc": "Add the organization social media, such as youtube, website and so on.",
+  "edit-event-step2-subtitle": "Optional",
+  "edit-event-step2-title": "Social Media",
+  "edit-event-step3-desc": "Check the edit result and save the change.",
+  "edit-event-step3-title": "Save change",
+  "edit-event-title": "Edit event"
 }
