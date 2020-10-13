@@ -98,9 +98,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const renderSwitch = (param, userType) => {
+const renderSwitch = (index, userType) => {
   if (userType === 'user') {
-    switch (param) {
+    switch (index) {
       case 2:
         return <Event />;
       case 1:
@@ -110,7 +110,7 @@ const renderSwitch = (param, userType) => {
         return <Profile />;
     }
   } else if (userType === 'manager') {
-    switch (param) {
+    switch (index) {
       case 3:
         return <Event />;
       case 2:
@@ -213,7 +213,7 @@ const MiniDrawer = ({ t, sidebarItems }) => {
 
         <Divider />
 
-        <List component='nav' aria-label='profile events organization'>
+        <List aria-label='profile events organization' component='nav'>
           {sidebarItems.map(({ ariaLabel, icon, text }, key) => (
             <Tooltip
               aria-label={ariaLabel}

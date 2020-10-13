@@ -1,10 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import Carousel from '../components/Carousel';
+
 import CardBlock from '../components/CardBlock';
+import Carousel from '../components/Carousel';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const App = ({ title }) => (
   <div className='main'>

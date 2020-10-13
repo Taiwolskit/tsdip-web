@@ -29,7 +29,7 @@ CarouselItem.propTypes = {
 };
 
 const App = ({ items }) => (
-  <Carousel indicators={false} navButtonsAlwaysVisible autoPlay={false}>
+  <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible>
     {items.map(({ caption, description, images }) => (
       <CarouselItem
         caption={caption}

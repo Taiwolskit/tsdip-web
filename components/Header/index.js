@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,12 +19,12 @@ import { i18n, withTranslation } from '../../i18n';
 
 const Header = ({ t, items, languages }) => {
   const { accessToken, dispatch } = useContext(ContextStore);
-  const [anchorLang, setAnchorLang] = React.useState(null);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorLang, setAnchorLang] = useState(null);
 
   const handleLangMenu = (event) => setAnchorLang(event.currentTarget);
-  const handleProfileMenu = (event) => setAnchorEl(event.currentTarget);
   const handleProfileClose = () => setAnchorEl(null);
+  const handleProfileMenu = (event) => setAnchorEl(event.currentTarget);
 
   const handleLogout = () => {
     setAnchorEl(null);
@@ -52,7 +52,7 @@ const Header = ({ t, items, languages }) => {
   return (
     <AppBar position='static'>
       <Toolbar>
-        <Grid container item xs={12} sm={12} className='header-brand-title'>
+        <Grid className='header-brand-title' container item xs={12} sm={12}>
           <Typography variant='h6'>{t('common:tsdip-full')}</Typography>
         </Grid>
 

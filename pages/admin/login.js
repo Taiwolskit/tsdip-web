@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { ContextStore } from '../../ctx';
 import axios from '../../lib/axios';
 
+import Footer from '../../components/Footer';
+
 const login = async (dispatch) => {
   const {
     data: {
@@ -18,7 +20,7 @@ const login = async (dispatch) => {
     {},
     {
       headers: {
-        'x-api-token': process.env.NEXT_PUBLIC_ADMIN_API_KEY,
+        'X-API-TOKEN': process.env.NEXT_PUBLIC_ADMIN_API_KEY,
       },
     }
   );
@@ -42,7 +44,7 @@ const App = ({ title }) => {
         Submit
       </button>
       <div>Content</div>
-      <footer>Footer</footer>
+      <Footer />
     </div>
   );
 };

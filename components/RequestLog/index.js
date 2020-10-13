@@ -13,7 +13,7 @@ const RequestLog = ({ t }) => {
   const { accessToken } = useContext(ContextStore);
   const headers = {
     Authorization: `Bearer ${accessToken}`,
-    'x-api-token': process.env.NEXT_PUBLIC_ADMIN_API_KEY,
+    'X-API-TOKEN': process.env.NEXT_PUBLIC_ADMIN_API_KEY,
   };
 
   const columns = [
@@ -124,20 +124,20 @@ const RequestLog = ({ t }) => {
   return (
     <div className={styles['dashboard-request-log']}>
       <MaterialTable
-        title={t('request-org-table-title')}
+        actions={actions}
         columns={columns}
         data={getOrgRequests}
-        actions={actions}
-        options={{ grouping: true, search: true }}
         localization={tableLocalization(t)}
+        options={{ grouping: true, search: true }}
+        title={t('request-org-table-title')}
       />
       <MaterialTable
-        title={t('request-event-table-title')}
+        actions={actions}
         columns={eventColumns}
         data={getEventRequests}
-        actions={actions}
-        options={{ grouping: true, search: true }}
         localization={tableLocalization(t)}
+        options={{ grouping: true, search: true }}
+        title={t('request-event-table-title')}
       />
     </div>
   );

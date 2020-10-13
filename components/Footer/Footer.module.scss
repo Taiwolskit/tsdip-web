@@ -1,7 +1,8 @@
 $footer-font-color: #cccccc;
+$footer-bg-color: #c7802d;
 
 .footer {
-  background-color: #c7802d;
+  background-color: $footer-bg-color;
   color: $footer-font-color;
   min-height: 100px;
   padding: 15px 0px 25px;

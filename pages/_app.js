@@ -1,46 +1,14 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import App from 'next/app';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 
 import { appWithTranslation } from '../i18n';
-import { ContextStore, authInitState } from '../ctx';
-import { parseJwt } from '../lib/parse';
+import { authInitState, authReducers, ContextStore } from '../ctx';
 import '../public/styles.scss';
 import 'react-quill/dist/quill.snow.css';
 
 const protectRoute = ['/dashboard'];
-
-const authReducers = (state, action) => {
-  // Cannot async fetch data in reducer
-  const { type, ...args } = action;
-
-  switch (type) {
-    case 'LOGIN':
-      const { accessToken, refreshToken } = args;
-      const user = accessToken ? parseJwt(accessToken).identity : {};
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
-
-      if (Router.pathname === '/login') {
-        Router.push('/');
-      }
-      return {
-        ...state,
-        accessToken,
-        loading: true,
-        refreshToken,
-        user,
-      };
-    case 'LOGOUT':
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      Router.push('/');
-      return { ...state, ...authInitState };
-    default:
-      return state;
-  }
-};
 
 const Application = ({ Component, pageProps }) => {
   const [state, dispatch] = useReducer(authReducers, authInitState);

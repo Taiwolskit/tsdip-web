@@ -17,11 +17,11 @@ import axios from '../../lib/axios';
 import styles from './Profile.module.scss';
 
 const Profile = ({ t }) => {
-  const { accessToken, user, dispatch } = useContext(ContextStore);
+  const { accessToken, dispatch, user } = useContext(ContextStore);
   const [inputStatus, setInputStatus] = useState(false);
-  const [stateUsername, setUsername] = useState(user.username);
   const [stateEmail, setEmail] = useState(user.email);
   const [statePhone, setPhone] = useState(user.telephone);
+  const [stateUsername, setUsername] = useState(user.username);
 
   const headers = {
     Authorization: `Bearer ${accessToken}`,
@@ -35,11 +35,11 @@ const Profile = ({ t }) => {
             data: { username = '', telephone = '', email = '' },
           },
         } = await axios.get('/users/profile', { headers });
-        setUsername(username);
-        setPhone(telephone);
         setEmail(email);
+        setPhone(telephone);
+        setUsername(username);
       } catch (error) {
-        console.error(`_get_profile_fail_ ${JSON.stringify(error)}`);
+        console.error(`_get_profile_fail_ ${JSON.stringify(error.response)}`);
         if (error.response.data.msg === 'Token has expired') {
           dispatch({ type: 'LOGOUT' });
           return;
@@ -61,8 +61,6 @@ const Profile = ({ t }) => {
         break;
       case 'email':
         setEmail(value);
-        break;
-      default:
         break;
     }
   };
@@ -93,10 +91,10 @@ const Profile = ({ t }) => {
     <form noValidate onSubmit={saveProfile}>
       <FormGroup>
         <Grid
-          container
-          spacing={1}
           alignItems='center'
           className={styles['profile-form']}
+          container
+          spacing={1}
         >
           <Grid item>
             <AccountCircleIcon />
@@ -108,14 +106,14 @@ const Profile = ({ t }) => {
                 {t('profile:form-username-placeholder')}
               </InputLabel>
               <Input
-                id='profile-username'
                 aria-describedby='profile-username-helper'
-                name='username'
                 disabled={inputStatus}
-                value={stateUsername}
+                id='profile-username'
+                name='username'
                 onChange={(event) =>
                   handleChange('username', event.target.value)
                 }
+                value={stateUsername}
               />
               <FormHelperText id='profile-username-helper'>
                 {t('profile:form-username-helper')}
@@ -125,10 +123,10 @@ const Profile = ({ t }) => {
         </Grid>
 
         <Grid
-          container
-          spacing={1}
           alignItems='center'
           className={styles['profile-form']}
+          container
+          spacing={1}
         >
           <Grid item>
             <PhoneIphoneIcon />
@@ -139,12 +137,12 @@ const Profile = ({ t }) => {
                 {t('profile:form-phone-placeholder')}
               </InputLabel>
               <Input
-                id='profile-phone'
                 aria-describedby='profile-phone-helper'
-                name='phone'
                 disabled={inputStatus}
-                value={statePhone}
+                id='profile-phone'
+                name='phone'
                 onChange={(event) => handleChange('phone', event.target.value)}
+                value={statePhone}
               />
               <FormHelperText id='profile-phone-helper'>
                 {t('profile:form-phone-helper')}
@@ -154,10 +152,10 @@ const Profile = ({ t }) => {
         </Grid>
 
         <Grid
-          container
-          spacing={1}
           alignItems='center'
           className={styles['profile-form']}
+          container
+          spacing={1}
         >
           <Grid item>
             <EmailIcon />
@@ -168,12 +166,12 @@ const Profile = ({ t }) => {
                 {t('profile:form-email-placeholder')}
               </InputLabel>
               <Input
-                id='profile-email'
                 aria-describedby='profile-email-helper'
-                name='email'
                 disabled={inputStatus}
-                value={stateEmail}
+                id='profile-email'
+                name='email'
                 onChange={(event) => handleChange('email', event.target.value)}
+                value={stateEmail}
               />
               <FormHelperText id='profile-email-helper'>
                 {t('profile:form-email-helper')}
@@ -183,12 +181,12 @@ const Profile = ({ t }) => {
         </Grid>
 
         <Button
-          type='submit'
-          color='primary'
-          variant='contained'
           className={styles['profile-save-btn']}
+          color='primary'
+          type='submit'
+          variant='contained'
         >
-          Save
+          {t('profile:form-save-btn')}
         </Button>
       </FormGroup>
     </form>

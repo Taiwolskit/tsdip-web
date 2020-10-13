@@ -3,6 +3,7 @@
   "form-email-placeholder": "Email address",
   "form-phone-helper": "Need to with your country code.",
   "form-phone-placeholder": "Cell phone number",
+  "form-save-btn": "Save",
   "form-username-helper": "Min length is six.",
   "form-username-placeholder": "Username"
 }
