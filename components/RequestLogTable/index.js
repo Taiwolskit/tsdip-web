@@ -7,9 +7,9 @@ import { ContextStore } from '../../ctx';
 import { withTranslation } from '../../i18n';
 import { tableLocalization } from '../../lib/parse';
 import axios from '../../lib/axios';
-import styles from './RequestLog.module.scss';
+import styles from './RequestLogTable.module.scss';
 
-const RequestLog = ({ t }) => {
+const RequestLogTable = ({ t }) => {
   const { accessToken } = useContext(ContextStore);
   const headers = {
     Authorization: `Bearer ${accessToken}`,
@@ -143,8 +143,8 @@ const RequestLog = ({ t }) => {
   );
 };
 
-RequestLog.propTypes = {
+RequestLogTable.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation(['request-log', 'table'])(RequestLog);
+export default withTranslation(['request-log', 'table'])(RequestLogTable);

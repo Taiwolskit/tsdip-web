@@ -27,9 +27,9 @@ import { ContextStore } from '../../ctx';
 import { withTranslation } from '../../i18n';
 
 import Event from '../Event';
-import Organization from '../Organization';
+import OrganizationTable from '../OrganizationTable';
 import Profile from '../Profile';
-import RequestLog from '../RequestLog';
+import RequestLogTable from '../RequestLogTable';
 
 const drawerWidth = 240;
 
@@ -104,7 +104,7 @@ const renderSwitch = (index, userType) => {
       case 2:
         return <Event />;
       case 1:
-        return <Organization />;
+        return <OrganizationTable />;
       case 0:
       default:
         return <Profile />;
@@ -114,9 +114,9 @@ const renderSwitch = (index, userType) => {
       case 3:
         return <Event />;
       case 2:
-        return <Organization />;
+        return <OrganizationTable />;
       case 1:
-        return <RequestLog />;
+        return <RequestLogTable />;
       case 0:
       default:
         return <Profile />;
