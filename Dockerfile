@@ -1,14 +1,18 @@
 FROM node:alpine AS builder
-WORKDIR /usr/app
 ENV NODE_ENV=production \
-    PATH=/usr/app/node_modules/.bin:$PATH
-RUN apk add --no-cache python make g++
-COPY package.json yarn.lock ./
-RUN yarn install --production
+    NEXT_TELEMETRY_DISABLED=1
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install && \
+    npm install preact@10.5.3 typescript@4.0.3 vue@2.6.12
 COPY . .
-RUN npx next telemetry --disable && yarn build
+RUN npm run build
 
 FROM node:alpine
-WORKDIR /usr/app
-COPY --from=builder /usr/app .
-CMD [ "yarn", "start" ]
+WORKDIR /app
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/public ./public
+EXPOSE 3000
+CMD ["npm", "start"]

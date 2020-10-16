@@ -1,9 +1,0 @@
-[production]
-last 5 version
-not dead
-> 5% in US
-
-[development]
-last 1 version
-not dead
-> 0.5% in US

@@ -1,0 +1,16 @@
+{
+  "edit-event-actions-back": "上一步",
+  "edit-event-actions-cancel": "取消",
+  "edit-event-actions-finish": "完成",
+  "edit-event-actions-next": "下一步",
+  "edit-event-actions-skip": "略過",
+  "edit-event-placeholder": "新增活動內容",
+  "edit-event-step1-desc": "編輯活動的基本資訊",
+  "edit-event-step1-title": "基本資訊",
+  "edit-event-step2-desc": "新增活動的社群媒體資訊，例如網站連結、YouTube 等",
+  "edit-event-step2-subtitle": "可選",
+  "edit-event-step2-title": "社群媒體",
+  "edit-event-step3-desc": "確認變更結果並儲存",
+  "edit-event-step3-title": "儲存變更",
+  "edit-event-title": "編輯活動"
+}

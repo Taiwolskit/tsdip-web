@@ -1,0 +1,9 @@
+{
+  "form-email-helper": "我們不會分享此資料出去",
+  "form-email-placeholder": "電子信箱",
+  "form-phone-helper": "需要加上國碼",
+  "form-phone-placeholder": "手機電話號碼",
+  "form-save-btn": "儲存",
+  "form-username-helper": "最短長度為 6",
+  "form-username-placeholder": "使用者名稱"
+}

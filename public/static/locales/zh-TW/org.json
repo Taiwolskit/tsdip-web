@@ -1,0 +1,15 @@
+{
+  "table-action-add-tooltip": "建立組織",
+  "table-action-delete-tooltip": "關閉組織",
+  "table-action-invite-tooltip": "邀請使用者",
+  "table-action-leave-tooltip": "退出使用者",
+  "table-field-org-type-group": "舞團",
+  "table-field-org-type-studio": "工作室",
+  "table-field-role-manager": "管理者",
+  "table-field-role-owner": "擁有者",
+  "table-field-role-viewer": "閱覽者",
+  "table-header-name": "名稱",
+  "table-header-org-type": "組織類型",
+  "table-header-role": "權限",
+  "table-title": "管理組織"
+}

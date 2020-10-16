@@ -1,0 +1,15 @@
+.profile-form {
+  margin: 5px;
+
+  .profile-form-item {
+    flex-grow: 1;
+  }
+
+  .profile-form-control {
+    width: stretch;
+  }
+}
+
+form .profile-save-btn {
+  margin-top: 20px;
+}

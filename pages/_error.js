@@ -1,40 +1,26 @@
-import Error from 'next/error';
-import Head from 'next/head';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
-const ErrorPage = ({ error, statusCode }) => {
-  if (process.env.NODE_ENV === 'production' && statusCode === 404) {
-    return <Error title='還在開發中，近請期待' statusCode={statusCode} />;
-  }
-  return <Error title={error} statusCode={statusCode} />;
-};
-
-const App = ({ error, statusCode }) => (
-  <div className='main'>
-    <Head>
-      <title>頁面開發中 - Taiwan Street Dance Information Platform</title>
-    </Head>
-    <Header />
-    <ErrorPage error={error} statusCode={statusCode} />
-    <Footer />
-  </div>
+const Error = ({ statusCode }) => (
+  <p>
+    {statusCode
+      ? `An error ${statusCode} occurred on server`
+      : 'An error occurred on client'}
+  </p>
 );
 
-App.getInitialProps = ({ err: error, res: { statusCode } }) => ({
-  error,
-  statusCode
-});
-
-App.defaultProps = {
-  error: 'This page could not be found',
-  statusCode: 404
+Error.getInitialProps = ({ res, err }) => {
+  let statusCode = 404;
+  if (res) {
+    statusCode = res.statusCode;
+  } else if (err) {
+    statusCode = err.statusCode;
+  }
+  return { statusCode, namespacesRequired: ['common'] };
 };
 
-App.propTypes = {
-  error: PropTypes.string.isRequired,
-  statusCode: PropTypes.number.isRequired
+Error.propTypes = {
+  statusCode: PropTypes.number.isRequired,
 };
 
-export default App;
+export default Error;

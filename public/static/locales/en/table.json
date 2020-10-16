@@ -1,0 +1,15 @@
+{
+  "table-body-empty": "No records to display",
+  "table-column-action": "Actions",
+  "table-group-groupBy": "Grouped By:",
+  "table-group-placeholder": "Drag headers here to group by",
+  "table-pagination-first": "First Page",
+  "table-pagination-label-display": "{from}-{to} of {count}",
+  "table-pagination-label-row": "rows",
+  "table-pagination-last": "Last Page",
+  "table-pagination-next": "Next Page",
+  "table-pagination-previous": "Previous Page",
+  "table-toolbar-row-selected": "{0} row(s) selected",
+  "table-toolbar-search-placeholder": "Search",
+  "table-toolbar-search-tooltip": "Search"
+}

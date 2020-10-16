@@ -1,0 +1,12 @@
+{
+  "request-event-table-title": "活動請求",
+  "request-org-table-title": "組織請求",
+  "request-table-column-approve-status": "審核狀態",
+  "request-table-column-name": "名稱",
+  "request-table-column-org-group": "舞團",
+  "request-table-column-org-studio": "工作室",
+  "request-table-column-org-type": "組織類別",
+  "request-table-column-req-apply": "申請",
+  "request-table-column-req-claim": "宣告",
+  "request-table-column-req-type": "請求類別"
+}

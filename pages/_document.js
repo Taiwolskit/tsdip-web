@@ -1,55 +1,90 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import 'normalize.css';
 
-export default class MyDocument extends Document {
+export default class NextDocument extends Document {
   render() {
     return (
       <Html lang='zh-Hant-TW'>
         <Head>
           <meta charSet='utf-8' />
+          <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          <meta name='author' content='Taiwolskit' />
           <meta
             name='title'
-            content='Taiwan Street Dance Information Platform'
+            content='TSDIP — Taiwan Street Dance Information Platform'
           />
           <meta
             name='description'
-            content='Taiwan Street Dance Information Platform'
+            content='A platform that collects every information about Street dance studios, activities, and classes in Taiwan.'
           />
           <meta
             name='keywords'
-            content='Street Dance,Dance,Hip Hop,Popping,Locking,Jazz,Dancehall,Krump'
+            content='街舞,台灣街舞,Street Dance,Dance,Hip Hop,Popping,Locking,Jazz,Dancehall,Krump'
           />
-          <meta name='robots' content='index, follow' />
           <meta name='revisit-after' content='7 days' />
-          <meta name='author' content='Taiwolskit' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no'
+          <meta name='robots' content='index, follow' />
+
+          <link
+            rel='stylesheet'
+            href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
           />
           <link
             rel='stylesheet'
-            href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css'
-            integrity='sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt'
-            crossOrigin='anonymous'></link>
+            href='https://fonts.googleapis.com/icon?family=Material+Icons'
+          />
+
+          {/* <!-- Google Tag Manager --> */}
           <script
-            src='https://code.jquery.com/jquery-3.4.1.slim.min.js'
-            integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n'
-            crossOrigin='anonymous'></script>
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
+              `,
+            }}
+          ></script>
+          {/* <!-- End Google Tag Manager --> */}
+          {/* <!-- Facebook Pixel Code --> */}
           <script
-            src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'
-            integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo'
-            crossOrigin='anonymous'></script>
-          <script
-            src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js'
-            integrity='sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P'
-            crossOrigin='anonymous'></script>
+            dangerouslySetInnerHTML={{
+              __html: `
+                !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${process.env.NEXT_PUBLIC_FB_ID}');
+                fbq('track', 'PageView');
+              `,
+            }}
+          ></script>
+          {/* <!-- End Facebook Pixel Code --> */}
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
+        {/* <!-- Google Tag Manager (noscript) --> */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            height='0'
+            width='0'
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
+        {/* <!-- End Google Tag Manager (noscript) --> */}
+        {/* <!-- Facebook Pixel Code --> */}
+        <noscript>
+          <img
+            height='1'
+            width='1'
+            style={{ display: 'none' }}
+            src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FB_ID}&ev=PageView&noscript=1`}
+          />
+        </noscript>
+        {/* <!-- End Facebook Pixel Code --> */}
       </Html>
     );
   }
