@@ -24,3 +24,5 @@
 | --------------------------- | ------------------------------------ | --------------------- |
 | `NEXT_PUBLIC_ADMIN_API_KEY` | Admin API key to validate permission |                       |
 | `NEXT_PUBLIC_API_URL`       | Backend API server URL               | http://localhost:5000 |
+| `NEXT_PUBLIC_FB_ID`         | Facebook Pixel ID                    |                       |
+| `NEXT_PUBLIC_GTM_ID`        | Google Tag Manager ID                |                       |
