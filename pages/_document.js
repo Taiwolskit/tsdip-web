@@ -7,21 +7,24 @@ export default class NextDocument extends Document {
       <Html lang='zh-Hant-TW'>
         <Head>
           <meta charSet='utf-8' />
+          <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          <meta name='author' content='Taiwolskit' />
           <meta
             name='title'
-            content='Taiwan Street Dance Information Platform'
+            content='TSDIP — Taiwan Street Dance Information Platform'
           />
           <meta
             name='description'
-            content='Taiwan Street Dance Information Platform'
+            content='A platform that collects every information about Street dance studios, activities, and classes in Taiwan.'
           />
           <meta
             name='keywords'
-            content='Street Dance,Dance,Hip Hop,Popping,Locking,Jazz,Dancehall,Krump'
+            content='街舞,台灣街舞,Street Dance,Dance,Hip Hop,Popping,Locking,Jazz,Dancehall,Krump'
           />
           <meta name='revisit-after' content='7 days' />
-          <meta name='author' content='Taiwolskit' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
+          <meta name='robots' content='index, follow' />
+
           <link
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
