@@ -1,5 +1,5 @@
 body {
-  background-color: #B3CAB4;
+  background-color: #b3cab4;
   font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
     'Arial', sans-serif;
   margin: 0;
@@ -14,7 +14,15 @@ body {
   }
 }
 
-a, input, form {
+.custom404-image {
+  height: 549px;
+  width: 976px;
+  margin: 0 auto;
+}
+
+a,
+input,
+form {
   color: inherit;
   outline: none;
   text-decoration: none;

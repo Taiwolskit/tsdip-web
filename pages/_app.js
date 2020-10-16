@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 
 import { appWithTranslation } from '../i18n';
 import { authInitState, authReducers, ContextStore } from '../ctx';
-import '../public/styles.scss';
 import 'react-quill/dist/quill.snow.css';
+import '../public/styles.scss';
 
 const protectRoute = ['/dashboard'];
 
