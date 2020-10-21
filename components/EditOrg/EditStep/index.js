@@ -81,7 +81,7 @@ const initialStepData = {
   },
 };
 
-const submitOrg = (headers) => {
+const submitOrg = async (headers) => {
   const {
     data: {
       data: {
