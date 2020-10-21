@@ -22,7 +22,8 @@ export const authReducers = (state, action) => {
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('refreshToken', refreshToken);
 
-      if (Router.pathname === '/login') {
+      // Check login user not see login page again
+      if (Router.pathname.includes('login')) {
         Router.push('/');
       }
       return {

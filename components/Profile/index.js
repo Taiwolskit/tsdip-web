@@ -39,8 +39,12 @@ const Profile = ({ t }) => {
         setPhone(telephone);
         setUsername(username);
       } catch (error) {
-        console.error(`_get_profile_fail_ ${JSON.stringify(error.response)}`);
-        if (error.response.data.msg === 'Token has expired') {
+        console.error(`_get_profile_fail_ ${JSON.stringify(error)}`);
+
+        if (
+          error?.message === 'Network Error' ||
+          error.response?.data?.msg === 'Token has expired'
+        ) {
           dispatch({ type: 'LOGOUT' });
           return;
         }

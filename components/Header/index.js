@@ -53,7 +53,11 @@ const Header = ({ t, items, languages }) => {
     <AppBar position='static'>
       <Toolbar>
         <Grid className='header-brand-title' container item xs={12} sm={12}>
-          <Typography variant='h6'>{t('common:tsdip-full')}</Typography>
+          <Link href='/'>
+            <Typography variant='h6' style={{ cursor: 'pointer' }}>
+              {t('common:tsdip-full')}
+            </Typography>
+          </Link>
         </Grid>
 
         <Grid

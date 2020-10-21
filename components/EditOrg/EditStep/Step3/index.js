@@ -39,6 +39,7 @@ const SocialItem = (type, value) => {
       icon = <YouTube />;
       break;
   }
+  if (!value) return null;
 
   return (
     <Grid item xs={3} key={type} alt={type}>

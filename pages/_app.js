@@ -20,6 +20,7 @@ const Application = ({ Component, pageProps }) => {
     if (accessToken && refreshToken) {
       dispatch({ type: 'LOGIN', accessToken, refreshToken });
     } else if (protectRoute.includes(Router.pathname)) {
+      // Protect un login user to access dashboard page
       Router.push('/');
     }
   };

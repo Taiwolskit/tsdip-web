@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,7 +11,9 @@ import Stepper from '@material-ui/core/Stepper';
 import Typography from '@material-ui/core/Typography';
 import CancelIcon from '@material-ui/icons/Cancel';
 
+import { ContextStore } from '../../../ctx';
 import { withTranslation } from '../../../i18n';
+import axios from '../../../lib/axios';
 import styles from './EditStep.module.scss';
 
 import Step1 from './Step1';
@@ -79,7 +81,35 @@ const initialStepData = {
   },
 };
 
+const submitOrg = (headers) => {
+  const {
+    data: {
+      data: {
+        access_token: accessToken = '',
+        refresh_token: refreshToken = '',
+      },
+    },
+  } = await axios.post('/organizations',
+    {
+      name,
+      description,
+      org_type,
+      social
+    },
+    {
+      headers
+    }
+  );
+};
+
+
 const EditStep = ({ t }) => {
+  const { accessToken } = useContext(ContextStore);
+  const headers = {
+    Authorization: `Bearer ${accessToken}`,
+    'X-API-TOKEN': process.env.NEXT_PUBLIC_ADMIN_API_KEY,
+  };
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
@@ -110,7 +140,7 @@ const EditStep = ({ t }) => {
     }
 
     if (!stepData.name || !stepData.description) {
-      handleClick();
+      showAlert();
       return;
     }
 
@@ -120,6 +150,7 @@ const EditStep = ({ t }) => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
       setSkipped(newSkipped);
     }
+    if (openState) closeAlert();
   };
 
   const handleBack = () =>
@@ -134,18 +165,17 @@ const EditStep = ({ t }) => {
     });
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleClick = (newState) => () => {
-    setState(true);
-  };
+  const closeAlert = () => setOpen(false);
+  const showAlert = () => setOpen(true);
 
   return (
     <div className={classes.root}>
-      <Snackbar open={openState} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity='success'>
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={openState}
+        autoHideDuration={6000}
+      >
+        <Alert severity='error' onClose={closeAlert}>
           This is a success message!
         </Alert>
       </Snackbar>

@@ -6,6 +6,7 @@ import { ContextStore } from '../../ctx';
 import axios from '../../lib/axios';
 
 import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 const login = async (dispatch) => {
   const {
@@ -39,6 +40,7 @@ const App = ({ title }) => {
       <Head>
         <title>{title}</title>
       </Head>
+      <Header />
       <p>{accessToken}</p>
       <button type='submit' onClick={() => login(dispatch)}>
         Submit
