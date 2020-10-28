@@ -4,8 +4,7 @@ ENV NODE_ENV=production \
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install && \
-    npm install preact@10.5.5 typescript@4.0.3 vue@2.6.12 && \
-    npm audit fix
+    npm install preact@10.5.5 typescript@4.0.5 vue@2.6.12
 COPY . .
 RUN npm run build
 
