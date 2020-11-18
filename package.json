@@ -27,7 +27,7 @@
     "axios": "^0.21.0",
     "clsx": "^1.1.1",
     "draft-js-export-html": "^1.4.1",
-    "material-table": "^1.69.1",
+    "material-table": "^1.69.2",
     "mui-rte": "^1.26.2",
     "next": "^10.0.1",
     "next-i18next": "^7.0.1",
