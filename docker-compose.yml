@@ -16,4 +16,4 @@ services:
 networks:
   tsdip:
     name: tsdip-network
-    external: true
+    # external: true

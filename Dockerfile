@@ -3,8 +3,10 @@ ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1
 WORKDIR /app
 COPY package.json package-lock.json ./
+RUN apk --no-cache add g++ gcc libgcc libstdc++ linux-headers make python && \
+    npm install --quiet node-gyp -g
 RUN npm install && \
-    npm install preact@10.5.5 typescript@4.0.5 vue@2.6.12
+    npm install preact typescript vue
 COPY . .
 RUN npm run build
 
