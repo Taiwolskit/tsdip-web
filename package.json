@@ -29,7 +29,7 @@
     "draft-js-export-html": "^1.4.1",
     "material-table": "^1.69.2",
     "mui-rte": "^1.26.2",
-    "next": "^10.0.6",
+    "next": "^10.0.7",
     "next-i18next": "^7.0.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
